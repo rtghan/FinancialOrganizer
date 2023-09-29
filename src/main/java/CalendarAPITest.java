@@ -18,10 +18,10 @@ public class CalendarAPITest {
         CalendarAPIAccess dataAccess = new CalendarAPIAccess("Calendar API Test", HTTP_TRANSPORT);
         Calendar service = dataAccess.getCalendar();
 
-        // get up to 2 of the next events from the calendar
+        // get up to 3 of the next events from the calendar
         DateTime now = new DateTime(System.currentTimeMillis());
         Events events = service.events().list("primary")
-                .setMaxResults(1)
+                .setMaxResults(3)
                 .setTimeMin(now)
                 .setOrderBy("startTime")
                 .setSingleEvents(true)
@@ -29,12 +29,20 @@ public class CalendarAPITest {
 
         // list out the events
         List<Event> items = events.getItems();
-        // iterate through each event
-        for(Event event: items){
-            // get start day
-            DateTime start = event.getStart().getDate();
-            // show event in console
-            System.out.printf("You have: %s on %s", event.getSummary(), start);
+
+        // case if there are no events
+        if (items.isEmpty()){
+            System.out.println("You have no upcoming events");
         }
+        else{
+            // otherwise iterate through each event
+            for(Event event: items){
+                // get start day
+                DateTime start = event.getStart().getDate();
+                // show event in console
+                System.out.printf("You have: %s on %s", event.getSummary(), start);
+            }
+        }
+
     }
 }
