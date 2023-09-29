@@ -1,7 +1,5 @@
 # Calendar Organizer
 
-*** 
-
 ## To run the test:
 1. Install Gradle at https://gradle.org/
 2. At https://console.cloud.google.com/, create a new project, go to APIs & Services, click `Enable APIs and Services`,
@@ -13,4 +11,3 @@ file.
 4. Then run `gradle run` in the terminal, and authenticate with Google.
 5. You can now run the CalendarAPITest class.
 
-***
