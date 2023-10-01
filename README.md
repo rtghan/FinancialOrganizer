@@ -1,6 +1,6 @@
 # Calendar Organizer
 A calendar organization tool built with Google's Calendar API
-(documentation can be found at https://developers.google.com/calendar/api/v3/reference)
+(documentation can be found at https://developers.google.com/resources/api-libraries/documentation/calendar/v3/java/latest/)
 
 ## To run the test:
 1. Install Gradle at https://gradle.org/
