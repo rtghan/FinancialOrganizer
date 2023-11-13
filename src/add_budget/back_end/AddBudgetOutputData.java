@@ -1,19 +1,19 @@
 package add_budget.back_end;
-
+import java.time.Month;
 public class AddBudgetOutputData {
-    private final String budgetMonth;
+    private final Month budgetMonth;
     private final double savAmt;
     private final double invAmt;
     private final double spdAmt;
 
-    public AddBudgetOutputData(String budgetMonth, double savAmt, double invAmt, double spdAmt) {
+    public AddBudgetOutputData(Month budgetMonth, double savAmt, double invAmt, double spdAmt) {
         this.budgetMonth = budgetMonth;
         this.savAmt = savAmt;
         this.invAmt = invAmt;
         this.spdAmt = spdAmt;
     }
 
-    public String getBudgetMonth() {
+    public Month getBudgetMonth() {
         return budgetMonth;
     }
 
