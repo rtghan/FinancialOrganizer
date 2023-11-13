@@ -9,6 +9,7 @@ public class Budget {
 
     private Month creationMonth;
     private ArrayList<Expense> expensesList;
+    private ArrayList<Income> incomeList;
 
     public Budget(double savingAmt, double investmentAmt, double spendingAmt, Month creationMonth) {
         this.savingAmt = savingAmt;
@@ -16,11 +17,13 @@ public class Budget {
         this.spendingAmt = spendingAmt;
         this.creationMonth = creationMonth;
         this.expensesList = new ArrayList<Expense>();
+        this.incomeList = new ArrayList<Income>();
     }
 
     public void addExpense(Expense expense) {
         expensesList.add(expense);
     }
+    public void addIncome(Income income){incomeList.add(income);}
 
     public double getRemaining() {
         double expensesTotal = 0.0;
