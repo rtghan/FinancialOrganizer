@@ -1,6 +1,7 @@
 package add_budget.back_end;
 import entity.Budget;
+import java.time.Month;
 public interface AddBudgetDataAccessInterface {
-    void save(String monthName, Budget budget);
+    void save(Month month, Budget budget);
 
 }
