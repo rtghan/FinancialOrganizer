@@ -40,4 +40,20 @@ public class AddBudgetState {
     public double getSpendAmt() {
         return spendAmt;
     }
+
+    public void setMonthSelection(String monthSelection) {
+        this.monthSelection = monthSelection;
+    }
+
+    public void setSaveAmt(double saveAmt) {
+        this.saveAmt = saveAmt;
+    }
+
+    public void setInvAmt(double invAmt) {
+        this.invAmt = invAmt;
+    }
+
+    public void setSpendAmt(double spendAmt) {
+        this.spendAmt = spendAmt;
+    }
 }
