@@ -3,9 +3,11 @@ import java.time.LocalDateTime;
 import java.time.Month;
 public class AddBudgetState {
     private String monthSelection = "";
+    private Month month = Month.JANUARY;
     private double saveAmt = 0;
     private double invAmt = 0;
     private double spendAmt = 0;
+    private boolean creationSuccess = false;
 
     public AddBudgetState(AddBudgetState copy) {
         monthSelection = copy.monthSelection;
@@ -21,12 +23,7 @@ public class AddBudgetState {
     }
 
     public Month getMonth() {
-        if (this.monthSelection.equals("Current Month")) {
-            return LocalDateTime.now().getMonth();
-        }
-        else {
-            return Month.valueOf(this.monthSelection.toUpperCase());
-        }
+        return month;
     }
 
     public double getSaveAmt() {
@@ -43,8 +40,21 @@ public class AddBudgetState {
 
     public void setMonthSelection(String monthSelection) {
         this.monthSelection = monthSelection;
+        if (this.monthSelection.equals("Current Month")) {
+            this.month = LocalDateTime.now().getMonth();
+        }
+        else {
+            this.month = Month.valueOf(this.monthSelection.toUpperCase());
+        }
     }
 
+    public boolean isCreationSuccess() {
+        return creationSuccess;
+    }
+
+    public void setCreationSuccess(boolean creationSuccess) {
+        this.creationSuccess = creationSuccess;
+    }
     public void setSaveAmt(double saveAmt) {
         this.saveAmt = saveAmt;
     }
