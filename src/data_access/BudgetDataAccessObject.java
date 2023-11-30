@@ -1,8 +1,6 @@
 package data_access;
 
 import entity.Budget;
-import entity.Expense;
-import entity.Income;
 
 import java.util.HashMap;
 import java.util.Map;
