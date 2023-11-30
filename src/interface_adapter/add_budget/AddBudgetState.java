@@ -4,9 +4,6 @@ import java.time.Month;
 public class AddBudgetState {
     private String monthSelection = "";
     private double saveAmt = 0;
-
-
-
     private double invAmt = 0;
     private double spendAmt = 0;
 
