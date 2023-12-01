@@ -170,7 +170,7 @@ public class AddBudgetView extends JPanel implements ActionListener, PropertyCha
                 popup = "Successfully created a budget for the month of " + state.getMonth().toString() + ",\n with a " +
                         "savings target of $" + Double.toString(state.getSaveAmt()) + ", an investment target of $" +
                         Double.toString(state.getInvAmt()) + ",\nand a spending limit target of $" +
-                        Double.toString(state.getSaveAmt());
+                        Double.toString(state.getSpendAmt());
             }
             JOptionPane.showMessageDialog(this, popup);
         }
