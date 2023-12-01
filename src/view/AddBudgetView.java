@@ -160,6 +160,19 @@ public class AddBudgetView extends JPanel implements ActionListener, PropertyCha
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        Object response = evt.getNewValue();
 
+        // popup if the add budget went through successfully
+        if (response.getClass() == AddBudgetState.class) {
+            AddBudgetState state = (AddBudgetState) response;
+            String popup = "Something went wrong! :(";
+            if (state.isCreationSuccess()) {
+                popup = "Successfully created a budget for the month of " + state.getMonth().toString() + ",\n with a " +
+                        "savings target of $" + Double.toString(state.getSaveAmt()) + ", an investment target of $" +
+                        Double.toString(state.getInvAmt()) + ",\nand a spending limit target of $" +
+                        Double.toString(state.getSaveAmt());
+            }
+            JOptionPane.showMessageDialog(this, popup);
+        }
     }
 }
