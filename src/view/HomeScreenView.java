@@ -1,7 +1,7 @@
 package view;
 
 import interface_adapter.home_screen.HomeScreenViewModel;
-
+import interface_adapter.ViewManagerModel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,13 +11,14 @@ import java.beans.PropertyChangeListener;
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
     private final HomeScreenViewModel homeScreenViewModel;
-
+    private final ViewManagerModel viewManagerModel;
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
 
-    public HomeScreenView(HomeScreenViewModel homeScreenVM) {
+    public HomeScreenView(HomeScreenViewModel homeScreenVM, ViewManagerModel viewManagerModel) {
         this.homeScreenViewModel = homeScreenVM;
+        this.viewManagerModel = viewManagerModel;
 
         addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
         addEditBudgetButton.addActionListener(this);
@@ -44,9 +45,13 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     @Override
     public void actionPerformed(ActionEvent e) {
         Object eventSource = e.getSource();
-
         if (eventSource == addEditBudgetButton) {
             System.out.println("Add / Edit Budget Button clicked");
+            // switch to the Add Budget view
+            // this comes from the name of the AddBudgetViewModel
+            // should match the name of the AddBudgetView
+            this.viewManagerModel.setActiveView("AddBudget");
+            this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == addIncomeButton) {
             System.out.println("Add Income button clicked");
         } else if (eventSource == addExpenseButton) {
