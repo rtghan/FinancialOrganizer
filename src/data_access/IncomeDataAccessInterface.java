@@ -4,5 +4,5 @@ import entity.Income;
 import java.time.Month;
 
 public interface IncomeDataAccessInterface {
-    Income getIncomeByMont(Month month)
+    Income getIncomeByMonth(Month month);
 }

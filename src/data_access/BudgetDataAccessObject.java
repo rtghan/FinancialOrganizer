@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.time.Month;
 
-public class MapBudgetDataAccess implements BudgetDataAccessInterface {
+public class BudgetDataAccessObject implements BudgetDataAccessInterface {
 
     private final Map<Month, Budget> budgetMap;
-    public MapBudgetDataAccess() {
+    public BudgetDataAccessObject() {
         this.budgetMap = new HashMap<>();
     }
 

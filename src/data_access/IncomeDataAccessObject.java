@@ -6,14 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.time.Month;
 
-public class MapIncomeDataAccess implements IncomeDataAccessInterface {
-    private final Map<Month, Income> incomeMapMap;
-    public MapIncomeDataAccessDataAccess() {
-        this.incomeMapMapMap = new HashMap<>();
+public class IncomeDataAccessObject implements IncomeDataAccessInterface {
+    private final Map<Month, Income> incomeMap;
+    public IncomeDataAccessObject() {
+        this.incomeMap = new HashMap<>();
     }
 
     @Override
     public Income getIncomeByMonth(Month month) {
         return incomeMap.get(month);
     }
+
+
 }
