@@ -15,15 +15,13 @@ public class AddBudgetInteractor implements AddBudgetInputBoundary{
     @Override
     public void execute(AddBudgetInputData inputData) {
         // get the month this budget was created for
-        Month creationMonth = LocalDateTime.now().getMonth();
+        Month creationMonth = inputData.getSelectedMonth();
 
         // create and save the budget using the DAO
         Budget newBudget = new Budget(
                 inputData.getSavingAmt(), inputData.getInvestmentAmt(), inputData.getSpendingAmt(), creationMonth
         );
         addDAO.save(creationMonth, newBudget);
-
-
 
         // prepare the output data
         AddBudgetOutputData outputData = new AddBudgetOutputData(
