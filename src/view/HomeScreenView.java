@@ -12,21 +12,16 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
     private final HomeScreenViewModel homeScreenViewModel;
     private final ViewManagerModel viewManagerModel;
-    private final JButton addBudgetButton;
-    private final JButton editBudgetButton;
+    private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
-    private final JButton viewStatisticsButton;
 
     public HomeScreenView(HomeScreenViewModel homeScreenVM, ViewManagerModel viewManagerModel) {
         this.homeScreenViewModel = homeScreenVM;
         this.viewManagerModel = viewManagerModel;
 
-        addBudgetButton = new JButton(HomeScreenViewModel.ADD_BUDGET_LABEL);
-        addBudgetButton.addActionListener(this);
-
-        editBudgetButton = new JButton(HomeScreenViewModel.EDIT_BUDGET_LABEL);
-        editBudgetButton.addActionListener(this);
+        addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
+        addEditBudgetButton.addActionListener(this);
 
         addIncomeButton = new JButton(HomeScreenViewModel.ADD_INCOME_LABEL);
         addIncomeButton.addActionListener(this);
@@ -34,17 +29,12 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);
         addExpenseButton.addActionListener(this);
 
-        viewStatisticsButton = new JButton(HomeScreenViewModel.VIEW_STATISTICS_LABEL);
-        viewStatisticsButton.addActionListener(this);
-
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
 
         JPanel buttons = new JPanel();
-        buttons.add(addBudgetButton);
-        buttons.add(editBudgetButton);
+        buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
-        buttons.add(viewStatisticsButton);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
@@ -55,24 +45,17 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     @Override
     public void actionPerformed(ActionEvent e) {
         Object eventSource = e.getSource();
-
-        if (eventSource == addBudgetButton) {
-            System.out.println("Add Budget Button clicked");
+        if (eventSource == addEditBudgetButton) {
+            System.out.println("Add / Edit Budget Button clicked");
             // switch to the Add Budget view
-
             // this comes from the name of the AddBudgetViewModel
             // should match the name of the AddBudgetView
             this.viewManagerModel.setActiveView("AddBudget");
-
             this.viewManagerModel.firePropertyChanged();
-        } else if (eventSource == editBudgetButton) {
-            System.out.println("Edit Budget button clicked");
         } else if (eventSource == addIncomeButton) {
             System.out.println("Add Income button clicked");
         } else if (eventSource == addExpenseButton) {
             System.out.println("Add Expense button clicked");
-        } else if (eventSource == viewStatisticsButton) {
-            System.out.println("View Statistics button clicked");
         }
     }
 
