@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 public class AddBudgetState {
     private String monthSelection = "";
-    private Month month = Month.JANUARY;
+    private Month month;
     private double saveAmt = 0;
     private double invAmt = 0;
     private double spendAmt = 0;
@@ -16,7 +16,9 @@ public class AddBudgetState {
         spendAmt = copy.spendAmt;
     }
 
-    public AddBudgetState() {}
+    public AddBudgetState() {
+        this.month = LocalDateTime.now().getMonth();
+    }
 
     public String getMonthSelection() {
         return this.monthSelection;

@@ -21,9 +21,9 @@ public class AddBudgetView extends JPanel implements ActionListener, PropertyCha
     private final JButton add;
     private final JButton cancel;
     private final AddBudgetController addBudController;
-    public AddBudgetView(AddBudgetController abController, AddBudgetViewModel abVM) {
+    public AddBudgetView(AddBudgetController abController, AddBudgetViewModel addBudVM) {
         this.addBudController = abController;
-        this.addBudViewModel = abVM;
+        this.addBudViewModel = addBudVM;
         addBudViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel(AddBudgetViewModel.TITLE_LABEL);
