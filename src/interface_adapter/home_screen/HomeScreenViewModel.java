@@ -18,11 +18,11 @@ public class HomeScreenViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-
+        //
     }
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-
+        //
     }
 }

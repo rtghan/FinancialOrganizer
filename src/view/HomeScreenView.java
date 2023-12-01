@@ -70,6 +70,6 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        //
     }
 }
