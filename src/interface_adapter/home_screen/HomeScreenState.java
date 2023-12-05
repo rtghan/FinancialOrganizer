@@ -29,5 +29,5 @@ public class HomeScreenState {
         else {
             this.selectedMonth = Month.valueOf(this.selectedMonthStr.toUpperCase());
         }
-    }g
+    }
 }
