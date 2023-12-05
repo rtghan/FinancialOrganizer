@@ -32,7 +32,7 @@ public class Main {
 
         // initialize viewmodels
         AddBudgetViewModel addBudVM = new AddBudgetViewModel();
-        HomeScreenViewModel homeScreenVM = new HomeScreenViewModel("Homescreen");
+        HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
 
         // intialize data access objects required for each of the views
         MemoryDAO addBudDAO = new MemoryDAO();
