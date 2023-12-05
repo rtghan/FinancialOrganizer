@@ -15,7 +15,8 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
-    private final JComboBox monthSelection;
+    private final JComboBox monthSelectionList;
+    private final JLabel selectedMonthLabel;
 
     public HomeScreenView(HomeScreenViewModel homeScreenVM, ViewManagerModel viewManagerModel) {
         this.homeScreenViewModel = homeScreenVM;
@@ -30,10 +31,12 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);
         addExpenseButton.addActionListener(this);
 
-        monthSelection = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
-        monthSelection.addActionListener(this);
+        monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
+        monthSelectionList.addActionListener(this);
 
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
+        JLabel month_label = new JLabel(HomeScreenViewModel.MONTH_LABEL);
+        selectedMonthLabel = new JLabel();
 
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
@@ -42,8 +45,12 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
+        this.add(monthSelectionList);
+        this.add(month_label);
+        this.add(selectedMonthLabel);
         this.add(buttons);
-        this.add(monthSelection);
+
+        homeScreenViewModel.addPropertyChangeListener(this);
     }
 
 
@@ -61,13 +68,17 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             System.out.println("Add Income button clicked");
         } else if (eventSource == addExpenseButton) {
             System.out.println("Add Expense button clicked");
-        } else if (eventSource == monthSelection){
+        } else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");
+            String selectedMonthStr = (String) monthSelectionList.getSelectedItem();
+            homeScreenViewModel.viewMonthSelection(selectedMonthStr);
         }
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        //
+        if ("state".equals(evt.getPropertyName())) {
+            selectedMonthLabel.setText(homeScreenViewModel.getState().getMonthSelection());
+        }
     }
 }
