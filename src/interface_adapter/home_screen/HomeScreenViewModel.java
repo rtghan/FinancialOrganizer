@@ -12,8 +12,6 @@ public class HomeScreenViewModel extends ViewModel {
     public static final String ADD_EXPENSE_LABEL = "Add Expense";
     public static final String[] TIME_OPTIONS = {"Current Month", "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "December"};
-    public static final String MONTH_LABEL = "Selected Month: ";
-
     private HomeScreenState state = new HomeScreenState();
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

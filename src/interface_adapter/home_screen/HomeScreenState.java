@@ -5,6 +5,7 @@ import java.time.Month;
 
 public class HomeScreenState {
 
+    private Boolean creationSuccess = false;
     private String selectedMonthStr = "";
     private Month selectedMonth;
     private Month currentMonth;
@@ -30,4 +31,13 @@ public class HomeScreenState {
             this.selectedMonth = Month.valueOf(this.selectedMonthStr.toUpperCase());
         }
     }
+
+    public boolean isCreationSuccess() {
+        return creationSuccess;
+    }
+
+    public void setCreationSuccess(boolean creationSuccess) {
+        this.creationSuccess = creationSuccess;
+    }
+
 }

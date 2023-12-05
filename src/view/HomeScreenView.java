@@ -18,6 +18,8 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JComboBox monthSelectionList;
     private final JLabel selectedMonthLabel;
 
+    private final JLabel remainingBudgetLabel; // "Remaining Budget: "
+
     public HomeScreenView(HomeScreenViewModel homeScreenVM, ViewManagerModel viewManagerModel) {
         this.homeScreenViewModel = homeScreenVM;
         this.viewManagerModel = viewManagerModel;
@@ -35,8 +37,12 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         monthSelectionList.addActionListener(this);
 
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
-        JLabel month_label = new JLabel(HomeScreenViewModel.MONTH_LABEL);
-        selectedMonthLabel = new JLabel();
+
+        // add month after selection
+        selectedMonthLabel = new JLabel("Selected Month: ");
+
+        // add value after month selection
+        remainingBudgetLabel = new JLabel("Remaining Budget: ");
 
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
@@ -44,10 +50,12 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         buttons.add(addExpenseButton);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
         this.add(title);
         this.add(monthSelectionList);
-        this.add(month_label);
         this.add(selectedMonthLabel);
+        this.add(remainingBudgetLabel);
+
         this.add(buttons);
 
         homeScreenViewModel.addPropertyChangeListener(this);
@@ -78,7 +86,13 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if ("state".equals(evt.getPropertyName())) {
-            selectedMonthLabel.setText(homeScreenViewModel.getState().getMonthSelection());
+
+            String monthText = "Selected Month: ";
+            monthText += homeScreenViewModel.getState().getMonthSelection();
+            selectedMonthLabel.setText(monthText);
+
+            String budgetText = "Budget Remaining: " + "$ tba";
+            remainingBudgetLabel.setText(budgetText);
         }
     }
 }
