@@ -35,9 +35,10 @@ public class HomeScreenState {
         }
     }
 
+    /*
     public boolean isCreationSuccess() {
         return creationSuccess;
-    }
+    }*/
 
     public void setCreationSuccess(boolean creationSuccess) {
         this.creationSuccess = creationSuccess;

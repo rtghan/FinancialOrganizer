@@ -96,11 +96,16 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             selectedMonthLabel.setText(monthTextLabel);
 
             BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
-
+            // this creates a new Budget, I need to get one that was already created
             Budget selectedMonthBudget =
                     budgetDAO.getBudgetByMonth(homeVM.getState().getMonth());
-            //Budget selectedMonthBudget =
-                //budgetDAO.getBudgetByMonth(homeVM.getState().getSelectedMonth());
+            //System.out.println(homeVM.getState().getMonth());
+
+            /*
+            BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
+            Budget januaryBudget = new Budget(...);
+            budgetDAO.addBudget(januaryBudget, Month.JANUARY);*/
+
             if (selectedMonthBudget != null) {
                 double budgetRemaining = selectedMonthBudget.getRemaining();
                 String budgetText = "Remaining Budget: " + budgetRemaining;
