@@ -15,6 +15,7 @@ public class BudgetDataAccessObject implements BudgetDataAccessInterface {
 
     @Override
     public Budget getBudgetByMonth(Month month) {
+        //System.out.println(budgetMap.get(month));
         return budgetMap.get(month);
     }
 
