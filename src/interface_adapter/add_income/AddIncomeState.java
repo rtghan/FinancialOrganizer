@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class AddIncomeState {
     private String incomeSource = "";
     private double amount = 0;
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
     private boolean creationSuccess = false;
     public AddIncomeState(AddIncomeState copy) {
         incomeSource = copy.incomeSource;
