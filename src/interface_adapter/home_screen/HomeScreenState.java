@@ -7,28 +7,31 @@ public class HomeScreenState {
 
     private Boolean creationSuccess = false;
     private String selectedMonthStr = "";
-    private Month selectedMonth;
-    private Month currentMonth;
+    private Month month;
 
     public HomeScreenState() {
-        this.currentMonth = LocalDateTime.now().getMonth();
+        this.month = LocalDateTime.now().getMonth();
     }
 
     public HomeScreenState(HomeScreenState copy) {
         selectedMonthStr = copy.selectedMonthStr;
     }
 
-    public String getMonthSelection() {
+    public Month getMonth() {
+        return this.month;
+    }
+
+    public String getMonthSelectionStr() {
         return this.selectedMonthStr;
     }
 
-    public void setMonthSelection(String monthSelection) {
-        this.selectedMonthStr = monthSelection;
+    public void setMonthSelection(String monthSelectionStr) {
+        this.selectedMonthStr = monthSelectionStr;
         if (this.selectedMonthStr.equals("Current Month")) {
-            this.selectedMonth = LocalDateTime.now().getMonth();
+            this.month = LocalDateTime.now().getMonth();
         }
         else {
-            this.selectedMonth = Month.valueOf(this.selectedMonthStr.toUpperCase());
+            this.month = Month.valueOf(this.selectedMonthStr.toUpperCase());
         }
     }
 

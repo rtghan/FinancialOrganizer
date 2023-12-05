@@ -12,6 +12,7 @@ public class HomeScreenViewModel extends ViewModel {
     public static final String ADD_EXPENSE_LABEL = "Add Expense";
     public static final String[] TIME_OPTIONS = {"Current Month", "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "December"};
+
     private HomeScreenState state = new HomeScreenState();
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -20,10 +21,9 @@ public class HomeScreenViewModel extends ViewModel {
     }
 
     public void setState(HomeScreenState state) {
-        HomeScreenState oldState = this.state;
+        HomeScreenState oldState = this.state; //
         this.state = state;
-        support.firePropertyChange("state", oldState, state);
-
+        support.firePropertyChange("state", oldState, state); //
     }
 
     @Override
@@ -39,6 +39,7 @@ public class HomeScreenViewModel extends ViewModel {
     public HomeScreenState getState() {
         return state;
     }
+
 
     public void viewMonthSelection(String selectedMonthStr) {
         HomeScreenState newState = new HomeScreenState(state);

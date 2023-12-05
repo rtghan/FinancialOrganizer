@@ -1,5 +1,6 @@
 package view;
 
+import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import interface_adapter.ViewManagerModel;
 import javax.swing.*;
@@ -7,10 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import entity.Budget;
+import data_access.BudgetDataAccessObject;
 
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    private final HomeScreenViewModel homeScreenViewModel;
+    private final HomeScreenViewModel homeVM;
     private final ViewManagerModel viewManagerModel;
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
@@ -20,8 +23,8 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
     private final JLabel remainingBudgetLabel; // "Remaining Budget: "
 
-    public HomeScreenView(HomeScreenViewModel homeScreenVM, ViewManagerModel viewManagerModel) {
-        this.homeScreenViewModel = homeScreenVM;
+    public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel) {
+        this.homeVM = homeVM;
         this.viewManagerModel = viewManagerModel;
 
         addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
@@ -58,7 +61,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         this.add(buttons);
 
-        homeScreenViewModel.addPropertyChangeListener(this);
+        homeVM.addPropertyChangeListener(this);
     }
 
 
@@ -79,7 +82,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         } else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");
             String selectedMonthStr = (String) monthSelectionList.getSelectedItem();
-            homeScreenViewModel.viewMonthSelection(selectedMonthStr);
+            homeVM.viewMonthSelection(selectedMonthStr);
         }
     }
 
@@ -88,11 +91,24 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         if ("state".equals(evt.getPropertyName())) {
 
             String monthText = "Selected Month: ";
-            monthText += homeScreenViewModel.getState().getMonthSelection();
-            selectedMonthLabel.setText(monthText);
 
-            String budgetText = "Budget Remaining: " + "$ tba";
-            remainingBudgetLabel.setText(budgetText);
+            String monthTextLabel = monthText + homeVM.getState().getMonth();
+            selectedMonthLabel.setText(monthTextLabel);
+
+            BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
+
+            Budget selectedMonthBudget =
+                    budgetDAO.getBudgetByMonth(homeVM.getState().getMonth());
+            //Budget selectedMonthBudget =
+                //budgetDAO.getBudgetByMonth(homeVM.getState().getSelectedMonth());
+            if (selectedMonthBudget != null) {
+                double budgetRemaining = selectedMonthBudget.getRemaining();
+                String budgetText = "Remaining Budget: " + budgetRemaining;
+                remainingBudgetLabel.setText(budgetText);
+            } else {
+                remainingBudgetLabel.setText("Remaining Budget: N/A");
+            }
+
         }
     }
 }
