@@ -15,6 +15,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
+    private final JComboBox monthSelection;
 
     public HomeScreenView(HomeScreenViewModel homeScreenVM, ViewManagerModel viewManagerModel) {
         this.homeScreenViewModel = homeScreenVM;
@@ -29,6 +30,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);
         addExpenseButton.addActionListener(this);
 
+        monthSelection = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
+        monthSelection.addActionListener(this);
+
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
 
         JPanel buttons = new JPanel();
@@ -39,6 +43,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         this.add(buttons);
+        this.add(monthSelection);
     }
 
 
@@ -56,6 +61,8 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             System.out.println("Add Income button clicked");
         } else if (eventSource == addExpenseButton) {
             System.out.println("Add Expense button clicked");
+        } else if (eventSource == monthSelection){
+            System.out.println("Month dropdown changed");
         }
     }
 

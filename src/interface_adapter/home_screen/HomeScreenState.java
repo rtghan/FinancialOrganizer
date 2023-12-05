@@ -5,10 +5,14 @@ import java.time.Month;
 
 public class HomeScreenState {
 
-    private Month month;
+    private Month selectedMonth;
 
     public HomeScreenState() {
-        this.month = LocalDateTime.now().getMonth();
+        this.selectedMonth = LocalDateTime.now().getMonth();
+    }
+
+    public Month getSelectedMonth() {
+        return selectedMonth;
     }
 
 
