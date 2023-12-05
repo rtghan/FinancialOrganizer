@@ -6,7 +6,6 @@ import data_access.IncomeDataAccessInterface;
 import entity.Budget;
 import entity.Income;
 
-import java.time.LocalDateTime;
 import java.time.Month;
 
 public class HomeScreenInteractor implements HomeScreenInputBoundary {
@@ -24,8 +23,7 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
     @Override
     public void execute(HomeScreenInputData homeScreenInputData) {
 
-        LocalDateTime time_now = LocalDateTime.now();
-        Month currentMonth = time_now.getMonth();
+        Month currentMonth = homeScreenInputData.getMonth();
 
         Budget currentBudget = budgetDAO.getBudgetByMonth(currentMonth);
         Income currentIncome = incomeDAO.getIncomeByMonth(currentMonth);
