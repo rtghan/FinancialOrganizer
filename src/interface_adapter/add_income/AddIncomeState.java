@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class AddIncomeState {
     private String incomeSource = "";
-    private double amount = 0;
+    private double amount;
     private LocalDateTime date = LocalDateTime.now();
     private boolean creationSuccess = false;
     public AddIncomeState(AddIncomeState copy) {
@@ -21,6 +21,8 @@ public class AddIncomeState {
         this.creationSuccess = creationSuccess;
     }
     public void setIncome_source(String incomeSource) {this.incomeSource = incomeSource;}
-    public void setAmount(double Amount) {this.amount = amount;}
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
 }

@@ -1,7 +1,6 @@
 package view;
 
 import back_end.home_screen.HomeScreenInputData;
-import interface_adapter.add_budget.AddBudgetState;
 import interface_adapter.home_screen.HomeScreenController;
 import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
@@ -11,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import entity.Budget;
-import data_access.BudgetDataAccessObject;
 
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -146,7 +143,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             String expensesText = "Total Expenses: N/A";
 
             // if the budget is not null, update the relevant financial amounts
-            if (state.isCreationSuccess()) {
+            if (state.isBudgetNull()) {
                 // update relevant financial amounts
                 double budgetRemainingAmt = state.getRemainingBudget();
                 budgetText = "Remaining Budget: " + budgetRemainingAmt;
