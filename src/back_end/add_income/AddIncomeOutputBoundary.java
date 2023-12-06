@@ -1,6 +1,4 @@
-package add_income.back_end;
-
-import add_budget.back_end.AddBudgetOutputData;
+package back_end.add_income;
 
 public interface AddIncomeOutputBoundary {
     void prepareSuccessView(AddIncomeOutputData addIncomeOutputData);

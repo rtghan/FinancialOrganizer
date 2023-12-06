@@ -1,9 +1,9 @@
 package main;
 
-import add_income.back_end.AddIncomeDataAccessInterface;
-import add_income.back_end.AddIncomeInputBoundary;
-import add_income.back_end.AddIncomeInteractor;
-import add_income.back_end.AddIncomeOutputBoundary;
+import back_end.add_income.AddIncomeDataAccessInterface;
+import back_end.add_income.AddIncomeInputBoundary;
+import back_end.add_income.AddIncomeInteractor;
+import back_end.add_income.AddIncomeOutputBoundary;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_income.AddIncomeController;
 import interface_adapter.add_income.AddIncomePresenter;
