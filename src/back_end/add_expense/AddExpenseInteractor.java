@@ -3,8 +3,8 @@ import entity.Expense;
 import java.time.LocalDateTime;
 
 public class AddExpenseInteractor implements AddExpenseInputBoundary{
-    final private AddExpenseOutputBoundry presenter;
-    public AddExpenseInteractor(AddExpenseOutputBoundry presenter){
+    final private AddExpenseOutputBoundary presenter;
+    public AddExpenseInteractor(AddExpenseOutputBoundary presenter){
         this.presenter = presenter;
     }
     @Override
@@ -13,12 +13,15 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
 
         // new expense obj creation.
         Expense newExpense = new Expense(iData.getCategory(), iData.getAmount(), creationTime);
-        // uhhh gotta save this but i'll figure it out lated :3
+        // TODO: uhhh gotta save this but i'll figure it out lated :3
 
         // out data prep and piping to presenter
         AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), creationTime);
-
         presenter.prepareSuccessView(outputData);
 
+    }
+    @Override
+    public void cancel(){
+        presenter.cancel();
     }
 }

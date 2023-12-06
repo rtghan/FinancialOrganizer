@@ -1,5 +1,5 @@
 package back_end.add_expense;
-
-public interface AddExpenseOutputBoundry {
+public interface AddExpenseOutputBoundary {
     void prepareSuccessView(AddExpenseOutputData addBudgetOutputData);
+    void cancel();
 }

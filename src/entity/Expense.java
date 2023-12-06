@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
  * Entity that represents expense
  */
 public class Expense {
+    private static ArrayList<String> categoryList = new ArrayList<String>();
     private String category;
     private double amount;
     private LocalDateTime date;

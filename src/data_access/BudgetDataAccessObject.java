@@ -30,4 +30,9 @@ public class BudgetDataAccessObject implements BudgetDataAccessInterface {
         return budgetMap.get(month);
     }
 
+    @Override
+    public void save(Month month, Budget budget) {
+        budgetMap.put(month, budget);
+    }
+
 }

@@ -21,16 +21,16 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
     private final JButton add;
     private final JButton cancel;
     private final AddIncomeController addIncomeController;
-    public AddIncomeView(AddIncomeController addIncomeController, AddIncomeViewModel addBudgetViewModel) {
-        this.addIncomeController = addIncomeController;
-        this.addIncomeViewModel = new AddIncomeViewModel();
+    public AddIncomeView(AddIncomeController addIncController, AddIncomeViewModel addIncViewModel) {
+        this.addIncomeController = addIncController;
+        this.addIncomeViewModel = addIncViewModel;
         addIncomeViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel(addIncomeViewModel.TITLE_LABEL);
+        JLabel title = new JLabel(AddIncomeViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        LabelPanel incomeSourceInfo = new LabelPanel(new JLabel(addIncomeViewModel.INCOME_SOURCE_LABEL), incomeSourceField);
-        LabelPanel amountInfo = new LabelPanel(new JLabel(addIncomeViewModel.AMOUNT_LABLE), amountField);
+        LabelPanel incomeSourceInfo = new LabelPanel(new JLabel(AddIncomeViewModel.INCOME_SOURCE_LABEL), incomeSourceField);
+        LabelPanel amountInfo = new LabelPanel(new JLabel(AddIncomeViewModel.AMOUNT_LABLE), amountField);
 
         JPanel buttons = new JPanel();
         add = new JButton(AddIncomeViewModel.ADD_INCOME_BUTTON_LABEL);
