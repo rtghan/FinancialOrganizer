@@ -4,7 +4,6 @@ import back_end.add_budget.AddBudgetOutputBoundary;
 import back_end.add_budget.AddBudgetOutputData;
 import interface_adapter.ViewManagerModel;
 
-// TODO: replace this with the visualization screen
 import interface_adapter.home_screen.HomeScreenViewModel;
 
 public class AddBudgetPresenter implements AddBudgetOutputBoundary{
@@ -24,7 +23,6 @@ public class AddBudgetPresenter implements AddBudgetOutputBoundary{
         this.addBudVM.setState(state);
         addBudVM.firePropertyChanged();
 
-        // TODO: on success, switch to the view stats panel
         this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
