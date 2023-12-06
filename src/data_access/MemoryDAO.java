@@ -13,13 +13,11 @@ import java.util.Map;
 public class MemoryDAO implements AddBudgetDataAccessInterface, AddIncomeDataAccessInterface,
         AddExpenseDataAccessInterface, HomeScreenDataAccessInterface{
     private final Map<Month, Budget> budgetMap;
-    private final Map<Month, Expense> expenseMap;
     /**
      * constructs memory-based DAO with a hashmap
      */
     public MemoryDAO() {
         this.budgetMap = new HashMap<>();
-        this.expenseMap = new HashMap<>();
     }
 
     /**
@@ -43,13 +41,4 @@ public class MemoryDAO implements AddBudgetDataAccessInterface, AddIncomeDataAcc
         budgetMap.put(month, budget);
     }
 
-    /**
-     * Retrieves the expenses for a given month
-     * @param month     month
-     * @return
-     */
-    @Override
-    public Expense getExpensesByMonth(Month month) {
-        return expenseMap.get(month);
-    }
 }

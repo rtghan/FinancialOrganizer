@@ -1,11 +1,14 @@
 package back_end.add_expense;
 import entity.Expense;
+import entity.Budget;
 import java.time.LocalDateTime;
 
 public class AddExpenseInteractor implements AddExpenseInputBoundary{
     final private AddExpenseOutputBoundary presenter;
-    public AddExpenseInteractor(AddExpenseOutputBoundary presenter){
+    final private AddExpenseDataAccessInterface addExpDAO;
+    public AddExpenseInteractor(AddExpenseOutputBoundary presenter, AddExpenseDataAccessInterface addExpDAO){
         this.presenter = presenter;
+        this.addExpDAO = addExpDAO;
     }
     @Override
     public void execute(AddExpenseInputData iData) {
@@ -13,7 +16,8 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
 
         // new expense obj creation.
         Expense newExpense = new Expense(iData.getCategory(), iData.getAmount(), creationTime);
-        // TODO: uhhh gotta save this but i'll figure it out lated :3
+        Budget monthBudget = this.addExpDAO.getBudgetByMonth(creationTime.getMonth());
+        monthBudget.addExpense(newExpense);
 
         // out data prep and piping to presenter
         AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), creationTime);

@@ -119,6 +119,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         // update if the property change was a homescreen state change
         if (response.getClass() == HomeScreenState.class) {
+            System.out.println("Homescreen state change");
             HomeScreenState state = (HomeScreenState) response;
             // update displayed month
             String monthText = "Selected Month: ";

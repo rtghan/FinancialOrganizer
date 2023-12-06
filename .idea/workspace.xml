@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chart_visualisation/api/ChartQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/api/ChartQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chart_visualisation/back_end/ChartBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/back_end/ChartBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chart_visualisation/back_end/ResponseURLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/back_end/ResponseURLBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseInteractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data_access/MemoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/MemoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Budget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/HomeScreenFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HomeScreenFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpensePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpensePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AddExpenseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AddExpenseFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/HomeScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HomeScreenView.java" afterDir="false" />
     </list>
@@ -61,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "HomeViewBackend",
+    "git-widget-placeholder": "AddExpenseData",
     "last_opened_file_path": "C:/Users/veron/Desktop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
