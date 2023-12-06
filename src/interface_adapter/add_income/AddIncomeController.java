@@ -1,7 +1,7 @@
 package interface_adapter.add_income;
 
-import add_income.back_end.AddIncomeInputBoundary;
-import add_income.back_end.AddIncomeInputData;
+import back_end.add_income.AddIncomeInputBoundary;
+import back_end.add_income.AddIncomeInputData;
 
 public class AddIncomeController {
     final AddIncomeInputBoundary addIncomeInteractor;

@@ -1,4 +1,4 @@
-package add_income.back_end;
+package back_end.add_income;
 
 public interface AddIncomeInputBoundary {
     void execute(AddIncomeInputData addIncomeInputData);
