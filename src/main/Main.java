@@ -1,9 +1,8 @@
 package main;
 
-import data_access.BudgetDataAccessInterface;
-import data_access.BudgetDataAccessObject;
-import data_access.IncomeDataAccessInterface;
-import data_access.IncomeDataAccessObject;
+import back_end.add_budget.AddBudgetDataAccessInterface;
+import back_end.add_income.AddIncomeDataAccessInterface;
+import data_access.MemoryDAO;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
 import interface_adapter.add_expense.AddExpenseViewModel;
@@ -41,8 +40,9 @@ public class Main {
         HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
 
         // intialize data access objects required for each of the views
-        IncomeDataAccessInterface addIncDAO = new IncomeDataAccessObject();
-        BudgetDataAccessInterface addBudDAO = new BudgetDataAccessObject();
+        MemoryDAO dataAccess = new MemoryDAO();
+        AddIncomeDataAccessInterface addIncDAO = dataAccess;
+        AddBudgetDataAccessInterface addBudDAO = dataAccess;
 
 
         // create the views

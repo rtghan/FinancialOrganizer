@@ -5,19 +5,19 @@ import back_end.add_budget.AddBudgetInteractor;
 import back_end.add_budget.AddBudgetOutputBoundary;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
-import data_access.BudgetDataAccessInterface;
+import back_end.add_budget.AddBudgetDataAccessInterface;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import view.AddBudgetView;
 public class AddBudgetFactory {
     public static AddBudgetView create(AddBudgetViewModel addBudVM, ViewManagerModel viewManagerModel,
-                                       BudgetDataAccessInterface addBudDAO, HomeScreenViewModel homeScreenVM) {
+                                       AddBudgetDataAccessInterface addBudDAO, HomeScreenViewModel homeScreenVM) {
 
         AddBudgetController addBudgetController = createAddBudUseCase(viewManagerModel, addBudDAO, addBudVM, homeScreenVM);
         return new AddBudgetView(addBudgetController, addBudVM);
     }
 
     private static AddBudgetController createAddBudUseCase(
-            ViewManagerModel viewManagerModel, BudgetDataAccessInterface addBudDAO,
+            ViewManagerModel viewManagerModel, AddBudgetDataAccessInterface addBudDAO,
             AddBudgetViewModel addBudVM, HomeScreenViewModel homeScreenVM) {
 
         AddBudgetOutputBoundary addBudOutputBoundary = new AddBudgetPresenter(addBudVM, viewManagerModel, homeScreenVM);

@@ -1,4 +1,4 @@
-package data_access;
+package back_end.add_expense;
 
 import entity.Expense;
 import java.time.Month;
@@ -6,7 +6,7 @@ import java.time.Month;
 /**
  * interface for accessing expense data
  */
-public interface ExpenseDataAccessInterface {
+public interface AddExpenseDataAccessInterface {
 
     /**
      * gets the expense by the specified month
