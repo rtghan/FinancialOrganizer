@@ -10,10 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IncomeTest {
     private Income income;
+    LocalDateTime date = LocalDateTime.now();
 
     @BeforeEach
     void setUp() {
-        income = new Income("paycheck", 1200, LocalDateTime.now());
+        income = new Income("paycheck", 1200, date);
     }
 
     @AfterEach
@@ -32,6 +33,6 @@ class IncomeTest {
 
     @Test
     void getDate() {
-        assertEquals(LocalDateTime.now(), income.getDate());
+        assertEquals(date, income.getDate());
     }
 }

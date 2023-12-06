@@ -9,14 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExpenseTest {
     Expense expense;
+    LocalDateTime date = LocalDateTime.now();
     @BeforeEach
     void setUp() {
-        expense = new Expense("Groceries", 100, LocalDateTime.now());
+        expense = new Expense("Groceries", 100, date);
     }
 
     @Test
     void getCategory() {
-        assertEquals("groceries", expense.getCategory());
+        assertEquals("Groceries", expense.getCategory());
     }
 
     @Test
@@ -26,6 +27,6 @@ class ExpenseTest {
 
     @Test
     void getDate() {
-        assertEquals(LocalDateTime.now(), expense.getDate());
+        assertEquals(date, expense.getDate());
     }
 }
