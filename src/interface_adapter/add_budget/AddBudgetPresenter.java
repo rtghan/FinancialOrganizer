@@ -4,6 +4,7 @@ import back_end.add_budget.AddBudgetOutputBoundary;
 import back_end.add_budget.AddBudgetOutputData;
 import interface_adapter.ViewManagerModel;
 
+import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
 
 public class AddBudgetPresenter implements AddBudgetOutputBoundary{
@@ -22,6 +23,14 @@ public class AddBudgetPresenter implements AddBudgetOutputBoundary{
         state.setCreationSuccess(true);
         this.addBudVM.setState(state);
         addBudVM.firePropertyChanged();
+
+        // update values on the home screen
+        HomeScreenState homeState = homeScreenVM.getState();
+        homeState.setCreationSuccess(true);
+        homeState.setRemainingBudget(outputData.getSpdAmt());
+
+        homeScreenVM.setState(homeState);
+        homeScreenVM.firePropertyChanged();
 
         this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
         this.viewManagerModel.firePropertyChanged();

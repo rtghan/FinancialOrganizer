@@ -1,6 +1,7 @@
 package main;
 
 import back_end.add_budget.AddBudgetDataAccessInterface;
+import back_end.add_expense.AddExpenseDataAccessInterface;
 import back_end.add_income.AddIncomeDataAccessInterface;
 import back_end.home_screen.HomeScreenDataAccessInterface;
 import data_access.MemoryDAO;
@@ -44,12 +45,13 @@ public class Main {
         MemoryDAO dataAccess = new MemoryDAO();
         AddIncomeDataAccessInterface addIncDAO = dataAccess;
         AddBudgetDataAccessInterface addBudDAO = dataAccess;
+        AddExpenseDataAccessInterface addExpDAO = dataAccess;
         HomeScreenDataAccessInterface homeDAO = dataAccess;
 
         // create the views
         AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
         HomeScreenView homeScreenView = HomeScreenFactory.create(homeScreenVM, viewManagerModel, homeDAO);
-        AddExpenseView addExpenseView = AddExpenseFactory.create(expenseVM, viewManagerModel, homeScreenVM);
+        AddExpenseView addExpenseView = AddExpenseFactory.create(expenseVM, viewManagerModel, homeScreenVM, addExpDAO);
         AddIncomeView addIncomeView =  AddIncomeFactory.create(addIncVM, viewManagerModel, addIncDAO, homeScreenVM);
 
         // add them to the card layout so that we can switch between them, and label each one by the name given by its viewModel
