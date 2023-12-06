@@ -31,3 +31,4 @@ app/build.gradle.kts
 .idea/misc.xml
 .idea/modules.xml
 .idea/modules/CalendarOrganizer.iml
+/.idea/workspace.xml
