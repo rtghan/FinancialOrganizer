@@ -71,7 +71,17 @@ public class AddBudgetView extends JPanel implements ActionListener, PropertyCha
                 }
         );
 
-        // TODO: cancel's actionlistener and other stuff needs to be implemented
+        cancel.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(cancel)) {
+                            System.out.println("Cancel budget creation clicked.");
+                            addBudController.cancel();
+                        }
+                    }
+                }
+        );
 
         saveAmtField.addKeyListener(
                 new KeyListener() {
