@@ -3,7 +3,7 @@
 
 # Ignore Gradle build output directory
 build
-
+out/
 /src/main/resources/credentials.json
 settings.gradle
 out/artifacts/test/test.jar
