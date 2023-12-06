@@ -14,6 +14,9 @@ import java.awt.*;
 
 public class Main {
     public static void main(String args[]) {
+        ChartQuery test = new ChartQuery();
+        test.executeGet("?c={type:'bar',data:{labels:[2012,2013,2014,2015, 2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}");
+
         JFrame app = new JFrame("Financial Organizer");
         app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
