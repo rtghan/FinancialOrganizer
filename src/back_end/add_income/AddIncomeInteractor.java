@@ -19,7 +19,7 @@ public class AddIncomeInteractor implements AddIncomeInputBoundary{
         // get the day this income was input
         LocalDateTime date = LocalDateTime.now();
         Month monthName = LocalDateTime.now().getMonth();
-        Budget budget = incomeDAO.getBudget(monthName);
+        Budget budget = incomeDAO.getBudgetByMonth(monthName);
 
         Income newIncome = new Income(inputData.getIncomeSource(), inputData.getAmount(), date);
         budget.addIncome(newIncome);

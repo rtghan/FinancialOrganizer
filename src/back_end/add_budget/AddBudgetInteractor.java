@@ -1,12 +1,12 @@
 package back_end.add_budget;
 import entity.Budget;
-import data_access.BudgetDataAccessInterface;
+
 import java.time.Month;
 
 public class AddBudgetInteractor implements AddBudgetInputBoundary{
-    final private BudgetDataAccessInterface addDAO;
+    final private AddBudgetDataAccessInterface addDAO;
     final private AddBudgetOutputBoundary addPresenter;
-    public AddBudgetInteractor(BudgetDataAccessInterface addDAO, AddBudgetOutputBoundary addPresenter) {
+    public AddBudgetInteractor(AddBudgetDataAccessInterface addDAO, AddBudgetOutputBoundary addPresenter) {
         this.addDAO = addDAO;
         this.addPresenter = addPresenter;
     }
