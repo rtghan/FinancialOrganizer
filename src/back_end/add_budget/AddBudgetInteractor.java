@@ -29,4 +29,8 @@ public class AddBudgetInteractor implements AddBudgetInputBoundary{
         // tell the presenter to show that a new budget has been made, and we can go to the management screen now
         addPresenter.prepareSuccessView(outputData);
     }
+    @Override
+    public void cancel() {
+        addPresenter.cancel();
+    }
 }

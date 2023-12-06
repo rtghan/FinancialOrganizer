@@ -30,4 +30,10 @@ public class AddBudgetPresenter implements AddBudgetOutputBoundary{
         this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
+
+    @Override
+    public void cancel() {
+        this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
+        this.viewManagerModel.firePropertyChanged();
+    }
 }
