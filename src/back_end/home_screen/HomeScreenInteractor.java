@@ -34,7 +34,7 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
      * @param homeScreenInputData   input data
      */
     @Override
-    public void execute(HomeScreenInputData homeScreenInputData) {
+    public void execute(HomeScreenInputData homeScreenInputData) throws Exception {
 
         Month currentMonth = homeScreenInputData.getMonth();
 

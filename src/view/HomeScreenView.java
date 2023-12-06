@@ -6,10 +6,12 @@ import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import interface_adapter.ViewManagerModel;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.awt.image.BufferedImage;
 
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -31,9 +33,11 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JLabel selectedMonthLabel;
     private final JLabel remainingBudgetLabel; // "Remaining Budget: "
     private final JLabel totalIncomeLabel; // "Total Income: "
-    private final JLabel totalExpensesLabel; // "Total Expenses: "*/
+    private final JLabel totalExpensesLabel; // "Total Expenses: "
+    private JLabel statGraphImg;
 
     public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
+        this.setPreferredSize(new Dimension(1200, 800));
         this.homeVM = homeVM;
         this.viewManagerModel = viewManagerModel;
         this.homeController = homeController;
@@ -70,6 +74,14 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         remainingBudgetLabel = new JLabel("Remaining Budget: ");
         totalIncomeLabel = new JLabel("Total Income: ");
         totalExpensesLabel = new JLabel("Total Expenses: ");*/
+
+        BufferedImage statGraph = homeVM.getState().getStatGraph();
+        statGraphImg = new JLabel();
+        if (statGraph != null) {
+            Image scaledGraph = statGraph.getScaledInstance(320, 180, Image.SCALE_DEFAULT);
+            statGraphImg.setIcon(new ImageIcon(scaledGraph));
+        }
+        this.add(statGraphImg);
 
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
@@ -125,7 +137,6 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
-
         // view changed to home view, update the stats using the controller
         if (evt.getPropertyName().equals("viewUpdate")) {
             HomeScreenState currState = homeVM.getState();
@@ -135,11 +146,16 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
             // call the controller to retrieve the new stats and display them
             HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
-            homeController.execute(inputData);
+            try {
+                homeController.execute(inputData);
+            } catch (Exception e) {
+
+            }
         }
 
         // update if the property change was a homescreen state change
         if (evt.getPropertyName().equals("state")) {
+
             System.out.println("Homescreen state change");
             HomeScreenState state = (HomeScreenState) response;
             // update displayed month
@@ -151,6 +167,13 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             String budgetText = "Remaining Budget: N/A";
             String incomeText = "Total Income: N/A";
             String expensesText = "Total Expenses: N/A";
+
+            // add image
+            BufferedImage statGraph = homeVM.getState().getStatGraph();
+            if (statGraph != null) {
+                Image scaledGraph = statGraph.getScaledInstance(800, 450, Image.SCALE_DEFAULT);
+                statGraphImg.setIcon(new ImageIcon(scaledGraph));
+            }
 
             // if the budget is not null, update the relevant financial amounts
             if (state.isBudgetNull()) {
