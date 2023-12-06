@@ -51,6 +51,16 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
                     }
                 }
         );
+        cancel.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.out.println("AddIncome Cancel");
+                        AddIncomeState currState = addIncomeViewModel.getState();
+                        addIncomeController.cancel();
+                    }
+                }
+        );
 
         incomeSourceField.addKeyListener(
                 new KeyListener() {
@@ -114,7 +124,7 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
 
         if (response.getClass() == AddIncomeState.class) {
             AddIncomeState state = (AddIncomeState) response;
-            String popup = "Something went wrong!";
+            String popup = "SSorry, no budget has been created for this month!\n Could not add income.";
             if (state.isCreationSuccess()) {
                 popup = "Successfully added an income of $" + state.getAmount() + " from " + state.getIncome_source();
             }
