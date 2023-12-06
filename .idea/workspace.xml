@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputData.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2YzsY4ENr4wOsPDriwps2wpef78" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "docstring__veron",
+    "last_opened_file_path": "C:/Users/veron/Desktop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="CalendarOrganizer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="CalendarOrganizer" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="" />
+      <created>1701539787479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701539787479</updated>
+      <workItem from="1701539790792" duration="494000" />
+      <workItem from="1701758815213" duration="11452000" />
+      <workItem from="1701805600018" duration="11961000" />
+      <workItem from="1701837855694" duration="45000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,39 +1,46 @@
 package entity;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
+/**
+ * Entity that represents income
+ */
 public class Income {
     private String incomeSource;
     private double amount;
     private LocalDateTime date;
 
+    /**
+     * construct entity income with specified:
+     * @param incomeSource  income source
+     * @param amount        income amount
+     * @param date          date income
+     */
     public Income(String incomeSource, double amount, LocalDateTime date) {
         this.incomeSource = incomeSource;
         this.amount = amount;
         this.date = date;
     }
 
-    public void setIncomeSource(String incomeSource) {
-        this.incomeSource = incomeSource;
-    }
-
+    /**
+     * gets the source of the income
+     * @return income source
+     */
     public String getIncomeSource() {
         return incomeSource;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
+    /**
+     * gets the amount of the income
+     * @return amount
+     */
     public double getAmount() {
         return amount;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
+    /**
+     * gets the date
+     * @return date
+     */
     public LocalDateTime getDate() {
         return date;
     }
