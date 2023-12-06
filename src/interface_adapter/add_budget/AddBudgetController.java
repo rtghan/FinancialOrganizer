@@ -1,6 +1,6 @@
 package interface_adapter.add_budget;
-import add_budget.back_end.AddBudgetInputBoundary;
-import add_budget.back_end.AddBudgetInputData;
+import back_end.add_budget.AddBudgetInputBoundary;
+import back_end.add_budget.AddBudgetInputData;
 
 import java.time.Month;
 public class AddBudgetController {

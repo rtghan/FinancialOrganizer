@@ -3,10 +3,8 @@ package main;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
 import interface_adapter.home_screen.*;
-import add_budget.back_end.*;
 // TODO: change this for the property data access object
-import add_budget.data_access.MemoryDAO;
-import data_access.*;
+import data_access.MemoryDAO;
 import view.*;
 
 import javax.swing.*;

@@ -1,6 +1,4 @@
-package add_expense.back_end;
-
-import add_budget.back_end.AddBudgetOutputData;
+package back_end.add_expense;
 
 public interface AddExpenseOutputBoundry {
     void prepareSuccessView(AddExpenseOutputData addBudgetOutputData);

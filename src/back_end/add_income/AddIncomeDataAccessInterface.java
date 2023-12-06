@@ -1,6 +1,5 @@
-package add_income.back_end;
+package back_end.add_income;
 import entity.Budget;
-import entity.Income;
 
 import java.time.Month;
 
