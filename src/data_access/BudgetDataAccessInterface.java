@@ -5,5 +5,6 @@ import entity.Budget;
 import java.time.Month;
 public interface BudgetDataAccessInterface {
     Budget getBudgetByMonth(Month month);
+    void save(Month month, Budget budget);
 }
 

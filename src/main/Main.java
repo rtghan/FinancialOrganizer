@@ -1,11 +1,12 @@
 package main;
 
+import data_access.BudgetDataAccessInterface;
+import data_access.BudgetDataAccessObject;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
 import interface_adapter.add_expense.AddExpenseViewModel;
 import interface_adapter.home_screen.*;
 // TODO: change this for the property data access object
-import data_access.MemoryDAO;
 import view.*;
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +37,7 @@ public class Main {
         HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
 
         // intialize data access objects required for each of the views
-        MemoryDAO addBudDAO = new MemoryDAO();
+        BudgetDataAccessInterface addBudDAO = new BudgetDataAccessObject();
 
         // create the views
         AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
