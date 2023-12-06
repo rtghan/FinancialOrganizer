@@ -13,4 +13,8 @@ public class AddBudgetController {
         AddBudgetInputData inputData = new AddBudgetInputData(selectionMonth, saveAmt, invAmt, spendAmt);
         addBudgetInteractor.execute(inputData);
     }
+
+    public void cancel(){
+        addBudgetInteractor.cancel();
+    }
 }
