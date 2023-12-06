@@ -1,4 +1,4 @@
-package chart_visualisation.back_end;
+package back_end.chart_visualisation.back_end;
 import org.json.*;
 
 import java.net.URLEncoder;

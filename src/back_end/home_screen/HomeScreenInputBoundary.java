@@ -1,4 +1,4 @@
-package home_screen;
+package back_end.home_screen;
 
 /**
  * interface for executing home screen with the input data

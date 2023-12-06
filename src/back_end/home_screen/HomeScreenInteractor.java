@@ -1,4 +1,4 @@
-package home_screen;
+package back_end.home_screen;
 
 import back_end.add_budget.AddBudgetDataAccessInterface;
 import back_end.add_expense.AddExpenseDataAccessInterface;
@@ -13,26 +13,18 @@ import java.time.Month;
 public class HomeScreenInteractor implements HomeScreenInputBoundary {
 
     private final HomeScreenOutputBoundary outputBoundary;
-    private final AddBudgetDataAccessInterface budgetDAO;
-    private final AddIncomeDataAccessInterface incomeDAO;
-    private final AddExpenseDataAccessInterface expenseDAO;
+    private final HomeScreenDataAccessInterface DAO;
 
     /**
      * constructs the interactor with the specified:
      * @param outputBoundary    home screen output boundary
-     * @param budgetDAO         budget data access
-     * @param incomeDAO         income data access
-     * @param expenseDAO        expense data access
+     * @param homeScreenDAO     data access object required to get the budget to display stats
      */
     public HomeScreenInteractor(
             HomeScreenOutputBoundary outputBoundary,
-            AddBudgetDataAccessInterface budgetDAO,
-            AddIncomeDataAccessInterface incomeDAO,
-            AddExpenseDataAccessInterface expenseDAO) {
+            HomeScreenDataAccessInterface homeScreenDAO) {
         this.outputBoundary = outputBoundary;
-        this.budgetDAO = budgetDAO;
-        this.incomeDAO = incomeDAO;
-        this.expenseDAO = expenseDAO;
+        this.DAO = homeScreenDAO;
     }
 
     /**
@@ -46,13 +38,21 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
 
         Month currentMonth = homeScreenInputData.getMonth();
 
-        Budget currentBudget = budgetDAO.getBudgetByMonth(currentMonth);
-        double remainingBudget = currentBudget.getRemaining();
-        double totalIncome = incomeDAO.getBudgetByMonth(currentMonth).totalIncome();
-        double totalExpenses = expenseDAO.getExpensesByMonth(currentMonth).getAmount();
 
-        HomeScreenOutputData outputData = new HomeScreenOutputData(
-                remainingBudget, totalIncome, totalExpenses);
-        outputBoundary.prepareSuccessView(outputData);
+        Budget currentBudget = DAO.getBudgetByMonth(currentMonth);
+
+        if (currentBudget != null) {
+            double remainingBudget = currentBudget.getRemaining();
+            double totalIncome = currentBudget.totalIncome();
+            double totalExpenses = currentBudget.totalExpenses();
+
+            HomeScreenOutputData outputData = new HomeScreenOutputData(
+                    remainingBudget, totalIncome, totalExpenses);
+            outputBoundary.prepareSuccessView(outputData);
+        }
+        else {
+            outputBoundary.prepareFailView();
+        }
+
     }
 }

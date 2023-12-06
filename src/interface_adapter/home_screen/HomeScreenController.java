@@ -1,18 +1,17 @@
 package interface_adapter.home_screen;
 
-import home_screen.HomeScreenInputBoundary;
-import home_screen.HomeScreenInputData;
-import home_screen.HomeScreenInteractor;
+import back_end.home_screen.HomeScreenInputBoundary;
+import back_end.home_screen.HomeScreenInputData;
+import back_end.home_screen.HomeScreenInteractor;
 
-public class HomeScreenController implements HomeScreenInputBoundary {
+public class HomeScreenController{
 
-    private final HomeScreenInteractor homeScreenInteractor;
+    private final HomeScreenInputBoundary homeScreenInteractor;
 
-    public HomeScreenController(HomeScreenInteractor homeScreenInteractor) {
+    public HomeScreenController(HomeScreenInputBoundary homeScreenInteractor) {
         this.homeScreenInteractor = homeScreenInteractor;
     }
 
-    @Override
     public void execute(HomeScreenInputData homeScreenInputData) {
         homeScreenInteractor.execute(homeScreenInputData);
     }

@@ -1,10 +1,8 @@
-package chart_visualisation.back_end;
+package back_end.chart_visualisation.back_end;
 
-import chart_visualisation.api.ChartQuery;
+import back_end.chart_visualisation.api.ChartQuery;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class ChartBuilder {
     public static BufferedImage build(double spendingamt, double savingamt, double investamt) throws Exception {
