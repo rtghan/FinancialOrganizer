@@ -1,4 +1,4 @@
-package add_income.back_end;
+package back_end.add_income;
 
 import java.time.LocalDateTime;
 import java.time.Month;

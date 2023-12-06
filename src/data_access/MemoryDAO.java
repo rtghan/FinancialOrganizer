@@ -1,6 +1,6 @@
 package data_access;
 import entity.Budget;
-import add_budget.back_end.AddBudgetDataAccessInterface;
+import back_end.add_budget.AddBudgetDataAccessInterface;
 import java.util.HashMap;
 import java.util.Map;
 import java.time.Month;

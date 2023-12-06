@@ -1,8 +1,7 @@
 package interface_adapter.add_income;
 
-import add_income.back_end.AddIncomeInteractor;
-import add_income.back_end.AddIncomeOutputBoundary;
-import add_income.back_end.AddIncomeOutputData;
+import back_end.add_income.AddIncomeOutputBoundary;
+import back_end.add_income.AddIncomeOutputData;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.home_screen.HomeScreenViewModel;
 

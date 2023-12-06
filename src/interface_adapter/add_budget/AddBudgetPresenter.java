@@ -1,7 +1,7 @@
 package interface_adapter.add_budget;
 
-import add_budget.back_end.AddBudgetOutputBoundary;
-import add_budget.back_end.AddBudgetOutputData;
+import back_end.add_budget.AddBudgetOutputBoundary;
+import back_end.add_budget.AddBudgetOutputData;
 import interface_adapter.ViewManagerModel;
 
 // TODO: replace this with the visualization screen
