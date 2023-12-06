@@ -9,6 +9,6 @@ public interface HomeScreenOutputBoundary {
      * prepares the success view with the specified output data
      * @param homeScreenOutputData  output data
      */
-    void prepareSuccessView(HomeScreenOutputData homeScreenOutputData);
+    void prepareSuccessView(HomeScreenOutputData homeScreenOutputData) throws Exception;
     void prepareFailView();
 }
