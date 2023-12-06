@@ -3,11 +3,13 @@ package home_screen;
 import data_access.BudgetDataAccessInterface;
 import data_access.ExpenseDataAccessInterface;
 import data_access.IncomeDataAccessInterface;
-
 import entity.Budget;
-
 import java.time.Month;
 
+/**
+ * interactor for home screen
+ * implements HomeScreenInputBoundary and executes the home screen
+ */
 public class HomeScreenInteractor implements HomeScreenInputBoundary {
 
     private final HomeScreenOutputBoundary outputBoundary;
@@ -15,6 +17,13 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
     private final IncomeDataAccessInterface incomeDAO;
     private final ExpenseDataAccessInterface expenseDAO;
 
+    /**
+     * constructs the interactor with the specified:
+     * @param outputBoundary    home screen output boundary
+     * @param budgetDAO         budget data access
+     * @param incomeDAO         income data access
+     * @param expenseDAO        expense data access
+     */
     public HomeScreenInteractor(
             HomeScreenOutputBoundary outputBoundary,
             BudgetDataAccessInterface budgetDAO,
@@ -26,6 +35,12 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
         this.expenseDAO = expenseDAO;
     }
 
+    /**
+     * executes home screen with specified input data
+     * gets the current budget, total income & expense for the specified month
+     * prepares output data and success view
+     * @param homeScreenInputData   input data
+     */
     @Override
     public void execute(HomeScreenInputData homeScreenInputData) {
 
