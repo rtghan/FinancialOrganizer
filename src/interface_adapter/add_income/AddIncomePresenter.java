@@ -21,6 +21,9 @@ public class AddIncomePresenter implements AddIncomeOutputBoundary{
         this.addIncVM.setState(state);
         addIncVM.firePropertyChanged();
 
+        // update the homescreen with the income
+        homeScreenVM.update();
+        
         this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
