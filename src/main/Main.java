@@ -2,9 +2,12 @@ package main;
 
 import data_access.BudgetDataAccessInterface;
 import data_access.BudgetDataAccessObject;
+import data_access.IncomeDataAccessInterface;
+import data_access.IncomeDataAccessObject;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
 import interface_adapter.add_expense.AddExpenseViewModel;
+import interface_adapter.add_income.AddIncomeViewModel;
 import interface_adapter.home_screen.*;
 // TODO: change this for the property data access object
 import view.*;
@@ -32,21 +35,27 @@ public class Main {
 
         // initialize viewmodels
         AddBudgetViewModel addBudVM = new AddBudgetViewModel();
+        AddIncomeViewModel addIncVM = new AddIncomeViewModel();
 
         AddExpenseViewModel expenseVM = new AddExpenseViewModel("AddExpense");
         HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
 
         // intialize data access objects required for each of the views
+        IncomeDataAccessInterface addIncDAO = new IncomeDataAccessObject();
         BudgetDataAccessInterface addBudDAO = new BudgetDataAccessObject();
+
 
         // create the views
         AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
         HomeScreenView homeScreenView = new HomeScreenView(homeScreenVM, viewManagerModel);
         AddExpenseView addExpenseView = AddExpenseFactory.create(expenseVM, viewManagerModel, homeScreenVM);
+        AddIncomeView addIncomeView =  AddIncomeFactory.create(addIncVM, viewManagerModel, addIncDAO, homeScreenVM);
+
         // add them to the card layout so that we can switch between them, and label each one by the name given by its viewModel
         views.add(addBudgetView, addBudVM.getViewName());
         views.add(homeScreenView, homeScreenVM.getViewName());
         views.add(addExpenseView,expenseVM.getViewName());
+        views.add(addIncomeView,addIncVM.getViewName());
 
         app.pack();
         app.setVisible(true);
