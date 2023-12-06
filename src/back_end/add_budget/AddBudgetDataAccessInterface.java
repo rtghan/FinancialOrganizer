@@ -1,4 +1,4 @@
-package data_access;
+package back_end.add_budget;
 
 import entity.Budget;
 import java.time.Month;
@@ -6,7 +6,7 @@ import java.time.Month;
 /**
  * interface for accessing budget data
  */
-public interface BudgetDataAccessInterface {
+public interface AddBudgetDataAccessInterface {
     /**
      * gets the budget by the specified month
      * @param month     month
