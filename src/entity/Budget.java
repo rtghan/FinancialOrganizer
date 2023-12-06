@@ -1,34 +1,54 @@
 package entity;
 import java.util.ArrayList;
-import java.time.LocalDateTime;
 import java.time.Month;
+
+/**
+ * Entity that represents budget
+ */
 public class Budget {
     private double savingAmt;
     private double investmentAmt;
     private double spendingAmt;
-
     private Month creationMonth;
+    private final ArrayList<Expense> expensesList;
+    private final ArrayList<Income> incomeList;
 
-    private ArrayList<Expense> expensesList;
-    private ArrayList<Income> incomeList;
-
+    /**
+     * Construct budget entity with the specified:
+     * @param savingAmt         saving amount
+     * @param investmentAmt     investment amount
+     * @param spendingAmt       spending amount
+     * @param creationMonth     month
+     */
     public Budget(double savingAmt, double investmentAmt, double spendingAmt, Month creationMonth) {
         this.savingAmt = savingAmt;
         this.investmentAmt = investmentAmt;
         this.spendingAmt = spendingAmt;
         this.creationMonth = creationMonth;
 
+        // per budget, creates list of expenses and income to be added later
         this.expensesList = new ArrayList<Expense>();
         this.incomeList = new ArrayList<Income>();
     }
 
+    /**
+     * adds expense object to the list of expenses inside budget
+     */
     public void addExpense(Expense expense) {
         expensesList.add(expense);
     }
+
+    /**
+     * adds income object to the list of incomes inside budget
+     */
     public void addIncome(Income income){
         incomeList.add(income);
     }
 
+    /**
+     * calculates the total expenses for the budget
+     * @return total expenses
+     */
     public double totalExpenses(){
         double expensesTotal = 0.0;
         for (Expense expense : expensesList) {
@@ -37,6 +57,10 @@ public class Budget {
         return expensesTotal;
     }
 
+    /**
+     * calculates the total income for the budget
+     * @return total income
+     */
     public double totalIncome(){
         double incomeTotal = 0.0;
         for (Income income : incomeList){
@@ -45,12 +69,23 @@ public class Budget {
         return incomeTotal;
     }
 
-    // income minus expenses
+    /**
+     * calculates the remaining amount of $ left
+     * @return remaining amount
+     */
     public double getRemaining() {
-
-        double expensesTotal = totalExpenses();
         double incomeTotal = totalIncome();
-
+        double expensesTotal = totalExpenses();
         return incomeTotal - expensesTotal;
+    }
+
+    /**
+     * calculates the disposable income left after all expensed
+     * @return disposable income
+     */
+    public double disposableIncome() {
+        double incomeTotal = totalIncome();
+        double expensesTotal = totalExpenses();
+        return incomeTotal - expensesTotal - savingAmt - investmentAmt;
     }
 }
