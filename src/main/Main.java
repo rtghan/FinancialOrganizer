@@ -2,16 +2,17 @@ package main;
 
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
+import interface_adapter.add_expense.AddExpenseViewModel;
 import interface_adapter.home_screen.*;
 // TODO: change this for the property data access object
 import data_access.MemoryDAO;
 import view.*;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class Main {
     public static void main(String args[]) {
+
         JFrame app = new JFrame("Financial Organizer");
         app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,6 +31,8 @@ public class Main {
 
         // initialize viewmodels
         AddBudgetViewModel addBudVM = new AddBudgetViewModel();
+
+        AddExpenseViewModel expenseVM = new AddExpenseViewModel("AddExpense");
         HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
 
         // intialize data access objects required for each of the views
@@ -38,10 +41,11 @@ public class Main {
         // create the views
         AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
         HomeScreenView homeScreenView = new HomeScreenView(homeScreenVM, viewManagerModel);
-
+        AddExpenseView addExpenseView = AddExpenseFactory.create(expenseVM, viewManagerModel, homeScreenVM);
         // add them to the card layout so that we can switch between them, and label each one by the name given by its viewModel
         views.add(addBudgetView, addBudVM.getViewName());
         views.add(homeScreenView, homeScreenVM.getViewName());
+        views.add(addExpenseView,expenseVM.getViewName());
 
         app.pack();
         app.setVisible(true);
