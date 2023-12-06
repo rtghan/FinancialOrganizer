@@ -102,6 +102,8 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == addIncomeButton) {
             System.out.println("Add Income button clicked");
+            this.viewManagerModel.setActiveView("AddIncome");
+            this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == addExpenseButton) {
             System.out.println("Add Expense button clicked");
             this.viewManagerModel.setActiveView("AddExpense");
