@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenOutputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AddBudgetView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddBudgetView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/HomeScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HomeScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/test.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "addBudgetCancel",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/veron/Desktop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

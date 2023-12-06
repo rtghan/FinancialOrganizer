@@ -2,6 +2,7 @@ package interface_adapter.home_screen;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.awt.image.BufferedImage;
 
 public class HomeScreenState {
 
@@ -11,6 +12,7 @@ public class HomeScreenState {
     private double remainingBudget;
     private double totalIncome;
     private double totalExpenses;
+    private BufferedImage statGraph;
 
     public HomeScreenState() {
         this.month = LocalDateTime.now().getMonth();
@@ -68,6 +70,14 @@ public class HomeScreenState {
 
     public void setBudgetNull(boolean budgetNull) {
         this.budgetNull = budgetNull;
+    }
+
+    public void setStatGraph(BufferedImage newGraph) {
+        this.statGraph = newGraph;
+    }
+
+    public BufferedImage getStatGraph() {
+        return this.statGraph;
     }
 
 }

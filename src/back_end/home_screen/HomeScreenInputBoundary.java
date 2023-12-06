@@ -8,5 +8,5 @@ public interface HomeScreenInputBoundary {
      * executes home screen with specified input data
      * @param homeScreenInputData   input data
      */
-    void execute(HomeScreenInputData homeScreenInputData);
+    void execute(HomeScreenInputData homeScreenInputData) throws Exception;
 }

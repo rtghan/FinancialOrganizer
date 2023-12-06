@@ -12,7 +12,7 @@ public class HomeScreenController{
         this.homeScreenInteractor = homeScreenInteractor;
     }
 
-    public void execute(HomeScreenInputData homeScreenInputData) {
+    public void execute(HomeScreenInputData homeScreenInputData) throws Exception {
         homeScreenInteractor.execute(homeScreenInputData);
     }
 }
