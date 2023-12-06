@@ -1,8 +1,8 @@
 package interface_adapter.add_expense;
 
-import add_budget.back_end.AddBudgetInputData;
-import add_expense.back_end.AddExpenseInputBoundary;
-import add_expense.back_end.AddExpenseInputData;
+import back_end.add_budget.AddBudgetInputData;
+import back_end.add_expense.AddExpenseInputBoundary;
+import back_end.add_expense.AddExpenseInputData;
 
 public class AddExpenseController{
     final AddExpenseInputBoundary expenseIB;

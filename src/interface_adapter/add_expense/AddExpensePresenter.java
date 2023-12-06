@@ -1,7 +1,7 @@
 package interface_adapter.add_expense;
 
-import add_expense.back_end.AddExpenseOutputBoundary;
-import add_expense.back_end.AddExpenseOutputData;
+import back_end.add_expense.AddExpenseOutputBoundary;
+import back_end.add_expense.AddExpenseOutputData;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import view.AddExpenseView;

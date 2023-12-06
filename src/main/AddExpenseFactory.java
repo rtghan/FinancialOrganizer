@@ -1,8 +1,8 @@
 package main;
 
-import add_expense.back_end.AddExpenseInputBoundary;
-import add_expense.back_end.AddExpenseInteractor;
-import add_expense.back_end.AddExpenseOutputBoundary;
+import back_end.add_expense.AddExpenseInputBoundary;
+import back_end.add_expense.AddExpenseInteractor;
+import back_end.add_expense.AddExpenseOutputBoundary;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_expense.AddExpenseController;
 import interface_adapter.add_expense.AddExpensePresenter;
