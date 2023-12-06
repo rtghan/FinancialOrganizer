@@ -1,6 +1,6 @@
 package back_end.add_expense;
 
-import entity.Expense;
+import entity.Budget;
 import java.time.Month;
 
 /**
@@ -9,9 +9,9 @@ import java.time.Month;
 public interface AddExpenseDataAccessInterface {
 
     /**
-     * gets the expense by the specified month
-     * @param month     month
-     * @return          Expense for month
+     * Return the corresponding Budget associated with a certain month
+     * @param month
+     * @return
      */
-    Expense getExpensesByMonth(Month month);
+    Budget getBudgetByMonth(Month month);
 }
