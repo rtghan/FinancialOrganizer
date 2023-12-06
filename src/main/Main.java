@@ -2,6 +2,7 @@ package main;
 
 import back_end.add_budget.AddBudgetDataAccessInterface;
 import back_end.add_income.AddIncomeDataAccessInterface;
+import back_end.home_screen.HomeScreenDataAccessInterface;
 import data_access.MemoryDAO;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
@@ -43,11 +44,11 @@ public class Main {
         MemoryDAO dataAccess = new MemoryDAO();
         AddIncomeDataAccessInterface addIncDAO = dataAccess;
         AddBudgetDataAccessInterface addBudDAO = dataAccess;
-
+        HomeScreenDataAccessInterface homeDAO = dataAccess;
 
         // create the views
         AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
-        HomeScreenView homeScreenView = new HomeScreenView(homeScreenVM, viewManagerModel);
+        HomeScreenView homeScreenView = HomeScreenFactory.create(homeScreenVM, viewManagerModel, homeDAO);
         AddExpenseView addExpenseView = AddExpenseFactory.create(expenseVM, viewManagerModel, homeScreenVM);
         AddIncomeView addIncomeView =  AddIncomeFactory.create(addIncVM, viewManagerModel, addIncDAO, homeScreenVM);
 

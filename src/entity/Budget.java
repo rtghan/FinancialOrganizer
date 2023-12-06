@@ -74,9 +74,11 @@ public class Budget {
      * @return remaining amount
      */
     public double getRemaining() {
-        double incomeTotal = totalIncome();
-        double expensesTotal = totalExpenses();
-        return incomeTotal - expensesTotal;
+//        double incomeTotal = totalIncome();
+//        double expensesTotal = totalExpenses();
+//        return incomeTotal - expensesTotal;
+        // changed remaining amount to be the remaining amount you can spend
+        return this.spendingAmt - totalExpenses();
     }
 
     /**
