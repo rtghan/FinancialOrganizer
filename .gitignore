@@ -1,0 +1,33 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+out/
+/src/main/resources/credentials.json
+settings.gradle
+out/artifacts/test/test.jar
+gradlew
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+build.gradle
+app/src/test/java/main/AppTest.java
+app/src/main/java/main/App.java
+app/build.gradle.kts
+.idea/modules/CalendarOrganizer.iml
+.idea/modules.xml
+.idea/misc.xml
+.idea/libraries/json_202310131.xml
+.idea/gradle.xml
+.idea/compiler.xml
+.idea/artifacts/test.xml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/modules/CalendarOrganizer.iml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/modules/CalendarOrganizer.iml
