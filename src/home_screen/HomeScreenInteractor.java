@@ -2,7 +2,7 @@ package home_screen;
 
 import back_end.add_budget.AddBudgetDataAccessInterface;
 import back_end.add_expense.AddExpenseDataAccessInterface;
-import data_access.IncomeDataAccessInterface;
+import back_end.add_income.AddIncomeDataAccessInterface;
 import entity.Budget;
 import java.time.Month;
 
@@ -14,7 +14,7 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
 
     private final HomeScreenOutputBoundary outputBoundary;
     private final AddBudgetDataAccessInterface budgetDAO;
-    private final IncomeDataAccessInterface incomeDAO;
+    private final AddIncomeDataAccessInterface incomeDAO;
     private final AddExpenseDataAccessInterface expenseDAO;
 
     /**
@@ -27,7 +27,7 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
     public HomeScreenInteractor(
             HomeScreenOutputBoundary outputBoundary,
             AddBudgetDataAccessInterface budgetDAO,
-            IncomeDataAccessInterface incomeDAO,
+            AddIncomeDataAccessInterface incomeDAO,
             AddExpenseDataAccessInterface expenseDAO) {
         this.outputBoundary = outputBoundary;
         this.budgetDAO = budgetDAO;
@@ -48,7 +48,7 @@ public class HomeScreenInteractor implements HomeScreenInputBoundary {
 
         Budget currentBudget = budgetDAO.getBudgetByMonth(currentMonth);
         double remainingBudget = currentBudget.getRemaining();
-        double totalIncome = incomeDAO.getIncomeByMonth(currentMonth).getAmount();
+        double totalIncome = incomeDAO.getBudgetByMonth(currentMonth).totalIncome();
         double totalExpenses = expenseDAO.getExpensesByMonth(currentMonth).getAmount();
 
         HomeScreenOutputData outputData = new HomeScreenOutputData(
