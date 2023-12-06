@@ -36,4 +36,12 @@ public class AddExpensePresenter implements AddExpenseOutputBoundary {
         this.viewMM.setActiveView(HSVM.getViewName());
         this.viewMM.firePropertyChanged();
     }
+
+    @Override
+    public void noBudget() {
+        AddExpenseState state = expenseVM.getState();
+        state.setPopup(false);
+        this.expenseVM.setState(state);
+        expenseVM.firePropertyChanged();
+    }
 }

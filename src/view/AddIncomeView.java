@@ -107,7 +107,7 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
     public void actionPerformed(ActionEvent evt) {
 
     }
-
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
 
