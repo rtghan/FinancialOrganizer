@@ -30,6 +30,9 @@ public class HomeScreenViewModel extends ViewModel {
     public void firePropertyChanged() {
         support.firePropertyChange("state", null, this.state);
     }
+    public void update() {
+        support.firePropertyChange("viewUpdate", null, this.state);
+    }
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {

@@ -26,12 +26,7 @@ public class AddExpensePresenter implements AddExpenseOutputBoundary {
         expenseVM.firePropertyChanged();
 
         // update the values on the home screen
-        HomeScreenState homeState = HSVM.getState();
-        homeState.setCreationSuccess(true);
-        homeState.setTotalExpenses(homeState.getTotalExpenses() + addExpenseOutputData.getAmount());
-        homeState.setRemainingBudget(homeState.getRemainingBudget() - addExpenseOutputData.getAmount());
-        HSVM.setState(homeState);
-        HSVM.firePropertyChanged();
+        HSVM.update();
 
         this.viewMM.setActiveView(HSVM.getViewName());
         this.viewMM.firePropertyChanged();

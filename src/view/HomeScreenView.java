@@ -117,8 +117,20 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
 
+        // view changed to home view, update the stats using the controller
+        if (evt.getPropertyName().equals("viewUpdate")) {
+            HomeScreenState currState = homeVM.getState();
+            String selection = (String) monthSelectionList.getSelectedItem();
+            currState.setMonthSelection(selection);
+            homeVM.setState(currState);
+
+            // call the controller to retrieve the new stats and display them
+            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
+            homeController.execute(inputData);
+        }
+
         // update if the property change was a homescreen state change
-        if (response.getClass() == HomeScreenState.class) {
+        if (evt.getPropertyName().equals("state")) {
             System.out.println("Homescreen state change");
             HomeScreenState state = (HomeScreenState) response;
             // update displayed month

@@ -25,12 +25,7 @@ public class AddBudgetPresenter implements AddBudgetOutputBoundary{
         addBudVM.firePropertyChanged();
 
         // update values on the home screen
-        HomeScreenState homeState = homeScreenVM.getState();
-        homeState.setCreationSuccess(true);
-        homeState.setRemainingBudget(outputData.getSpdAmt());
-
-        homeScreenVM.setState(homeState);
-        homeScreenVM.firePropertyChanged();
+        homeScreenVM.update();
 
         this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
