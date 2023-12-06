@@ -5,10 +5,13 @@ import add_budget.back_end.AddBudgetInputData;
 import java.time.LocalDateTime;
 
 public class AddExpenseInputData{
+    final String name;
     final String category;
     final double expenseAmt;
 
-    public AddExpenseInputData(String category, double expenseAmt){
+
+    public AddExpenseInputData(String name, String category, double expenseAmt){
+        this.name = name;
         this.category = category;
         this.expenseAmt = expenseAmt;
     }

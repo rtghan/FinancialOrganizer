@@ -1,12 +1,10 @@
 package add_expense.back_end;
 import entity.Expense;
 import java.time.LocalDateTime;
-import java.time.format.TextStyle;
-import java.util.Locale;
-import java.time.Month;
+
 public class AddExpenseInteractor implements AddExpenseInputBoundary{
-    final private AddExpenseOutputBoundry presenter;
-    public AddExpenseInteractor(AddExpenseOutputBoundry presenter){
+    final private AddExpenseOutputBoundary presenter;
+    public AddExpenseInteractor(AddExpenseOutputBoundary presenter){
         this.presenter = presenter;
     }
     @Override
@@ -19,8 +17,11 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
 
         // out data prep and piping to presenter
         AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), creationTime);
-
         presenter.prepareSuccessView(outputData);
 
+    }
+    @Override
+    public void cancel(){
+        presenter.cancel();
     }
 }

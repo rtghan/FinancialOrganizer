@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Expense {
 
-    private static ArrayList<String> categoryList;
+    private static ArrayList<String> categoryList = new ArrayList<String>();
     private String category;
     private double amount;
     private LocalDateTime date;

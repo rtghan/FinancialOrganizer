@@ -1,4 +1,4 @@
-package chart_visualisation;
+package chart_visualisation.api;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

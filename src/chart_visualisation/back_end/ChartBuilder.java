@@ -1,4 +1,6 @@
-package chart_visualisation;
+package chart_visualisation.back_end;
+
+import chart_visualisation.api.ChartQuery;
 
 import java.awt.image.BufferedImage;
 
