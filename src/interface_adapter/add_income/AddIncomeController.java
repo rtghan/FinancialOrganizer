@@ -12,4 +12,5 @@ public class AddIncomeController {
         AddIncomeInputData inputData = new AddIncomeInputData(incomeSource, ammount);
         addIncomeInteractor.execute(inputData);
     }
+    public void cancel() {addIncomeInteractor.cancel();}
 }

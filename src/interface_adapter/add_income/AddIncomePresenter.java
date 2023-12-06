@@ -27,4 +27,16 @@ public class AddIncomePresenter implements AddIncomeOutputBoundary{
         this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
+    @Override
+    public void cancel(){
+        this.viewManagerModel.setActiveView(homeScreenVM.getViewName());
+        this.viewManagerModel.firePropertyChanged();
+    }
+    @Override
+    public void noBudget() {
+        AddIncomeState state = addIncVM.getState();
+        state.setCreationSuccess(false);
+        this.addIncVM.setState(state);
+        addIncVM.firePropertyChanged();
+    }
 }
