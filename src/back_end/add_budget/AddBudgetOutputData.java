@@ -1,4 +1,4 @@
-package add_budget.back_end;
+package back_end.add_budget;
 import java.time.Month;
 public class AddBudgetOutputData {
     private final Month budgetMonth;

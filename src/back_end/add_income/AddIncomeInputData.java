@@ -1,4 +1,4 @@
-package add_income.back_end;
+package back_end.add_income;
 
 public class AddIncomeInputData {
     final private String incomeSource;

@@ -1,4 +1,4 @@
-package add_budget.back_end;
+package back_end.add_budget;
 import entity.Budget;
 import java.time.Month;
 public interface AddBudgetDataAccessInterface {

@@ -5,7 +5,11 @@ import java.time.LocalDateTime;
 
 public class Expense {
 
+<<<<<<< HEAD
     private static ArrayList<String> categoryList = new ArrayList<String>();
+=======
+    private static ArrayList<String> categoryList = new ArrayList<>();
+>>>>>>> main
     private String category;
     private double amount;
     private LocalDateTime date;
@@ -14,11 +18,11 @@ public class Expense {
         this.category = category;
         this.amount = amount;
         this.date = date;
-
+        /*
         // if the category has never been used, adds it to the list of categories
         if (!categoryList.contains(category)) {
             categoryList.add(category);
-        }
+        }*/
     }
 
     //to get a full list of all categories used, call Expense.getCategoryList()
@@ -29,10 +33,10 @@ public class Expense {
     //for when the user changes the category
     public void setCategory(String category) {
         this.category = category;
-
+        /*
         if (!categoryList.contains(category)) {
             categoryList.add(category);
-        }
+        }*/
     }
 
     public String getCategory() {

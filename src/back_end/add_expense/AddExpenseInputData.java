@@ -1,8 +1,4 @@
-package add_expense.back_end;
-
-import add_budget.back_end.AddBudgetInputData;
-
-import java.time.LocalDateTime;
+package back_end.add_expense;
 
 public class AddExpenseInputData{
     final String name;

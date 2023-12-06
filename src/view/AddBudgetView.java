@@ -21,9 +21,9 @@ public class AddBudgetView extends JPanel implements ActionListener, PropertyCha
     private final JButton add;
     private final JButton cancel;
     private final AddBudgetController addBudController;
-    public AddBudgetView(AddBudgetController abController, AddBudgetViewModel abVM) {
+    public AddBudgetView(AddBudgetController abController, AddBudgetViewModel addBudVM) {
         this.addBudController = abController;
-        this.addBudViewModel = abVM;
+        this.addBudViewModel = addBudVM;
         addBudViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel(AddBudgetViewModel.TITLE_LABEL);
@@ -170,7 +170,7 @@ public class AddBudgetView extends JPanel implements ActionListener, PropertyCha
                 popup = "Successfully created a budget for the month of " + state.getMonth().toString() + ",\n with a " +
                         "savings target of $" + Double.toString(state.getSaveAmt()) + ", an investment target of $" +
                         Double.toString(state.getInvAmt()) + ",\nand a spending limit target of $" +
-                        Double.toString(state.getSaveAmt());
+                        Double.toString(state.getSpendAmt());
             }
             JOptionPane.showMessageDialog(this, popup);
         }

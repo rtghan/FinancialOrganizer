@@ -1,4 +1,4 @@
-package add_expense.back_end;
+package back_end.add_expense;
 import entity.Expense;
 import java.time.LocalDateTime;
 

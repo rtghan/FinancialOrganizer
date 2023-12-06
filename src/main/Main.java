@@ -4,10 +4,8 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.add_budget.*;
 import interface_adapter.add_expense.AddExpenseViewModel;
 import interface_adapter.home_screen.*;
-import add_budget.back_end.*;
 // TODO: change this for the property data access object
-import add_budget.data_access.MemoryDAO;
-import data_access.*;
+import data_access.MemoryDAO;
 import view.*;
 import javax.swing.*;
 import java.awt.*;
@@ -33,8 +31,9 @@ public class Main {
 
         // initialize viewmodels
         AddBudgetViewModel addBudVM = new AddBudgetViewModel();
-        HomeScreenViewModel homeScreenVM = new HomeScreenViewModel("Homescreen");
+
         AddExpenseViewModel expenseVM = new AddExpenseViewModel("AddExpense");
+        HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
 
         // intialize data access objects required for each of the views
         MemoryDAO addBudDAO = new MemoryDAO();
