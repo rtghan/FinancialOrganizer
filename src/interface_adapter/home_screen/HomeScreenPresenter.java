@@ -1,7 +1,7 @@
 package interface_adapter.home_screen;
 
-import home_screen.HomeScreenOutputBoundary;
-import home_screen.HomeScreenOutputData;
+import back_end.home_screen.HomeScreenOutputBoundary;
+import back_end.home_screen.HomeScreenOutputData;
 import interface_adapter.ViewManagerModel;
 
 public class HomeScreenPresenter implements HomeScreenOutputBoundary {
@@ -19,6 +19,19 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
 
         HomeScreenState state = homeVM.getState();
         state.setCreationSuccess(true);
+        state.setRemainingBudget(outputData.getRemainingBudget());
+        state.setTotalExpenses(outputData.getTotalExpenses());
+        state.setTotalIncome(outputData.getTotalIncome());
+        this.homeVM.setState(state);
+        homeVM.firePropertyChanged();
+
+        this.viewManagerModel.setActiveView(homeVM.getViewName());
+        this.viewManagerModel.firePropertyChanged();
+    }
+    @Override
+    public void prepareFailView() {
+        HomeScreenState state = homeVM.getState();
+        state.setCreationSuccess(false);
         this.homeVM.setState(state);
         homeVM.firePropertyChanged();
 

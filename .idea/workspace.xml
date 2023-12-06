@@ -5,20 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_income/AddIncomeDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_income/AddIncomeDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_income/AddIncomeInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_income/AddIncomeInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/BudgetDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/BudgetDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/BudgetDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/ExpenseDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/ExpenseDataAccessObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/IncomeDataAccessInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/IncomeDataAccessObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_screen/HomeScreenInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AddBudgetFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AddBudgetFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chart_visualisation/api/ChartQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/api/ChartQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chart_visualisation/back_end/ChartBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/back_end/ChartBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chart_visualisation/back_end/ResponseURLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/back_end/ResponseURLBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_access/MemoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/MemoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Budget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenOutputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_screen/HomeScreenOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/home_screen/HomeScreenOutputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/HomeScreenFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HomeScreenFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/HomeScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HomeScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "DataAccessRefactoring",
+    "git-widget-placeholder": "HomeViewBackend",
     "last_opened_file_path": "C:/Users/veron/Desktop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

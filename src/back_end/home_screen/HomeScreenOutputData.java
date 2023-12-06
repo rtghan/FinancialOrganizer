@@ -1,4 +1,4 @@
-package home_screen;
+package back_end.home_screen;
 
 /**
  * represents output data (remaining budget, total income & expenses)

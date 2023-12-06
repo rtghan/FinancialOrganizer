@@ -2,6 +2,7 @@ package data_access;
 import back_end.add_budget.AddBudgetDataAccessInterface;
 import back_end.add_income.AddIncomeDataAccessInterface;
 import back_end.add_expense.AddExpenseDataAccessInterface;
+import back_end.home_screen.HomeScreenDataAccessInterface;
 import entity.Budget;
 import entity.Expense;
 
@@ -9,7 +10,8 @@ import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemoryDAO implements AddBudgetDataAccessInterface, AddIncomeDataAccessInterface, AddExpenseDataAccessInterface{
+public class MemoryDAO implements AddBudgetDataAccessInterface, AddIncomeDataAccessInterface,
+        AddExpenseDataAccessInterface, HomeScreenDataAccessInterface{
     private final Map<Month, Budget> budgetMap;
     private final Map<Month, Expense> expenseMap;
     /**

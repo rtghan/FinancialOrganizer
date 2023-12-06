@@ -1,5 +1,8 @@
 package view;
 
+import back_end.home_screen.HomeScreenInputData;
+import interface_adapter.add_budget.AddBudgetState;
+import interface_adapter.home_screen.HomeScreenController;
 import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import interface_adapter.ViewManagerModel;
@@ -15,6 +18,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
     private final HomeScreenViewModel homeVM;
     private final ViewManagerModel viewManagerModel;
+    private final HomeScreenController homeController;
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
@@ -25,9 +29,10 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JLabel totalIncomeLabel; // "Total Income: "
     private final JLabel totalExpensesLabel; // "Total Expenses: "
 
-    public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel) {
+    public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
         this.homeVM = homeVM;
         this.viewManagerModel = viewManagerModel;
+        this.homeController = homeController;
 
         addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
         addEditBudgetButton.addActionListener(this);
@@ -39,7 +44,24 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         addExpenseButton.addActionListener(this);
 
         monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
-        monthSelectionList.addActionListener(this);
+        monthSelectionList.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt){
+                        if (evt.getSource().equals(monthSelectionList)){
+                            System.out.println("Month dropdown changed");
+                            HomeScreenState currState = homeVM.getState();
+                            String selection = (String) monthSelectionList.getSelectedItem();
+                            currState.setMonthSelection(selection);
+                            homeVM.setState(currState);
+
+                            // call the controller to retrieve the new stats and display them
+                            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
+                            homeController.execute(inputData);
+                        }
+                    }
+                }
+        );
 
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
 
@@ -93,41 +115,40 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if ("state".equals(evt.getPropertyName())) {
+        Object response = evt.getNewValue();
 
+        // update if the property change was a homescreen state change
+        if (response.getClass() == HomeScreenState.class) {
+            HomeScreenState state = (HomeScreenState) response;
+            // update displayed month
             String monthText = "Selected Month: ";
-
-            String monthTextLabel = monthText + homeVM.getState().getMonth();
+            String monthTextLabel = monthText + state.getMonth();
             selectedMonthLabel.setText(monthTextLabel);
 
-            BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
-            // this creates a new Budget, I need to get one that was already created
-            Budget selectedMonthBudget =
-                    budgetDAO.getBudgetByMonth(homeVM.getState().getMonth());
-            //System.out.println(homeVM.getState().getMonth());
+            // by default, assume there no budget exists for that month
+            String budgetText = "Remaining Budget: N/A";
+            String incomeText = "Total Income: N/A";
+            String expensesText = "Total Expenses: N/A";
 
-            // TODO: selectedMonthBudget is always null
-            // TODO: after month selection, need to retrieve Budget that was created
-
-            if (selectedMonthBudget != null) {
-                double budgetRemainingAmt = selectedMonthBudget.getRemaining();
-                String budgetText = "Remaining Budget: " + budgetRemainingAmt;
-                remainingBudgetLabel.setText(budgetText);
-
-                double totalIncomeAmt = selectedMonthBudget.totalIncome();
-                String incomeText = "Total Income: " + totalIncomeAmt;
-                totalIncomeLabel.setText("Total Income: " + incomeText);
-
-                double totalExpensesAmt = selectedMonthBudget.totalExpenses();
-                String expensesText = "Total Expenses: " + totalExpensesAmt;
-                totalExpensesLabel.setText("Total Expenses: " + expensesText);
+            // if the budget is not null, update the relevant financial amounts
+            if (state.isCreationSuccess()) {
+                // update relevant financial amounts
+                double budgetRemainingAmt = state.getRemainingBudget();
+                budgetText = "Remaining Budget: " + budgetRemainingAmt;
 
 
-            } else {
-                remainingBudgetLabel.setText("Remaining Budget: N/A");
-                totalIncomeLabel.setText("Total Income: N/A");
-                totalExpensesLabel.setText("Total Expenses: N/A");
+                double totalIncomeAmt = state.getTotalIncome();
+                incomeText = "Total Income: " + totalIncomeAmt;
+
+
+                double totalExpensesAmt = state.getTotalExpenses();
+                expensesText = "Total Expenses: " + totalExpensesAmt;
+
             }
+            // update the labels to reflect it
+            remainingBudgetLabel.setText(budgetText);
+            totalIncomeLabel.setText(incomeText);
+            totalExpensesLabel.setText(expensesText);
 
         }
     }
