@@ -17,12 +17,20 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
         // new expense obj creation.
         Expense newExpense = new Expense(iData.getCategory(), iData.getAmount(), creationTime);
         Budget monthBudget = this.addExpDAO.getBudgetByMonth(creationTime.getMonth());
-        monthBudget.addExpense(newExpense);
 
-        // out data prep and piping to presenter
-        AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), creationTime);
-        presenter.prepareSuccessView(outputData);
+        // see if there is a valid budget for this month
+        if (monthBudget != null){
+            monthBudget.addExpense(newExpense);
 
+            // out data prep and piping to presenter
+            AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), creationTime);
+            presenter.prepareSuccessView(outputData);
+        }
+        // use the error popup
+        else {
+            System.out.println("Error! No budget was found to add this expense to.");
+            presenter.noBudget();
+        }
     }
     @Override
     public void cancel(){

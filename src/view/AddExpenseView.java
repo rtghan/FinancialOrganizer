@@ -144,7 +144,7 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
         Object response = evt.getNewValue();
         if (response.getClass() == AddExpenseState.class){
             AddExpenseState state = (AddExpenseState) response;
-            String popup = ":3 oopsie daisy i messed up";
+            String popup = "Sorry, no budget has been created for this month!\n Could not add expense.";
             if (state.popup()){
                 popup = "Succesfully added the expense named " + state.getName() + " categorised as " + state.getCategory() + " of $"
                         + state.getAmt() + "!";
