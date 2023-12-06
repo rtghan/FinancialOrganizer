@@ -5,7 +5,7 @@ import java.time.Month;
 
 public class HomeScreenState {
 
-    private Boolean creationSuccess = false;
+    private Boolean budgetNull = false;
     private String selectedMonthStr = "";
     private Month month;
     private double remainingBudget;
@@ -62,12 +62,12 @@ public class HomeScreenState {
         this.totalExpenses = totalExpenses;
     }
 
-    public boolean isCreationSuccess() {
-        return creationSuccess;
+    public boolean isBudgetNull() {
+        return budgetNull;
     }
 
-    public void setCreationSuccess(boolean creationSuccess) {
-        this.creationSuccess = creationSuccess;
+    public void setBudgetNull(boolean budgetNull) {
+        this.budgetNull = budgetNull;
     }
 
 }

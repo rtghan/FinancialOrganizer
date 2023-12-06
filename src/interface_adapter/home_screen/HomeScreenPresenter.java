@@ -18,7 +18,7 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
     public void prepareSuccessView(HomeScreenOutputData outputData) {
 
         HomeScreenState state = homeVM.getState();
-        state.setCreationSuccess(true);
+        state.setBudgetNull(true);
         state.setRemainingBudget(outputData.getRemainingBudget());
         state.setTotalExpenses(outputData.getTotalExpenses());
         state.setTotalIncome(outputData.getTotalIncome());
@@ -31,7 +31,7 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
     @Override
     public void prepareFailView() {
         HomeScreenState state = homeVM.getState();
-        state.setCreationSuccess(false);
+        state.setBudgetNull(false);
         this.homeVM.setState(state);
         homeVM.firePropertyChanged();
 

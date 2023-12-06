@@ -45,6 +45,7 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
                         if (evt.getSource().equals(add)) {
                             System.out.println("Add Income clicked");
                             AddIncomeState currentState = addIncomeViewModel.getState();
+                            System.out.println(currentState.getAmount());
                             addIncomeController.execute(currentState.getIncome_source(), currentState.getAmount());
                         }
                     }
@@ -115,7 +116,7 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
             AddIncomeState state = (AddIncomeState) response;
             String popup = "Something went wrong!";
             if (state.isCreationSuccess()) {
-                popup = "Successfully added an income of " + state.getAmount() + "from " + state.getIncome_source();
+                popup = "Successfully added an income of $" + state.getAmount() + " from " + state.getIncome_source();
             }
             JOptionPane.showMessageDialog(this, popup);
         }
