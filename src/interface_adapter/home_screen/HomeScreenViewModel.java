@@ -2,6 +2,7 @@ package interface_adapter.home_screen;
 
 import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class HomeScreenViewModel extends ViewModel {
 
@@ -9,18 +10,40 @@ public class HomeScreenViewModel extends ViewModel {
     public static final String ADD_EDIT_BUDGET_LABEL = "Add/Edit Budget";
     public static final String ADD_INCOME_LABEL = "Add Income";
     public static final String ADD_EXPENSE_LABEL = "Add Expense";
+    public static final String[] TIME_OPTIONS = {"Current Month", "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "December"};
 
-    public HomeScreenViewModel(String viewName) {
-        super(viewName);
+    private HomeScreenState state = new HomeScreenState();
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    public HomeScreenViewModel() {
+        super("HomeScreen");
+    }
+
+    public void setState(HomeScreenState state) {
+        HomeScreenState oldState = this.state; //
+        this.state = state;
+        support.firePropertyChange("state", oldState, state); //
     }
 
     @Override
     public void firePropertyChanged() {
-        //
+        support.firePropertyChange("state", null, this.state);
     }
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-        //
+        support.addPropertyChangeListener(listener);
+    }
+
+    public HomeScreenState getState() {
+        return state;
+    }
+
+
+    public void viewMonthSelection(String selectedMonthStr) {
+        HomeScreenState newState = new HomeScreenState(state);
+        newState.setMonthSelection(selectedMonthStr);
+        setState(newState);
     }
 }
