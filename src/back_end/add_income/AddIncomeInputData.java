@@ -1,4 +1,5 @@
 package back_end.add_income;
+import java.time.Month;
 
 /**
  * represents one instace of new income added
@@ -6,15 +7,19 @@ package back_end.add_income;
 public class AddIncomeInputData {
     final private String incomeSource;
     final private double amount;
+    final private Month month;
 
-    /**
+     /**
      * constructs an instace of input data for income
      * @param incomeSource String
      * @param amount double
      */
-    public AddIncomeInputData(String incomeSource, double amount) {
+
+    public AddIncomeInputData(String incomeSource, double amount, Month month) {
+
         this.incomeSource = incomeSource;
         this.amount = amount;
+        this.month = month;
     }
 
     /**
@@ -29,5 +34,9 @@ public class AddIncomeInputData {
      */
     public double getAmount(){
         return amount;
+    }
+
+    Month getMonth() {
+        return month;
     }
 }
