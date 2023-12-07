@@ -83,14 +83,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
-<<<<<<< HEAD
-        JPanel lowerbuttons = new JPanel();
-        lowerbuttons.add(remainingBudgetButton);
-        lowerbuttons.add(totalIncomeButton);
-        lowerbuttons.add(totalExpensesButton);
-=======
         buttons.add(addInvestmentButton);
->>>>>>> main
+        buttons.setPreferredSize(new Dimension(100, 10));
+
 
         JPanel stats = new JPanel();
         stats.add(remainingBudgetButton);
@@ -102,13 +97,10 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         this.add(statGraphImg, BorderLayout.CENTER);
         this.add(monthSelectionInfo);
         this.add(buttons);
-<<<<<<< HEAD
-        this.add(lowerbuttons);
-
-=======
         this.add(stats);
-        buttons.setPreferredSize(new Dimension(100, 10));
->>>>>>> main
+
+
+
         homeVM.addPropertyChangeListener(this);
     }
 
