@@ -8,13 +8,10 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.add_expense.AddExpenseController;
 import interface_adapter.add_expense.AddExpensePresenter;
 import interface_adapter.add_expense.AddExpenseViewModel;
-import interface_adapter.add_expense.AddExpenseController;
-import interface_adapter.add_expense.AddExpenseViewModel;
 import interface_adapter.home_screen.HomeScreenViewModel;
-import view.AddBudgetView;
 import view.AddExpenseView;
 
-public class AddExpenseFactory {
+public class AddExpenseBuilder {
     public static AddExpenseView create(AddExpenseViewModel addExpenseVM, ViewManagerModel viewManagerModel,
                                         HomeScreenViewModel homeScreenVM, AddExpenseDataAccessInterface addExpDAO) {
 

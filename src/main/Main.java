@@ -52,10 +52,10 @@ public class Main {
         AddInvestmentDataAccessInterface addInvDAO = dataAccess;
 
         // create the views
-        AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
-        HomeScreenView homeScreenView = HomeScreenFactory.create(homeScreenVM, viewManagerModel, homeDAO);
-        AddExpenseView addExpenseView = AddExpenseFactory.create(expenseVM, viewManagerModel, homeScreenVM, addExpDAO);
-        AddIncomeView addIncomeView =  AddIncomeFactory.create(addIncVM, viewManagerModel, addIncDAO, homeScreenVM);
+        AddBudgetView addBudgetView = AddBudgetBuilder.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
+        HomeScreenView homeScreenView = HomeScreenBuilder.create(homeScreenVM, viewManagerModel, homeDAO);
+        AddExpenseView addExpenseView = AddExpenseBuilder.create(expenseVM, viewManagerModel, homeScreenVM, addExpDAO);
+        AddIncomeView addIncomeView =  AddIncomeBuilder.create(addIncVM, viewManagerModel, addIncDAO, homeScreenVM);
         AddInvestmentView addInvestmentView = AddInvestmentBuilder.create(addInvVM, viewManagerModel, addInvDAO, homeScreenVM);
 
         // add them to the card layout so that we can switch between them, and label each one by the name given by its viewModel

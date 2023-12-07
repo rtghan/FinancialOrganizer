@@ -7,7 +7,7 @@ import interface_adapter.home_screen.HomeScreenPresenter;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import view.HomeScreenView;
 
-public class HomeScreenFactory {
+public class HomeScreenBuilder {
 
     public static HomeScreenView create(
             HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenDataAccessInterface homeDAO){
