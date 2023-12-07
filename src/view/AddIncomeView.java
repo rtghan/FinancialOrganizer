@@ -133,10 +133,11 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
+        this.add(monthBox);
         this.add(incomeSourceInfo);
         this.add(amountInfo);
         this.add(buttons);
-        this.add(monthBox);
+
     }
 
     @Override
