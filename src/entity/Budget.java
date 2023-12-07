@@ -89,4 +89,12 @@ public class Budget {
         double expensesTotal = totalExpenses();
         return incomeTotal - expensesTotal - savingAmt;
     }
+
+    /**
+     * gets the list of expenses associated with the budget/month
+     * @return  list of expenses
+     */
+    public ArrayList<Expense> getExpensesList(){
+        return this.expensesList;
+    }
 }

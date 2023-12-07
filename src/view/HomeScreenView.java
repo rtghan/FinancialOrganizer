@@ -1,6 +1,8 @@
 package view;
 
+import back_end.chart_visualisation.ChartInputData;
 import back_end.home_screen.HomeScreenInputData;
+import interface_adapter.add_budget.AddBudgetViewModel;
 import interface_adapter.home_screen.HomeScreenController;
 import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
@@ -12,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -21,22 +24,25 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
+    private final JButton addInvestmentButton;
     private final JComboBox monthSelectionList;
-
-    private final JLabel selectedMonthLabel;
+    private final LabelPanel monthSelectionInfo;
 
     // changed to buttons.
     private final JButton remainingBudgetButton;
     private final JButton totalIncomeButton;
     private final JButton totalExpensesButton;
-
     private JLabel statGraphImg;
 
+    private JLabel expenseImg;
+    private JDialog popup;
+
     public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
-        this.setPreferredSize(new Dimension(1200, 800));
+        this.setPreferredSize(new Dimension(1200, 600));
         this.homeVM = homeVM;
         this.viewManagerModel = viewManagerModel;
         this.homeController = homeController;
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
         addEditBudgetButton.addActionListener(this);
@@ -47,8 +53,12 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);
         addExpenseButton.addActionListener(this);
 
+        addInvestmentButton = new JButton(HomeScreenViewModel.ADD_INVESTMENT_LABEL);
+        addInvestmentButton.addActionListener(this);
+
         monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
         monthSelectionList.addActionListener(this);
+        monthSelectionInfo = new LabelPanel(new JLabel("Select month: "), monthSelectionList);
 
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
 
@@ -61,31 +71,35 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         totalExpensesButton = new JButton("Total Expenses Statistics: ");
         totalExpensesButton.addActionListener(this);
 
-        // add month after selection
-        selectedMonthLabel = new JLabel("Selected Month: ");
-
         BufferedImage statGraph = homeVM.getState().getStatGraph();
-        statGraphImg = new JLabel();
+        statGraphImg = new JLabel("",SwingConstants.CENTER);
         if (statGraph != null) {
             Image scaledGraph = statGraph.getScaledInstance(320, 180, Image.SCALE_DEFAULT);
             statGraphImg.setIcon(new ImageIcon(scaledGraph));
         }
-        this.add(statGraphImg);
+        statGraphImg.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
-        buttons.add(remainingBudgetButton);
-        buttons.add(totalIncomeButton);
-        buttons.add(totalExpensesButton);
+        buttons.add(addInvestmentButton);
+        buttons.setPreferredSize(new Dimension(100, 10));
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        JPanel stats = new JPanel();
+        stats.add(remainingBudgetButton);
+        stats.add(totalIncomeButton);
+        stats.add(totalExpensesButton);
+        stats.setPreferredSize(new Dimension(100, 10));
 
         this.add(title);
-        this.add(monthSelectionList);
-        this.add(selectedMonthLabel);
+        this.add(statGraphImg, BorderLayout.CENTER);
+        this.add(monthSelectionInfo);
         this.add(buttons);
+        this.add(stats);
+
+
 
         homeVM.addPropertyChangeListener(this);
     }
@@ -106,6 +120,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             System.out.println("Add Expense button clicked");
             this.viewManagerModel.setActiveView("AddExpense");
             this.viewManagerModel.firePropertyChanged();
+        } else if (eventSource == addInvestmentButton) {
+            this.viewManagerModel.setActiveView("AddInvestment");
+            this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");
             HomeScreenState currState = homeVM.getState();
@@ -119,6 +136,29 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
+        } else if (eventSource == totalExpensesButton){
+            System.out.println("Total Expense Pressed");
+            BufferedImage expenseChart;
+            HomeScreenState currState = homeVM.getState();
+            ChartInputData chartData = new ChartInputData(currState.getMonth());
+            try{
+                homeController.chart(chartData);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+            popup = new JDialog();
+            popup.setTitle("Per Category Expense Breakdown:");
+            popup.setLocation(this.getWidth()/2, this.getHeight()/2);
+            popup.setSize(500,500);
+            expenseChart = currState.getExpenseGraph();
+            if (expenseChart != null){
+                Image scaledExpense = expenseChart.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+                expenseImg = new JLabel();
+                expenseImg.setIcon(new ImageIcon(scaledExpense));
+            }
+            popup.add(expenseImg);
+            homeVM.setState(currState);
+            popup.setVisible(true);
         }
     }
 
@@ -149,7 +189,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             // update displayed month
             String monthText = "Selected Month: ";
             String monthTextLabel = monthText + state.getMonth();
-            selectedMonthLabel.setText(monthTextLabel);
+            monthSelectionInfo.panelText.setText(monthTextLabel);
 
             // by default, assume there no budget exists for that month
             String budgetText = "Remaining Budget: N/A";

@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IncomeTest {
     private Income income;
+
     Month month = LocalDateTime.now().getMonth();
 
     @BeforeEach
@@ -33,7 +34,8 @@ class IncomeTest {
     }
 
     @Test
-    void getMonthmonth() {
-        assertEquals(month, income.getMonthmonth());
+
+    void getDate() {
+        assertEquals(month, income.getMonth());
     }
 }
