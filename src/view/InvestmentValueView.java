@@ -135,15 +135,13 @@ public class InvestmentValueView extends JPanel implements ActionListener, Prope
     public void propertyChange(PropertyChangeEvent evt) {
         // write the data to the table
         Object response = evt.getNewValue();
-        System.out.println(response.getClass());
         if (response.getClass() == InvestmentValueState.class) {
             InvestmentValueState state = (InvestmentValueState) response;
-            System.out.println("propertyChange investmentValueView");
             // set default popup message
             String popup = state.getErrorString();
 
             // update the initial value first
-            initialValue.setText(Double.toString(state.getInitialValue()));
+            initialValue.setText(Double.toString(Math.round(state.getInitialValue())));
 
             // get the data from the state
             Map<LocalDate, Double> investmentValues = state.getInvestmentValues();
@@ -156,17 +154,21 @@ public class InvestmentValueView extends JPanel implements ActionListener, Prope
             investmentValueTable.removeAll();
 
             // create the parameters for table construction
-            Object[][] tableData = new Object[dateList.size()][2];
-            for (int i = 0; i < dateList.size(); i++) {
-                tableData[i][0] = dateList.get(i).toString();
-                tableData[i][1] = investmentValues.get(dateList.get(i));
+            int arrLen = dateList.size() + 1;
+            Object[][] tableData = new Object[arrLen][2];
+            tableData[0][0] = "Date: ";
+            tableData[0][1] = "Value (Rounded): ";
+            for (int i = 1; i < arrLen; i++) {
+                tableData[i][0] = dateList.get(i - 1).toString();
+                tableData[i][1] = Math.round(investmentValues.get(dateList.get(i - 1)));
             }
-            System.out.println(tableData);
             Object[] columnNames = {"Date", "Value"};
 
             // create table and add it to the panel
             JTable dataTable = new JTable(tableData, columnNames);
             investmentValueTable.add(dataTable);
+            investmentValueTable.setPreferredSize(new Dimension(300, 300));
+            dataTable.setPreferredSize(new Dimension(290, 290));
             investmentValueTable.revalidate();
 
             // show an error message if there is one

@@ -3,12 +3,13 @@ import back_end.add_investment.AddInvestmentDataAccessInterface;
 import entity.Investment;
 import entity.Investments;
 
-import java.time.LocalDateTime;
-import java.time.Month;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.time.temporal.ChronoField.DAY_OF_WEEK;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
     final private AddInvestmentDataAccessInterface investDAO;
@@ -27,9 +28,9 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
         Investments investments = investDAO.getInvestments();
 
         // calculate the period over which we are querying stock prices
-        LocalDate end = LocalDate.now().minusDays(1);
+        LocalDate end = getNearestDayOfWeek(LocalDate.now().minusDays(1));
         LocalDate start = inputData.getBeginDate();
-        int timeGap = (int) ChronoUnit.DAYS.between(start, end);
+        int timeGap = (int) DAYS.between(start, end);
         System.out.println("Time gap of: " + Integer.toString(timeGap));
         int granularity = inputData.getGranularity();
         int timeDelta = Math.floorDiv(timeGap, granularity);
@@ -43,7 +44,7 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
          */
         for (int i = 0; i < inputData.getGranularity() - 1; i++) {
             // calculate query date
-            LocalDate queryDate = start.plusDays(i * timeDelta);
+            LocalDate queryDate = getNearestDayOfWeek(start.plusDays(i * timeDelta));
             System.out.println("Querying portfolio value at " + queryDate.toString());
 
             // get portfolio value at that time
@@ -93,13 +94,23 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
         Investments investments = investDAO.getInvestments();
         double value = 0.0;
         for (Investment inv: investments.investments) {
-            value += calculatePurchaseValue(inv.getStockName(), inv.getDate(), inv.getQty());
+            value += calculatePurchaseValue(inv.getStockName(), getNearestDayOfWeek(inv.getDate()), inv.getQty());
         }
         return value;
     }
 
     private double calculatePurchaseValue(String stockName, LocalDate purchaseDate, double qty) {
-        double price = stockDAO.getPrice(stockName, purchaseDate);
+        double price = stockDAO.getPrice(stockName, getNearestDayOfWeek(purchaseDate));
         return price * qty;
+    }
+
+    private static LocalDate getNearestDayOfWeek(LocalDate date) {
+        if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
+            return date.minusDays(1);
+        }
+        else if(date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+            return date.plusDays(1);
+        }
+        return date;
     }
 }
