@@ -3,6 +3,7 @@ package view;
 import interface_adapter.add_investment.AddInvestmentController;
 import interface_adapter.add_investment.AddInvestmentState;
 import interface_adapter.add_investment.AddInvestmentViewModel;
+import org.jdatepicker.JDatePanel;
 import org.jdatepicker.JDatePicker;
 
 import javax.swing.*;
@@ -35,25 +36,24 @@ public class AddInvestmentView extends JPanel implements ActionListener, Propert
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         datePicker = new JDatePicker();
+        LabelPanel dateInfo = new LabelPanel(new JLabel(AddInvestmentViewModel.DATE_LABEL), datePicker);
+        LabelPanel qtyInfo = new LabelPanel(new JLabel(AddInvestmentViewModel.QTY_LABEL), qtyField);
+        LabelPanel nameInfo = new LabelPanel(new JLabel(AddInvestmentViewModel.NAME_LABEL), nameField);
         datePicker.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(datePicker)) {
-                            System.out.println("Date has been chosen");
+                        if (evt.getSource().getClass() == JDatePanel.class) {
                             AddInvestmentState currState = addInvVM.getState();
                             Calendar selectedValue = (Calendar) datePicker.getModel().getValue();
                             LocalDate selectedDate = selectedValue.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                            System.out.println("Date has been chosen: " + selectedDate.toString());
                             currState.setDate(selectedDate);
                             addInvVM.setState(currState);
                         }
                     }
                 }
         );
-
-        LabelPanel dateInfo = new LabelPanel(new JLabel(AddInvestmentViewModel.DATE_LABEL), datePicker);
-        LabelPanel qtyInfo = new LabelPanel(new JLabel(AddInvestmentViewModel.QTY_LABEL), qtyField);
-        LabelPanel nameInfo = new LabelPanel(new JLabel(AddInvestmentViewModel.NAME_LABEL), nameField);
 
         JPanel buttons = new JPanel();
         add = new JButton(AddInvestmentViewModel.ADD_BUTTON);
@@ -69,6 +69,7 @@ public class AddInvestmentView extends JPanel implements ActionListener, Propert
                             System.out.println("Add Investment clicked");
                             AddInvestmentState currState = addInvVM.getState();
                             addInvController.execute(currState.getStockName(), currState.getQty(), currState.getDate());
+                            clear();
                         }
                     }
                 }
@@ -78,9 +79,9 @@ public class AddInvestmentView extends JPanel implements ActionListener, Propert
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("AddIncome Cancel");
-                        AddInvestmentState currState = addInvVM.getState();
+                        System.out.println("AddInvestment Cancel");
                         addInvController.cancel();
+                        clear();
                     }
                 }
         );
@@ -144,7 +145,7 @@ public class AddInvestmentView extends JPanel implements ActionListener, Propert
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
-
+        System.out.println("addinv view propertychange fired");
         if (response.getClass() == AddInvestmentState.class) {
             AddInvestmentState state = (AddInvestmentState) response;
             String popup = "Could not save the stock!";
@@ -154,5 +155,10 @@ public class AddInvestmentView extends JPanel implements ActionListener, Propert
             }
             JOptionPane.showMessageDialog(this, popup);
         }
+    }
+
+    private void clear() {
+        qtyField.setText("");
+        nameField.setText("");
     }
 }
