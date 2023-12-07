@@ -29,11 +29,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton remainingBudgetButton;
     private final JButton totalIncomeButton;
     private final JButton totalExpensesButton;
-    /*
-    private final JLabel selectedMonthLabel;
-    private final JLabel remainingBudgetLabel; // "Remaining Budget: "
-    private final JLabel totalIncomeLabel; // "Total Income: "
-    private final JLabel totalExpensesLabel; // "Total Expenses: "
+
     private JLabel statGraphImg;
 
     public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
@@ -68,21 +64,6 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         // add month after selection
         selectedMonthLabel = new JLabel("Selected Month: ");
 
-    /*;
-
-        // add value after month selection
-        remainingBudgetLabel = new JLabel("Remaining Budget: ");
-        totalIncomeLabel = new JLabel("Total Income: ");
-        totalExpensesLabel = new JLabel("Total Expenses: ");*/
-
-        BufferedImage statGraph = homeVM.getState().getStatGraph();
-        statGraphImg = new JLabel();
-        if (statGraph != null) {
-            Image scaledGraph = statGraph.getScaledInstance(320, 180, Image.SCALE_DEFAULT);
-            statGraphImg.setIcon(new ImageIcon(scaledGraph));
-        }
-        this.add(statGraphImg);
-
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
@@ -95,12 +76,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         this.add(title);
         this.add(monthSelectionList);
-        /*
         this.add(selectedMonthLabel);
-        this.add(remainingBudgetLabel);
-        this.add(totalIncomeLabel);
-        this.add(totalExpensesLabel);*/
-
         this.add(buttons);
 
         homeVM.addPropertyChangeListener(this);
@@ -130,7 +106,11 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             homeVM.setState(currState);
             // call the controller to retrieve the new stats and display them
             HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
-            homeController.execute(inputData);
+            try {
+                homeController.execute(inputData);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
