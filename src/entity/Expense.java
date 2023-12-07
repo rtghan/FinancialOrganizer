@@ -1,5 +1,6 @@
 package entity;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
@@ -10,18 +11,18 @@ public class Expense {
     private static ArrayList<String> categoryList = new ArrayList<String>();
     private String category;
     private double amount;
-    private LocalDateTime date;
+    private Month month;
 
     /**
      * construct entity expense with specified:
      * @param category  expense category
      * @param amount    expense amount
-     * @param date      date of expense
+     * @param month      month of expense
      */
-    public Expense(String category, double amount, LocalDateTime date) {
+    public Expense(String category, double amount, Month month) {
         this.category = category;
         this.amount = amount;
-        this.date = date;
+        this.month = month;
     }
 
     /**

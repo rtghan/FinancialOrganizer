@@ -23,20 +23,22 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
     private final JTextField amtField = new JTextField(15);
     private final JButton add;
     private final JButton cancel;
-
-    private final JButton addButton;
     public AddExpenseView(final AddExpenseController controller, AddExpenseViewModel addExpenseViewModel, ViewManagerModel viewModelManager){
+        // Instance variables setup
         this.addExpenseVM = addExpenseViewModel;
         this.viewManagerModel = viewModelManager;
         this.controller = controller;
 
         addExpenseVM.addPropertyChangeListener(this);
+        // UI elements setup
 
-        addButton = new JButton(addExpenseViewModel.ADD_BUTTON_LABEL);
-        addButton.addActionListener(this);
-
+        // Title
         JLabel title = new JLabel(addExpenseViewModel.TITLE);
 
+        // Month Select
+        JComboBox monthSel = new JComboBox(addExpenseViewModel.MONTH_COMBO);
+        LabelPanel monthbox = new LabelPanel(new JLabel(AddExpenseViewModel.MONTH_LABEL), monthSel);
+        // Text input fields
         LabelPanel namebox = new LabelPanel(new JLabel(AddExpenseViewModel.NAME_TEXT_LABEL), nameField);
         LabelPanel categorybox = new LabelPanel(new JLabel(AddExpenseViewModel.CATEGORY_TEXT_LABEL), categoryField);
         LabelPanel amtbox = new LabelPanel(new JLabel(AddExpenseViewModel.AMT_TEXT_LABEL), amtField);
@@ -44,34 +46,41 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
         add = new JButton(addExpenseViewModel.ADD_BUTTON_LABEL);
         cancel = new JButton(addExpenseViewModel.CANCEL_BUTTON_LABEL);
         JPanel buttons = new JPanel();
+
+        //Buttons
         buttons.add(add);
         buttons.add(cancel);
 
+        // Adding UI element to view
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
+        this.add(monthbox);
         this.add(namebox);
         this.add(categorybox);
         this.add(amtbox);
         this.add(buttons);
 
+        monthSel.addActionListener(
+                e -> {
+                    System.out.println("Expense Month Changed");
+                    AddExpenseState currState = addExpenseVM.getState();
+                    String selection = (String) monthSel.getSelectedItem();
+                    currState.setMonth(selection);
+                }
+        );
+
         add.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println("AddExpense Add");
-                        AddExpenseState currState = addExpenseVM.getState();
-                        controller.execute(currState.getName(), currState.getCategory(), currState.getAmt());
-                    }
+                e -> {
+                    System.out.println("AddExpense Add");
+                    AddExpenseState currState = addExpenseVM.getState();
+                    controller.execute(currState.getName(), currState.getCategory(), currState.getAmt(), currState.getMonth());
                 }
         );
         cancel.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println("AddExpense Cancel");
-                        AddExpenseState currState = addExpenseVM.getState();
-                        controller.cancel();
-                    }
+                e -> {
+                    System.out.println("AddExpense Cancel");
+                    AddExpenseState currState = addExpenseVM.getState();
+                    controller.cancel();
                 });
         nameField.addKeyListener(
                 new KeyListener() {
