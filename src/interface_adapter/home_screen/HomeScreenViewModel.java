@@ -10,6 +10,7 @@ public class HomeScreenViewModel extends ViewModel {
     public static final String ADD_EDIT_BUDGET_LABEL = "Add/Edit Budget";
     public static final String ADD_INCOME_LABEL = "Add Income";
     public static final String ADD_EXPENSE_LABEL = "Add Expense";
+    public static final String ADD_INVESTMENT_LABEL = "Add Investment";
     public static final String[] TIME_OPTIONS = {"Current Month", "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "December"};
 
