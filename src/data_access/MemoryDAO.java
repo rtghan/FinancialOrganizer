@@ -54,9 +54,11 @@ public class MemoryDAO implements AddBudgetDataAccessInterface, AddIncomeDataAcc
     @Override
     public void save(Investments investments) {
         this.investments = investments;
-        System.out.println("Current saved investments: ");
+
+        String currInvestments = "";
         for (Investment investment: this.investments.investments) {
-            System.out.println(investment.getStockName() + " " + investment.getQty());
+            currInvestments += investment.getStockName() + " " + investment.getQty() + " ";
         }
+        System.out.println("Current saved investments: " + currInvestments);
     }
 }
