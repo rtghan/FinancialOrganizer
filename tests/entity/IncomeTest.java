@@ -5,16 +5,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class IncomeTest {
     private Income income;
-    LocalDateTime date = LocalDateTime.now();
+    Month month = LocalDateTime.now().getMonth();
 
     @BeforeEach
     void setUp() {
-        income = new Income("paycheck", 1200, date);
+        income = new Income("paycheck", 1200, month);
     }
 
     @AfterEach
@@ -32,7 +33,7 @@ class IncomeTest {
     }
 
     @Test
-    void getDate() {
-        assertEquals(date, income.getDate());
+    void getMonthmonth() {
+        assertEquals(month, income.getMonthmonth());
     }
 }
