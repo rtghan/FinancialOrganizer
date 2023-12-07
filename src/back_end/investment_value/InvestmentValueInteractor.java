@@ -8,14 +8,24 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.time.temporal.ChronoField.DAY_OF_WEEK;
 import static java.time.temporal.ChronoUnit.DAYS;
 
+/**
+ * A class implementing the InvestmentValueInputBoundary, which allows it to support the calculation of a user's
+ * investment portfolio given some data and input from the frontend.
+ */
 public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
     final private AddInvestmentDataAccessInterface investDAO;
     final private InvestmentValueDataAccessInterface stockDAO;
     final private InvestmentValueOutputBoundary investmentPresenter;
 
+    /**
+     * The constructor to create an instance of the InvestmentValueInteractor
+     * @param investDAO     A data access object which is required in order to retrieve the user's investments
+     * @param stockDAO      A data access object which is required to retrieve stock data using an API
+     * @param investmentPresenter   The class responsible for making the front end reflect the changes and computations
+     *                              done by the back end
+     */
     public InvestmentValueInteractor(AddInvestmentDataAccessInterface investDAO, InvestmentValueDataAccessInterface stockDAO,
                                      InvestmentValueOutputBoundary investmentPresenter) {
         this.investDAO = investDAO;
@@ -23,6 +33,12 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
         this.investmentPresenter = investmentPresenter;
     }
 
+    /**
+     * The method that allows this class to calculate the value of the user's investment portfolio at however many points
+     * in time (as specified by granularity)
+     * @param inputData     An input data object containing the data required to calculate the user's
+     *                      investment portfolio values
+     */
     @Override
     public void getValueOverTime(InvestmentValueInputData inputData) {
         Investments investments = investDAO.getInvestments();
@@ -68,7 +84,9 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
     }
 
 
-
+    /**
+     * A method that allows the user to return back to the main screen, if triggered.
+     */
     @Override
     public void returnHome() {
         investmentPresenter.returnHome();

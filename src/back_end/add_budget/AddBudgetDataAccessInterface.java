@@ -13,6 +13,12 @@ public interface AddBudgetDataAccessInterface {
      * @return          Budget for month
      */
     Budget getBudgetByMonth(Month month);
+
+    /**
+     * Saves a budget with its corresponding month
+     * @param month     the month to be saved
+     * @param budget    the budget object to be saved corresponding to the month
+     */
     void save(Month month, Budget budget);
 }
 

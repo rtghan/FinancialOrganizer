@@ -6,22 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_expense/AddExpenseInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartOutputBoundary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/ChartOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/api/ChartQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/api/ChartQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/ChartBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/ChartBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/DoughnutChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/DoughnutChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/ParamBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/ParamBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpensePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpensePresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AddExpenseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddExpenseView.java" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentDataAccessInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +62,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "docstringsEthan",
     "jdk.selected.JAVA_MODULE": "17",
     "last_opened_file_path": "C:/Users/chane/Downloads/school files/uni/2023-2024/csc207/CalendarOrganizer/dependencies/jdatepicker-2.0.3.jar",
     "node.js.detected.package.eslint": "true",
@@ -98,7 +95,7 @@
       <workItem from="1701805600018" duration="11961000" />
       <workItem from="1701837855694" duration="45000" />
       <workItem from="1701928126397" duration="1542000" />
-      <workItem from="1701954414636" duration="746000" />
+      <workItem from="1701954414636" duration="2395000" />
     </task>
     <servers />
   </component>
