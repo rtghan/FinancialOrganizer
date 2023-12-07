@@ -16,6 +16,9 @@ import java.beans.PropertyChangeListener;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
 
+/**
+ * represents the view for the home screen
+ */
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
     private final HomeScreenViewModel homeVM;
@@ -27,16 +30,19 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addInvestmentButton;
     private final JComboBox monthSelectionList;
     private final LabelPanel monthSelectionInfo;
-
-    // changed to buttons.
     private final JButton remainingBudgetButton;
     private final JButton totalIncomeButton;
     private final JButton totalExpensesButton;
     private JLabel statGraphImg;
-
     private JLabel expenseImg;
     private JDialog popup;
 
+    /**
+     * constructor for the home screen view
+     * @param homeVM            home screen view model
+     * @param viewManagerModel  view manager model
+     * @param homeController    home controller
+     */
     public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
         this.setPreferredSize(new Dimension(1200, 600));
         this.homeVM = homeVM;
@@ -104,10 +110,14 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         homeVM.addPropertyChangeListener(this);
     }
 
-
+    /**
+     * actions for button click events in the home screen
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object eventSource = e.getSource();
+
         if (eventSource == addEditBudgetButton) {
             System.out.println("Add / Edit Budget Button clicked");
             this.viewManagerModel.setActiveView("AddBudget");
@@ -123,7 +133,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         } else if (eventSource == addInvestmentButton) {
             this.viewManagerModel.setActiveView("AddInvestment");
             this.viewManagerModel.firePropertyChanged();
-        } else if (eventSource == monthSelectionList){
+        }
+
+        else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");
             HomeScreenState currState = homeVM.getState();
             String selection = (String) monthSelectionList.getSelectedItem();
@@ -136,7 +148,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-        } else if (eventSource == totalExpensesButton){
+        }
+
+        else if (eventSource == totalExpensesButton){
             System.out.println("Total Expense Pressed");
             BufferedImage expenseChart;
             HomeScreenState currState = homeVM.getState();
@@ -162,9 +176,15 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         }
     }
 
+    /**
+     * property change actions for button click events in the home screen
+     * @param evt A PropertyChangeEvent object describing the event source
+     *          and the property that has changed.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
+
         // view changed to home view, update the stats using the controller
         if (evt.getPropertyName().equals("viewUpdate")) {
             HomeScreenState currState = homeVM.getState();
@@ -177,7 +197,6 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             try {
                 homeController.execute(inputData);
             } catch (Exception e) {
-
             }
         }
 
@@ -208,26 +227,14 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
                 // update relevant financial amounts
                 double budgetRemainingAmt = state.getRemainingBudget();
                 budgetText = "Remaining Budget: " + budgetRemainingAmt;
-
-
                 double totalIncomeAmt = state.getTotalIncome();
                 incomeText = "Total Income: " + totalIncomeAmt;
-
-
                 double totalExpensesAmt = state.getTotalExpenses();
                 expensesText = "Total Expenses: " + totalExpensesAmt;
-
             }
             remainingBudgetButton.setText("Remaining Budget Statistics: " + budgetText);
             totalIncomeButton.setText("Total Income Statistics: " + incomeText);
             totalExpensesButton.setText("Total Expenses Statistics: " + expensesText);
-
-            /*
-            // update the labels to reflect it
-            remainingBudgetLabel.setText(budgetText);
-            totalIncomeLabel.setText(incomeText);
-            totalExpensesLabel.setText(expensesText);*/
-
         }
     }
 }
