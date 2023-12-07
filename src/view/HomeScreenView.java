@@ -22,8 +22,15 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
     private final JComboBox monthSelectionList;
+
     private final JLabel selectedMonthLabel;
 
+    // changed to buttons.
+    private final JButton remainingBudgetButton;
+    private final JButton totalIncomeButton;
+    private final JButton totalExpensesButton;
+    /*
+    private final JLabel selectedMonthLabel;
     private final JLabel remainingBudgetLabel; // "Remaining Budget: "
     private final JLabel totalIncomeLabel; // "Total Income: "
     private final JLabel totalExpensesLabel; // "Total Expenses: "
@@ -45,38 +52,28 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         addExpenseButton.addActionListener(this);
 
         monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
-        monthSelectionList.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent evt){
-                        if (evt.getSource().equals(monthSelectionList)){
-                            System.out.println("Month dropdown changed");
-                            HomeScreenState currState = homeVM.getState();
-                            String selection = (String) monthSelectionList.getSelectedItem();
-                            currState.setMonthSelection(selection);
-                            homeVM.setState(currState);
-
-                            // call the controller to retrieve the new stats and display them
-                            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
-                            try {
-                                homeController.execute(inputData);
-                            } catch (Exception e) {
-
-                            }
-                        }
-                    }
-                }
-        );
+        monthSelectionList.addActionListener(this);
 
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
+
+        remainingBudgetButton = new JButton("Remaining Budget Statistics: ");
+        remainingBudgetButton.addActionListener(this);
+
+        totalIncomeButton = new JButton("Total Income Statistics: ");
+        totalIncomeButton.addActionListener(this);
+
+        totalExpensesButton = new JButton("Total Expenses Statistics: ");
+        totalExpensesButton.addActionListener(this);
 
         // add month after selection
         selectedMonthLabel = new JLabel("Selected Month: ");
 
+    /*;
+
         // add value after month selection
         remainingBudgetLabel = new JLabel("Remaining Budget: ");
         totalIncomeLabel = new JLabel("Total Income: ");
-        totalExpensesLabel = new JLabel("Total Expenses: ");
+        totalExpensesLabel = new JLabel("Total Expenses: ");*/
 
         BufferedImage statGraph = homeVM.getState().getStatGraph();
         statGraphImg = new JLabel();
@@ -90,15 +87,19 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
+        buttons.add(remainingBudgetButton);
+        buttons.add(totalIncomeButton);
+        buttons.add(totalExpensesButton);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
         this.add(monthSelectionList);
+        /*
         this.add(selectedMonthLabel);
         this.add(remainingBudgetLabel);
         this.add(totalIncomeLabel);
-        this.add(totalExpensesLabel);
+        this.add(totalExpensesLabel);*/
 
         this.add(buttons);
 
@@ -123,8 +124,13 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");
-            String selectedMonthStr = (String) monthSelectionList.getSelectedItem();
-            homeVM.viewMonthSelection(selectedMonthStr);
+            HomeScreenState currState = homeVM.getState();
+            String selection = (String) monthSelectionList.getSelectedItem();
+            currState.setMonthSelection(selection);
+            homeVM.setState(currState);
+            // call the controller to retrieve the new stats and display them
+            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
+            homeController.execute(inputData);
         }
     }
 
@@ -184,10 +190,15 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
                 expensesText = "Total Expenses: " + totalExpensesAmt;
 
             }
+            remainingBudgetButton.setText("Remaining Budget Statistics: " + budgetText);
+            totalIncomeButton.setText("Total Income Statistics: " + incomeText);
+            totalExpensesButton.setText("Total Expenses Statistics: " + expensesText);
+
+            /*
             // update the labels to reflect it
             remainingBudgetLabel.setText(budgetText);
             totalIncomeLabel.setText(incomeText);
-            totalExpensesLabel.setText(expensesText);
+            totalExpensesLabel.setText(expensesText);*/
 
         }
     }
