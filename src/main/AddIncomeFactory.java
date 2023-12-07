@@ -11,6 +11,10 @@ import interface_adapter.add_income.AddIncomeViewModel;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import view.AddIncomeView;
 
+/**
+ * builder that helps with creating a view and controller by calling other constructors to create the parts and then
+ * calling their respective constructors
+ */
 public class AddIncomeFactory {
     public static AddIncomeView create(AddIncomeViewModel addIncVM, ViewManagerModel viewManagerModel,
                                        AddIncomeDataAccessInterface addIncDAO, HomeScreenViewModel homeScreenVM){
