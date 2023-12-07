@@ -63,6 +63,19 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         // add month after selection
         selectedMonthLabel = new JLabel("Selected Month: ");
+        /*
+         add value after month selection
+         remainingBudgetLabel = new JLabel("Remaining Budget: ");
+         totalIncomeLabel = new JLabel("Total Income: ");
+         totalExpensesLabel = new JLabel("Total Expenses: ");
+
+        BufferedImage statGraph = homeVM.getState().getStatGraph();
+        statGraphImg = new JLabel();
+        if (statGraph != null) {
+            Image scaledGraph = statGraph.getScaledInstance(320, 180, Image.SCALE_DEFAULT);
+            statGraphImg.setIcon(new ImageIcon(scaledGraph));
+        }
+        this.add(statGraphImg);*/
 
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
