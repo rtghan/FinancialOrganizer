@@ -25,6 +25,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
     private final JButton addInvestmentButton;
+    private final JButton investmentValueButton;
     private final JComboBox monthSelectionList;
     private final LabelPanel monthSelectionInfo;
 
@@ -71,6 +72,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         totalExpensesButton = new JButton("Total Expenses Statistics: ");
         totalExpensesButton.addActionListener(this);
 
+        investmentValueButton = new JButton("View Investment Value");
+        investmentValueButton.addActionListener(this);
+
         BufferedImage statGraph = homeVM.getState().getStatGraph();
         statGraphImg = new JLabel("",SwingConstants.CENTER);
         if (statGraph != null) {
@@ -91,6 +95,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         stats.add(remainingBudgetButton);
         stats.add(totalIncomeButton);
         stats.add(totalExpensesButton);
+        stats.add(investmentValueButton);
         stats.setPreferredSize(new Dimension(100, 10));
 
         this.add(title);
@@ -122,6 +127,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == addInvestmentButton) {
             this.viewManagerModel.setActiveView("AddInvestment");
+            this.viewManagerModel.firePropertyChanged();
+        } else if (eventSource == investmentValueButton) {
+            this.viewManagerModel.setActiveView("InvestmentValue");
             this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");

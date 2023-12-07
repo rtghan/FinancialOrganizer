@@ -32,6 +32,7 @@ public class InvestmentValueView extends JPanel implements ActionListener, Prope
     public InvestmentValueView(InvestmentValueController invValController, InvestmentValueViewModel invValViewModel) {
         this.invValCont = invValController;
         this.invValVM = invValViewModel;
+        invValVM.addPropertyChangeListener(this);
 
         JLabel title = new JLabel(InvestmentValueViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -110,7 +111,7 @@ public class InvestmentValueView extends JPanel implements ActionListener, Prope
                         if (e.getSource().equals(displayValue)) {
                             System.out.println("Display investment value clicked.");
                             InvestmentValueState currState = invValVM.getState();
-                            invValCont.getValueOverTime(LocalDate.now(), currState.getGranularity());
+                            invValCont.getValueOverTime(currState.getStartDate(), currState.getGranularity());
                         }
                     }
                 }
@@ -134,9 +135,10 @@ public class InvestmentValueView extends JPanel implements ActionListener, Prope
     public void propertyChange(PropertyChangeEvent evt) {
         // write the data to the table
         Object response = evt.getNewValue();
+        System.out.println(response.getClass());
         if (response.getClass() == InvestmentValueState.class) {
             InvestmentValueState state = (InvestmentValueState) response;
-
+            System.out.println("propertyChange investmentValueView");
             // set default popup message
             String popup = state.getErrorString();
 
@@ -166,6 +168,11 @@ public class InvestmentValueView extends JPanel implements ActionListener, Prope
             JTable dataTable = new JTable(tableData, columnNames);
             investmentValueTable.add(dataTable);
             investmentValueTable.revalidate();
+
+            // show an error message if there is one
+            if (popup != null) {
+                JOptionPane.showMessageDialog(this, popup);
+            }
         }
     }
 }

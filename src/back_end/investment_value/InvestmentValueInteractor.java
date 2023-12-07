@@ -27,9 +27,10 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
         Investments investments = investDAO.getInvestments();
 
         // calculate the period over which we are querying stock prices
-        LocalDate end = LocalDate.now();
+        LocalDate end = LocalDate.now().minusDays(1);
         LocalDate start = inputData.getBeginDate();
         int timeGap = (int) ChronoUnit.DAYS.between(start, end);
+        System.out.println("Time gap of: " + Integer.toString(timeGap));
         int granularity = inputData.getGranularity();
         int timeDelta = Math.floorDiv(timeGap, granularity);
 
@@ -46,25 +47,22 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
             System.out.println("Querying portfolio value at " + queryDate.toString());
 
             // get portfolio value at that time
-            try{
-                investmentValues.put(queryDate, getDateValue(queryDate));
-            }
-            catch (Exception e) {
+            double value = getDateValue(queryDate);
+            if (value == 0) {
                 errorMsg = "There were one or more stocks that could not be queried!";
             }
-
+            investmentValues.put(queryDate, getDateValue(queryDate));
         }
 
         // handle last date separately
-        // get portfolio value at that time
-        try{
-            investmentValues.put(end, getDateValue(end));
-        }
-        catch (Exception e) {
-            errorMsg = "There were one or more stocks that could not be queried!";
-        }
+        investmentValues.put(end, getDateValue(end));
 
-        InvestmentValueOutputData outputData = new InvestmentValueOutputData(investmentValues, errorMsg, getInitialValue());
+        // get portfolio value at time of initial purchase
+        double initialValue = getInitialValue();
+
+        System.out.println(investmentValues);
+        System.out.println("Initial value: " + initialValue);
+        InvestmentValueOutputData outputData = new InvestmentValueOutputData(investmentValues, errorMsg, initialValue);
         investmentPresenter.displayPortfolio(outputData);
     }
 
@@ -75,18 +73,17 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
         investmentPresenter.returnHome();
     }
 
-    private Double getDateValue(LocalDate queryDate) throws Exception {
+    private Double getDateValue(LocalDate queryDate) {
         Investments investments = investDAO.getInvestments();
         double value = 0.0;
-        String errorMsg = null;
-        boolean error = false;
         for (Investment inv: investments.investments) {
-            try {
-                value += calculatePurchaseValue(inv.getStockName(), queryDate, inv.getQty());
+
+            value += calculatePurchaseValue(inv.getStockName(), queryDate, inv.getQty());
+            try{
+                Thread.sleep(200);
             }
-            catch (Exception e){
-                System.out.println("A stock was unable to be retrieved.");
-                throw e;
+            catch (Exception e) {
+
             }
         }
         return value;
@@ -95,20 +92,13 @@ public class InvestmentValueInteractor implements InvestmentValueInputBoundary{
     private Double getInitialValue() {
         Investments investments = investDAO.getInvestments();
         double value = 0.0;
-        String errorMsg = null;
-        boolean error = false;
         for (Investment inv: investments.investments) {
-            try {
-                value += calculatePurchaseValue(inv.getStockName(), inv.getDate(), inv.getQty());
-            }
-            catch (Exception e){
-                System.out.println("A stock was unable to be retrieved.");
-            }
+            value += calculatePurchaseValue(inv.getStockName(), inv.getDate(), inv.getQty());
         }
         return value;
     }
 
-    private double calculatePurchaseValue(String stockName, LocalDate purchaseDate, double qty) throws Exception {
+    private double calculatePurchaseValue(String stockName, LocalDate purchaseDate, double qty) {
         double price = stockDAO.getPrice(stockName, purchaseDate);
         return price * qty;
     }
