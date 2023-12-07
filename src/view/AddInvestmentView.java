@@ -19,7 +19,7 @@ import java.time.ZoneId;
 import java.util.Calendar;
 
 public class AddInvestmentView extends JPanel implements ActionListener, PropertyChangeListener {
-    private JDatePicker datePicker;
+    private final JDatePicker datePicker;
     public final String viewName = "AddInvestment";
     private final AddInvestmentViewModel addInvVM;
     private final JTextField qtyField = new JTextField(20);
@@ -145,7 +145,7 @@ public class AddInvestmentView extends JPanel implements ActionListener, Propert
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
-        System.out.println("addinv view propertychange fired");
+        System.out.println("Added Investment");
         if (response.getClass() == AddInvestmentState.class) {
             AddInvestmentState state = (AddInvestmentState) response;
             String popup = "Could not save the stock!";

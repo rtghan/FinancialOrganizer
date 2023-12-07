@@ -25,9 +25,6 @@ public class InvestmentValuePresenter implements InvestmentValueOutputBoundary {
         state.setInitialValue(outputData.getInitialValue());
         this.invValVM.setState(state);
         this.invValVM.firePropertyChanged();
-
-        this.viewMM.setActiveView(homeScreenVM.getViewName());
-        this.viewMM.firePropertyChanged();
     }
 
     @Override
