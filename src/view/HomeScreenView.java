@@ -1,5 +1,6 @@
 package view;
 
+import back_end.chart_visualisation.ChartInputData;
 import back_end.home_screen.HomeScreenInputData;
 import interface_adapter.add_budget.AddBudgetViewModel;
 import interface_adapter.home_screen.HomeScreenController;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -31,6 +33,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton totalIncomeButton;
     private final JButton totalExpensesButton;
     private JLabel statGraphImg;
+
+    private JLabel expenseImg;
+    private JDialog popup;
 
     public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
         this.setPreferredSize(new Dimension(1200, 600));
@@ -78,7 +83,14 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
+<<<<<<< HEAD
+        JPanel lowerbuttons = new JPanel();
+        lowerbuttons.add(remainingBudgetButton);
+        lowerbuttons.add(totalIncomeButton);
+        lowerbuttons.add(totalExpensesButton);
+=======
         buttons.add(addInvestmentButton);
+>>>>>>> main
 
         JPanel stats = new JPanel();
         stats.add(remainingBudgetButton);
@@ -90,8 +102,13 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         this.add(statGraphImg, BorderLayout.CENTER);
         this.add(monthSelectionInfo);
         this.add(buttons);
+<<<<<<< HEAD
+        this.add(lowerbuttons);
+
+=======
         this.add(stats);
         buttons.setPreferredSize(new Dimension(100, 10));
+>>>>>>> main
         homeVM.addPropertyChangeListener(this);
     }
 
@@ -127,6 +144,29 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
+        } else if (eventSource == totalExpensesButton){
+            System.out.println("Total Expense Pressed");
+            BufferedImage expenseChart;
+            HomeScreenState currState = homeVM.getState();
+            ChartInputData chartData = new ChartInputData(currState.getMonth());
+            try{
+                homeController.chart(chartData);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+            popup = new JDialog();
+            popup.setTitle("Per Category Expense Breakdown:");
+            popup.setLocation(this.getWidth()/2, this.getHeight()/2);
+            popup.setSize(500,500);
+            expenseChart = currState.getExpenseGraph();
+            if (expenseChart != null){
+                Image scaledExpense = expenseChart.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+                expenseImg = new JLabel();
+                expenseImg.setIcon(new ImageIcon(scaledExpense));
+            }
+            popup.add(expenseImg);
+            homeVM.setState(currState);
+            popup.setVisible(true);
         }
     }
 
