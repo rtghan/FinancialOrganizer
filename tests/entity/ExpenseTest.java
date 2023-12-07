@@ -4,15 +4,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExpenseTest {
     Expense expense;
-    LocalDateTime date = LocalDateTime.now();
+    //LocalDateTime date = LocalDateTime.now();
+    Month month = LocalDateTime.now().getMonth();
+
     @BeforeEach
     void setUp() {
-        expense = new Expense("Groceries", 100, date);
+        expense = new Expense("Groceries", 100, month);
     }
 
     @Test
@@ -27,6 +30,6 @@ class ExpenseTest {
 
     @Test
     void getDate() {
-        assertEquals(date, expense.getDate());
+        assertEquals(month, expense.getMonth());
     }
 }

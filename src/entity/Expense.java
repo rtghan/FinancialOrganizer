@@ -41,4 +41,7 @@ public class Expense {
         return amount;
     }
 
+    public Month getMonth() {
+        return month;
+    }
 }
