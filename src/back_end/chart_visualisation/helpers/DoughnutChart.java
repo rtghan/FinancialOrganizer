@@ -15,12 +15,12 @@ public abstract class DoughnutChart {
      * @return Buffered Image
      * @throws Exception
      */
-    public static BufferedImage build(HashMap<String, ?> data) throws Exception {
+    public static HashMap<String,?> build(HashMap<String, ?> data) throws Exception {
         System.out.println(data);
         String[] labels = data.keySet().toArray(new String[0]);
         HashMap<String, Collection> dataSet = new HashMap<>();
         dataSet.put("Expense", data.values());
-        return ChartBuilder.build("doughnut", labels, dataSet, 250, 250);
+        return dataSet;
     }
 
 }

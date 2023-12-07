@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class ChartBuilder {
+public class ChartBuilderFacade {
     /**
      * Takes in the given input, requests ParamBuilder to construct string representation of Parameter
      * and queries the API
@@ -18,8 +18,13 @@ public class ChartBuilder {
      * @return BufferedImage
      * @throws Exception
      */
-    public static BufferedImage build(String type, String[] labels, HashMap<String, ?> dataSet, int width, int height) throws Exception {
+    public static BufferedImage build(String type, Object[] labels, HashMap<String, ?> dataSet, int width, int height) throws Exception {
         String param = ParamBuilder.build(type, labels, dataSet,width,height);
+        if(type.equals("doughnut")){
+            HashMap<String,?> data = DoughnutChart.build(dataSet);
+            param = ParamBuilder.build(type, labels, data,width,height);
+            return ChartQuery.executeGet(param);
+        }
         return ChartQuery.executeGet(param);
     }
 
@@ -31,7 +36,7 @@ public class ChartBuilder {
      * @return BufferedImage
      * @throws Exception
      */
-    public static BufferedImage build(String type, String[] labels, HashMap<String, ?> dataSet) throws Exception {
+    public static BufferedImage build(String type, Object[] labels, HashMap<String, ?> dataSet) throws Exception {
         return build(type, labels, dataSet, 500, 300);
     }
     /**

@@ -18,7 +18,7 @@ abstract class ParamBuilder {
      * @param height int
      * @return String
      */
-    public static String build(String type, String[] labels, HashMap<String, ?> dataSet, int width, int height){
+    public static String build(String type, Object[] labels, HashMap<String, ?> dataSet, int width, int height){
         // Object Instantiation
         JSONObject outJson = new JSONObject();
 
