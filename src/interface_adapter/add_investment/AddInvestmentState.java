@@ -52,7 +52,7 @@ public class AddInvestmentState {
     }
 
     /**
-     * Setter for the the stocks were purchased.
+     * Setter for the stocks that were purchased.
      * @param date
      */
     public void setDate(LocalDate date) {
