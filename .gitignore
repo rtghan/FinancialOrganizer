@@ -15,3 +15,4 @@ app/src/test/java/main/AppTest.java
 app/src/main/java/main/App.java
 app/build.gradle.kts
 .idea/
+test.png
