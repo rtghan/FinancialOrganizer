@@ -2,6 +2,7 @@ package back_end.add_expense;
 import entity.Expense;
 import entity.Budget;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 public class AddExpenseInteractor implements AddExpenseInputBoundary{
     final private AddExpenseOutputBoundary presenter;
@@ -12,18 +13,17 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
     }
     @Override
     public void execute(AddExpenseInputData iData) {
-        LocalDateTime creationTime = LocalDateTime.now();
 
         // new expense obj creation.
-        Expense newExpense = new Expense(iData.getCategory(), iData.getAmount(), creationTime);
-        Budget monthBudget = this.addExpDAO.getBudgetByMonth(creationTime.getMonth());
+        Expense newExpense = new Expense(iData.getCategory(), iData.getAmount(), iData.month);
+        Budget monthBudget = this.addExpDAO.getBudgetByMonth(iData.month);
 
         // see if there is a valid budget for this month
         if (monthBudget != null){
             monthBudget.addExpense(newExpense);
 
             // out data prep and piping to presenter
-            AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), creationTime);
+            AddExpenseOutputData outputData = new AddExpenseOutputData(iData.getCategory(), iData.getAmount(), iData.month);
             presenter.prepareSuccessView(outputData);
         }
         // use the error popup
