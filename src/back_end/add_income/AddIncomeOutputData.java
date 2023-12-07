@@ -1,16 +1,16 @@
 package back_end.add_income;
 
-import java.time.LocalDateTime;
+import java.time.Month;
 
 public class AddIncomeOutputData {
     final private String incomeSource;
     final private double amount;
-    final private LocalDateTime date;
+    final private Month month;
 
-    public AddIncomeOutputData(String incomeSource, double amount, LocalDateTime date) {
+    public AddIncomeOutputData(String incomeSource, double amount, Month month) {
         this.incomeSource = incomeSource;
         this.amount = amount;
-        this.date = date;
+        this.month = month;
     }
 
     public String getIncomeSource() {
@@ -21,7 +21,7 @@ public class AddIncomeOutputData {
         return amount;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public Month getMonth() {
+        return month;
     }
 }

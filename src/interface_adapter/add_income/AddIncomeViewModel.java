@@ -11,6 +11,11 @@ public class AddIncomeViewModel extends ViewModel {
     public static final String AMOUNT_LABLE = "Amount ($): ";
     public static final String ADD_INCOME_BUTTON_LABEL = "Add!";
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
+
+    public static final String MONTH_LABEL = "Select Month";
+    public static final String[] MONTH_OPTIONS = {"Current Month", "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "December"};
+
     private AddIncomeState state = new AddIncomeState();
     public AddIncomeViewModel() {
         super("AddIncome");
