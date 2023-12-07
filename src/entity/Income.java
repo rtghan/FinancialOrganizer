@@ -1,5 +1,5 @@
 package entity;
-import java.time.LocalDateTime;
+import java.time.Month;
 
 /**
  * Entity that represents income
@@ -7,18 +7,18 @@ import java.time.LocalDateTime;
 public class Income {
     private String incomeSource;
     private double amount;
-    private LocalDateTime date;
+    private Month month;
 
     /**
      * construct entity income with specified:
      * @param incomeSource  income source
      * @param amount        income amount
-     * @param date          date income
+     * @param month          date income
      */
-    public Income(String incomeSource, double amount, LocalDateTime date) {
+    public Income(String incomeSource, double amount, Month month) {
         this.incomeSource = incomeSource;
         this.amount = amount;
-        this.date = date;
+        this.month = month;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Income {
      * gets the date
      * @return date
      */
-    public LocalDateTime getDate() {
-        return date;
+    public Month getMonthmonth() {
+        return month;
     }
 }

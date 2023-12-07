@@ -22,6 +22,10 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
     private final JButton cancel;
     private final AddIncomeController addIncomeController;
 
+    private final JComboBox monthSel;
+    private final LabelPanel monthBox;
+
+
     /**
      * constructor for the view
      * @param addIncController AddIncomeController
@@ -44,6 +48,18 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
         buttons.add(add);
         buttons.add(cancel);
 
+        monthSel = new JComboBox(AddIncomeViewModel.MONTH_OPTIONS);
+        monthBox = new LabelPanel(new JLabel(AddIncomeViewModel.MONTH_LABEL), monthSel);
+
+        monthSel.addActionListener(
+                e -> {
+                    System.out.println("Expense Month Changed");
+                    AddIncomeState currState = addIncomeViewModel.getState();
+                    String selection = (String) monthSel.getSelectedItem();
+                    currState.setMonth(selection);
+                }
+        );
+
         add.addActionListener(
                 new ActionListener() {
                     @Override
@@ -52,7 +68,9 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
                             System.out.println("Add Income clicked");
                             AddIncomeState currentState = addIncomeViewModel.getState();
                             System.out.println(currentState.getAmount());
-                            addIncomeController.execute(currentState.getIncome_source(), currentState.getAmount());
+                            addIncomeController.execute(
+                                    currentState.getIncome_source(), currentState.getAmount(),
+                                    currentState.getMonth());
                         }
                     }
                 }
@@ -115,9 +133,11 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
+        this.add(monthBox);
         this.add(incomeSourceInfo);
         this.add(amountInfo);
         this.add(buttons);
+
     }
 
     @Override

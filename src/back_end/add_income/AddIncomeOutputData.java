@@ -1,6 +1,6 @@
 package back_end.add_income;
 
-import java.time.LocalDateTime;
+import java.time.Month;
 
 /**
  * representation of what data needs to be outputted back to the user
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class AddIncomeOutputData {
     final private String incomeSource;
     final private double amount;
-    final private LocalDateTime date;
+    final private Month month;
 
     /**
      * constructor for the class
@@ -16,10 +16,10 @@ public class AddIncomeOutputData {
      * @param amount double
      * @param date LocalDateTime
      */
-    public AddIncomeOutputData(String incomeSource, double amount, LocalDateTime date) {
+    public AddIncomeOutputData(String incomeSource, double amount, Month month) {
         this.incomeSource = incomeSource;
         this.amount = amount;
-        this.date = date;
+        this.month = month;
     }
 
     /**
@@ -36,10 +36,11 @@ public class AddIncomeOutputData {
         return amount;
     }
 
+
     /**
      * @return the date on which this income was saved
      */
-    public LocalDateTime getDate() {
-        return date;
+    public Month getMonth() {
+        return month;
     }
 }
