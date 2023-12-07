@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalendarOrganizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CalendarOrganizer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/home_screen/HomeScreenViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/HomeScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HomeScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LabelPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LabelPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "graphCenter",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
     "last_opened_file_path": "C:/Users/chane/Downloads/school files/uni/2023-2024/csc207/CalendarOrganizer/dependencies/jdatepicker-2.0.3.jar",
     "node.js.detected.package.eslint": "true",
@@ -91,5 +88,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
