@@ -3,13 +3,11 @@ import java.time.Month;
 public class AddBudgetOutputData {
     private final Month budgetMonth;
     private final double savAmt;
-    private final double invAmt;
     private final double spdAmt;
 
-    public AddBudgetOutputData(Month budgetMonth, double savAmt, double invAmt, double spdAmt) {
+    public AddBudgetOutputData(Month budgetMonth, double savAmt, double spdAmt) {
         this.budgetMonth = budgetMonth;
         this.savAmt = savAmt;
-        this.invAmt = invAmt;
         this.spdAmt = spdAmt;
     }
 
@@ -19,10 +17,6 @@ public class AddBudgetOutputData {
 
     public double getSavAmt() {
         return savAmt;
-    }
-
-    public double getInvAmt() {
-        return invAmt;
     }
 
     public double getSpdAmt() {

@@ -5,14 +5,12 @@ public class AddBudgetState {
     private String monthSelection = "";
     private Month month;
     private double saveAmt = 0;
-    private double invAmt = 0;
     private double spendAmt = 0;
     private boolean creationSuccess = false;
 
     public AddBudgetState(AddBudgetState copy) {
         monthSelection = copy.monthSelection;
         saveAmt = copy.saveAmt;
-        invAmt = copy.invAmt;
         spendAmt = copy.spendAmt;
     }
 
@@ -30,10 +28,6 @@ public class AddBudgetState {
 
     public double getSaveAmt() {
         return saveAmt;
-    }
-
-    public double getInvAmt() {
-        return invAmt;
     }
 
     public double getSpendAmt() {
@@ -60,11 +54,6 @@ public class AddBudgetState {
     public void setSaveAmt(double saveAmt) {
         this.saveAmt = saveAmt;
     }
-
-    public void setInvAmt(double invAmt) {
-        this.invAmt = invAmt;
-    }
-
     public void setSpendAmt(double spendAmt) {
         this.spendAmt = spendAmt;
     }

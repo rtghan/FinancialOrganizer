@@ -17,6 +17,7 @@ public class AddBudgetViewModel extends ViewModel{
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
 
     private AddBudgetState state = new AddBudgetState();
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public AddBudgetViewModel() {
         super("AddBudget");
@@ -25,8 +26,6 @@ public class AddBudgetViewModel extends ViewModel{
     public void setState(AddBudgetState state) {
         this.state = state;
     }
-
-    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
         support.firePropertyChange("state", null, this.state);
