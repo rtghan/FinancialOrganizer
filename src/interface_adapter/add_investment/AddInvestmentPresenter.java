@@ -22,6 +22,7 @@ public class AddInvestmentPresenter implements AddInvestmentOutputBoundary {
         AddInvestmentState state = addInvVM.getState();
         state.setError(null);
         this.addInvVM.setState(state);
+        this.addInvVM.firePropertyChanged();
 
         homeScreenVM.update();
 
