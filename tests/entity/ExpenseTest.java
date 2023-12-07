@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ExpenseTest {
     Expense expense;
-    //LocalDateTime date = LocalDateTime.now();
     Month month = LocalDateTime.now().getMonth();
 
     @BeforeEach
