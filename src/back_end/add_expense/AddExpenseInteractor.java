@@ -4,13 +4,28 @@ import entity.Budget;
 import java.time.LocalDateTime;
 import java.time.Month;
 
+/**
+ * Class implementation for AddExpenseInputBoundary
+ * For interation between front and back end
+ */
 public class AddExpenseInteractor implements AddExpenseInputBoundary{
     final private AddExpenseOutputBoundary presenter;
     final private AddExpenseDataAccessInterface addExpDAO;
+
+    /**
+     * Constructs AddExpenseInteractor Instance
+     * @param presenter AddExpenseOutputBoundary
+     * @param addExpDAO AddExpenseDataAccessInterface
+     */
     public AddExpenseInteractor(AddExpenseOutputBoundary presenter, AddExpenseDataAccessInterface addExpDAO){
         this.presenter = presenter;
         this.addExpDAO = addExpDAO;
     }
+
+    /**
+     * Takes Input Data and prepares popup for success and failure
+     * @param iData AddExpenseInputData
+     */
     @Override
     public void execute(AddExpenseInputData iData) {
 
@@ -33,6 +48,10 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
             presenter.noBudget();
         }
     }
+
+    /**
+     * Cancels input and returns to homescreen
+     */
     @Override
     public void cancel(){
         presenter.cancel();

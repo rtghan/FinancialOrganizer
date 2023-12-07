@@ -11,13 +11,29 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class implementation of ChartInputBoundary
+ * For interactions between front and back end
+ */
 public class ChartInteractor implements ChartInputBoundary {
     final private HomeScreenDataAccessInterface DAO;
     final private HomeScreenOutputBoundary chartPresenter;
+
+    /**
+     * Constructs an instance of ChartInteractor
+     * @param DAO HomeScreenDataAccessInterface
+     * @param chartPresenter HomeScreenOutputBoundary
+     */
     public ChartInteractor(HomeScreenDataAccessInterface DAO, HomeScreenOutputBoundary chartPresenter) {
         this.DAO = DAO;
         this.chartPresenter = chartPresenter;
     }
+
+    /**
+     * Takes in inputdata, gets data from the DAO then packages the data
+     * for use with the OutputBoundary
+     * @param chartInputData ChartInputData
+     */
     @Override
     public void execute(ChartInputData chartInputData) {
         // Get Current Month's Budget

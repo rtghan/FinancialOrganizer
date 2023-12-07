@@ -9,6 +9,15 @@ import java.util.Collection;
 import java.util.HashMap;
 
 abstract class ParamBuilder {
+    /**
+     * Constructs String Representation of parameters with given inputs.
+     * @param type String
+     * @param labels String[]
+     * @param dataSet Hashmap<>
+     * @param width int
+     * @param height int
+     * @return String
+     */
     public static String build(String type, String[] labels, HashMap<String, ?> dataSet, int width, int height){
         // Object Instantiation
         JSONObject outJson = new JSONObject();

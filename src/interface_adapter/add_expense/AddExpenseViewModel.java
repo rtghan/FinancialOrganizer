@@ -5,6 +5,9 @@ import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+/**
+ * Class implementation of ViewModel for addExpense.
+ */
 public class AddExpenseViewModel extends ViewModel {
 
     public static final String TITLE = "Add Expense";
@@ -20,6 +23,11 @@ public class AddExpenseViewModel extends ViewModel {
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     private AddExpenseState state = new AddExpenseState();
+
+    /**
+     * Constructs an instance of AddExpenseViewModel
+     * @param viewName String
+     */
     public AddExpenseViewModel(String viewName) {
         super(viewName);
     }
@@ -34,7 +42,15 @@ public class AddExpenseViewModel extends ViewModel {
 
     }
 
+    /**
+     * Gets the current state
+     * @return AddExpenseState
+     */
     public AddExpenseState getState(){return this.state;}
 
+    /**
+     * Sets the current state to input
+     * @param state AddExpenseState
+     */
     public void setState(AddExpenseState state){this.state = state;}
 }

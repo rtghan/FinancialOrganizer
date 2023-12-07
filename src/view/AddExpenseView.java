@@ -23,6 +23,13 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
     private final JTextField amtField = new JTextField(15);
     private final JButton add;
     private final JButton cancel;
+
+    /**
+     * Constructs an instance of AddExpenseView
+     * @param controller AddExpensController
+     * @param addExpenseViewModel AddExpenseViewModel
+     * @param viewModelManager ViewModelManager
+     */
     public AddExpenseView(final AddExpenseController controller, AddExpenseViewModel addExpenseViewModel, ViewManagerModel viewModelManager){
         // Instance variables setup
         this.addExpenseVM = addExpenseViewModel;
