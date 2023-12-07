@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 abstract class ParamBuilder {
-    public static String build(String type, String[] labels, HashMap<String, ?> dataSet){
+    public static String build(String type, String[] labels, HashMap<String, ?> dataSet, int width, int height){
         // Object Instantiation
         JSONObject outJson = new JSONObject();
 
@@ -31,7 +31,7 @@ abstract class ParamBuilder {
         chartData.put("labels", labels);
         chartData.put("datasets", setsArray);
         outJson.put("data", chartData);
-        System.out.println(outJson);
-        return URLEncoder.encode(outJson.toString());
+        System.out.println(outJson.toString()+"&width="+width+"&height="+height);
+        return URLEncoder.encode(outJson.toString())+"&width="+width+"&height="+height;
     }
 }

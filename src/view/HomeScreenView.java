@@ -137,15 +137,16 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
                 throw new RuntimeException(ex);
             }
             popup = new JDialog();
+            popup.setTitle("Per Category Expense Breakdown:");
             popup.setLocation(this.getWidth()/2, this.getHeight()/2);
             popup.setSize(500,500);
             expenseChart = currState.getExpenseGraph();
             if (expenseChart != null){
-                Image scaledGraph = expenseChart.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+                Image scaledExpense = expenseChart.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
                 expenseImg = new JLabel();
-                expenseImg.setIcon(new ImageIcon(scaledGraph));
+                expenseImg.setIcon(new ImageIcon(scaledExpense));
             }
-
+            popup.add(expenseImg);
             homeVM.setState(currState);
             popup.setVisible(true);
         }

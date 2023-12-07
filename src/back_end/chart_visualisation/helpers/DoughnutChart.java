@@ -11,7 +11,7 @@ public abstract class DoughnutChart {
         String[] labels = data.keySet().toArray(new String[0]);
         HashMap<String, Collection> dataSet = new HashMap<>();
         dataSet.put("Expense", data.values());
-        return ChartBuilder.build("doughnut", labels, dataSet);
+        return ChartBuilder.build("doughnut", labels, dataSet, 250, 250);
     }
 
 }
