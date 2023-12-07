@@ -19,7 +19,7 @@ public class AddIncomeController {
     /**
      * creates a new input data using the given parameters and passes it to the execute method in the interactor
      * @param incomeSource String
-     * @param ammount Double
+     * @param amount Double
      */
     public void execute(String incomeSource, double amount, Month month){
         AddIncomeInputData inputData = new AddIncomeInputData(incomeSource, amount, month);
