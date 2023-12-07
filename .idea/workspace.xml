@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jdatepicker_1_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jdatepicker_2_0_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalendarOrganizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CalendarOrganizer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Budget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_expense/AddExpenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AddBudgetView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddBudgetView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/test.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AddIncomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddIncomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AddInvestmentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddInvestmentView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

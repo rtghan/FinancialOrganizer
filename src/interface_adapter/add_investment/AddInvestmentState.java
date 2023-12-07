@@ -1,11 +1,11 @@
 package interface_adapter.add_investment;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class AddInvestmentState {
     private String stockName;
     private double qty;
-    private LocalDateTime time;
+    private LocalDate date;
     private String error = null;
 
     public String getStockName() {
@@ -24,12 +24,12 @@ public class AddInvestmentState {
         this.qty = qty;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getError() {

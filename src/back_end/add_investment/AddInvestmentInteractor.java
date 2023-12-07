@@ -13,19 +13,17 @@ public class AddInvestmentInteractor implements AddInvestmentInputBoundary {
 
     @Override
     public void execute(AddInvestmentInputData inputData) {
-        // get corresponding budget
-        Month purchaseMonth = inputData.getTime().getMonth();
         Investments currentInvestments = addDAO.getInvestments();
 
         // create investment
-        Investment newInvestment = new Investment(inputData.getStockName(), inputData.getQty(), inputData.getTime());
+        Investment newInvestment = new Investment(inputData.getStockName(), inputData.getQty(), inputData.getDate());
         currentInvestments.investments.add(newInvestment);
 
         // save Budget
         addDAO.save(currentInvestments);
 
         // prepare output data
-        AddInvestmentOutputData outputData = new AddInvestmentOutputData(inputData.getStockName(), inputData.getQty(), inputData.getTime());
+        AddInvestmentOutputData outputData = new AddInvestmentOutputData(inputData.getStockName(), inputData.getQty(), inputData.getDate());
 
         // tell the presenter to show that a new investment has been added
         addPresenter.prepareSuccessView(outputData);

@@ -1,8 +1,7 @@
 package interface_adapter.add_investment;
 import back_end.add_investment.AddInvestmentInputData;
 import back_end.add_investment.AddInvestmentInputBoundary;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class AddInvestmentController {
     private final AddInvestmentInputBoundary addInvInteractor;
@@ -10,8 +9,8 @@ public class AddInvestmentController {
         this.addInvInteractor = addInvInteractor;
     }
 
-    public void execute(String stockName, double qty, LocalDateTime time) {
-        AddInvestmentInputData inputData = new AddInvestmentInputData(stockName, qty, time);
+    public void execute(String stockName, double qty, LocalDate date) {
+        AddInvestmentInputData inputData = new AddInvestmentInputData(stockName, qty, date);
         addInvInteractor.execute(inputData);
     }
 

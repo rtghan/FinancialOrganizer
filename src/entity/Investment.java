@@ -1,13 +1,13 @@
 package entity;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 public class Investment {
     private String stockName;
     private double qty;
-    private LocalDateTime time;
-    public Investment(String stockName, double qty, LocalDateTime time) {
+    private LocalDate date;
+    public Investment(String stockName, double qty, LocalDate date) {
         this.stockName = stockName;
         this.qty = qty;
-        this.time = time;
+        this.date = date;
     }
 
     public String getStockName() {
@@ -26,11 +26,11 @@ public class Investment {
         this.qty = qty;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

@@ -8,6 +8,8 @@ public class AddInvestmentViewModel extends ViewModel{
     public static final String DATE_LABEL = "Date of Purchase: ";
     public static final String QTY_LABEL = "Quantity Purchased: ";
     public static final String NAME_LABEL = "Stock Name: ";
+    public static final String ADD_BUTTON = "Add Investment";
+    public static final String CANCEL_BUTTON = "Cancel";
     private AddInvestmentState state = new AddInvestmentState();
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     public AddInvestmentViewModel(String viewName) {
