@@ -1,6 +1,7 @@
 package view;
 
 import back_end.home_screen.HomeScreenInputData;
+import interface_adapter.add_budget.AddBudgetViewModel;
 import interface_adapter.home_screen.HomeScreenController;
 import interface_adapter.home_screen.HomeScreenState;
 import interface_adapter.home_screen.HomeScreenViewModel;
@@ -22,21 +23,20 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
     private final JComboBox monthSelectionList;
-
-    private final JLabel selectedMonthLabel;
+    private final LabelPanel monthSelectionInfo;
 
     // changed to buttons.
     private final JButton remainingBudgetButton;
     private final JButton totalIncomeButton;
     private final JButton totalExpensesButton;
-
     private JLabel statGraphImg;
 
     public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {
-        this.setPreferredSize(new Dimension(1200, 800));
+        this.setPreferredSize(new Dimension(1200, 600));
         this.homeVM = homeVM;
         this.viewManagerModel = viewManagerModel;
         this.homeController = homeController;
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
         addEditBudgetButton.addActionListener(this);
@@ -49,6 +49,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
         monthSelectionList.addActionListener(this);
+        monthSelectionInfo = new LabelPanel(new JLabel("Select month: "), monthSelectionList);
 
         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
 
@@ -61,32 +62,31 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         totalExpensesButton = new JButton("Total Expenses Statistics: ");
         totalExpensesButton.addActionListener(this);
 
-        // add month after selection
-        selectedMonthLabel = new JLabel("Selected Month: ");
-
         BufferedImage statGraph = homeVM.getState().getStatGraph();
-        statGraphImg = new JLabel();
+        statGraphImg = new JLabel("",SwingConstants.CENTER);
         if (statGraph != null) {
             Image scaledGraph = statGraph.getScaledInstance(320, 180, Image.SCALE_DEFAULT);
             statGraphImg.setIcon(new ImageIcon(scaledGraph));
         }
-        this.add(statGraphImg);
+        statGraphImg.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JPanel buttons = new JPanel();
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
-        buttons.add(remainingBudgetButton);
-        buttons.add(totalIncomeButton);
-        buttons.add(totalExpensesButton);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JPanel stats = new JPanel();
+        stats.add(remainingBudgetButton);
+        stats.add(totalIncomeButton);
+        stats.add(totalExpensesButton);
+        stats.setPreferredSize(new Dimension(100, 10));
 
         this.add(title);
-        this.add(monthSelectionList);
-        this.add(selectedMonthLabel);
+        this.add(statGraphImg, BorderLayout.CENTER);
+        this.add(monthSelectionInfo);
         this.add(buttons);
-
+        this.add(stats);
+        buttons.setPreferredSize(new Dimension(100, 10));
         homeVM.addPropertyChangeListener(this);
     }
 
@@ -149,7 +149,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             // update displayed month
             String monthText = "Selected Month: ";
             String monthTextLabel = monthText + state.getMonth();
-            selectedMonthLabel.setText(monthTextLabel);
+            monthSelectionInfo.panelText.setText(monthTextLabel);
 
             // by default, assume there no budget exists for that month
             String budgetText = "Remaining Budget: N/A";
