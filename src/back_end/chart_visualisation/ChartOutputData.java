@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChartOutputData {
-    private final HashMap<String, Double> data;
+    private final HashMap<String, ?> data;
 
-    public ChartOutputData(HashMap<String, Double> data){
+    public ChartOutputData(HashMap<String, ?> data){
         this.data = data;
     }
 
-    public HashMap<String, Double> getData() {
+    public HashMap<String, ?> getData() {
         return this.data;
     }
 }

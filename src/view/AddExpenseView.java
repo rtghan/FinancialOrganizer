@@ -151,6 +151,10 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Object response = evt.getNewValue();
+        System.out.println(evt.getPropertyName());
+        if (evt.getPropertyName().equals("viewUpdate")) {
+            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        }
         if (response.getClass() == AddExpenseState.class){
             AddExpenseState state = (AddExpenseState) response;
             String popup = "Sorry, no budget has been created for this month!\n Could not add expense.";

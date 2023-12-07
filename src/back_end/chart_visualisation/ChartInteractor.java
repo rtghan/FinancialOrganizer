@@ -20,18 +20,24 @@ public class ChartInteractor implements ChartInputBoundary {
     }
     @Override
     public void execute(ChartInputData chartInputData) {
-        Month inputMonth = chartInputData.getMonth();
+        // Get Current Month's Budget
         Budget currBudget = DAO.getBudgetByMonth(chartInputData.getMonth());
+
+        // Get List of Expenses of Budget
         ArrayList<Expense> expenseList = currBudget.getExpensesList();
-        HashMap<String, Double> outMap = new HashMap<String, Double>();
+
+        // Outdata construction
+        HashMap<String, Double> outMap = new HashMap<>();
+
         for(Expense entry:expenseList){
             String category = entry.getCategory();
+            System.out.println(entry.getCategory());
+            double amount = entry.getAmount();
             if(!outMap.containsKey(category)){
-                outMap.put(category, entry.getAmount());
-            }else{
-                double amt = outMap.get(category) + entry.getAmount();
-                outMap.put(category, amt);
+                outMap.put(category, amount);
             }
+            double newAmt = outMap.get(category) + amount;
+            outMap.put(category, newAmt);
         }
         ChartOutputData outputData = new ChartOutputData(outMap);
         chartPresenter.preparePopup(outputData);

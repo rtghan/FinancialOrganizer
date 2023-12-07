@@ -12,9 +12,9 @@ public class ChartBuilder {
         return ChartQuery.executeGet(param);
     }
     public static BufferedImage build(String type, double expense, double income) throws Exception {
-        String[] labels = new String[]{"Expense","Income"};
+        String[] labels = new String[]{"Expense Amount","Income Amount"};
         HashMap<String, Serializable> dataset = new HashMap<>();
-        dataset.put("Expense Saving Amount", new double[]{expense, income});
+        dataset.put("Dollars", new double[]{expense, income});
         String param = ParamBuilder.build(type, labels, dataset);
         return ChartQuery.executeGet(param);
     }

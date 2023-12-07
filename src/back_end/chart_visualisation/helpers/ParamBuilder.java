@@ -31,7 +31,7 @@ abstract class ParamBuilder {
         chartData.put("labels", labels);
         chartData.put("datasets", setsArray);
         outJson.put("data", chartData);
-
+        System.out.println(outJson);
         return URLEncoder.encode(outJson.toString());
     }
 }

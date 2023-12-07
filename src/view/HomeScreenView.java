@@ -81,7 +81,6 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
-
         JPanel lowerbuttons = new JPanel();
         lowerbuttons.add(remainingBudgetButton);
         lowerbuttons.add(totalIncomeButton);
@@ -190,8 +189,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
             BufferedImage statGraph = homeVM.getState().getStatGraph();
             if (statGraph != null) {
                 Image scaledGraph = statGraph.getScaledInstance(800, 450, Image.SCALE_DEFAULT);
-                expenseImg.setIcon(new ImageIcon(scaledGraph));
-
+                statGraphImg.setIcon(new ImageIcon(scaledGraph));
             }
 
             // if the budget is not null, update the relevant financial amounts
