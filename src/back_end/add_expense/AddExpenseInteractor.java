@@ -17,6 +17,7 @@ public class AddExpenseInteractor implements AddExpenseInputBoundary{
         // new expense obj creation.
         Expense newExpense = new Expense(iData.getCategory(), iData.getAmount(), iData.month);
         Budget monthBudget = this.addExpDAO.getBudgetByMonth(iData.month);
+        System.out.println(iData.month);
 
         // see if there is a valid budget for this month
         if (monthBudget != null){

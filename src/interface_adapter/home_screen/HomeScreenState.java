@@ -13,6 +13,8 @@ public class HomeScreenState {
     private double totalIncome;
     private double totalExpenses;
     private BufferedImage statGraph;
+    private BufferedImage expenseGraph;
+    private String popup;
 
     public HomeScreenState() {
         this.month = LocalDateTime.now().getMonth();
@@ -75,9 +77,15 @@ public class HomeScreenState {
     public void setStatGraph(BufferedImage newGraph) {
         this.statGraph = newGraph;
     }
+    public void setExpenseGraph(BufferedImage newGraph) {
+        this.expenseGraph = newGraph;
+    }
 
     public BufferedImage getStatGraph() {
         return this.statGraph;
+    }
+    public BufferedImage getExpenseGraph() {
+        return this.expenseGraph;
     }
 
 }

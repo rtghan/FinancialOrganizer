@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExpenseTest {
     Expense expense;
     Month month = LocalDateTime.now().getMonth();
+
     @BeforeEach
     void setUp() {
         expense = new Expense("Groceries", 100, month);
@@ -26,5 +27,8 @@ class ExpenseTest {
         assertEquals(100, expense.getAmount());
     }
 
-
+    @Test
+    void getDate() {
+        assertEquals(month, expense.getMonth());
+    }
 }
