@@ -7,13 +7,41 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class ChartBuilder {
+    /**
+     * Takes in the given input, requests ParamBuilder to construct string representation of Parameter
+     * and queries the API
+     * @param type String
+     * @param labels String[]
+     * @param dataSet Hashmap<>
+     * @param width int
+     * @param height int
+     * @return BufferedImage
+     * @throws Exception
+     */
     public static BufferedImage build(String type, String[] labels, HashMap<String, ?> dataSet, int width, int height) throws Exception {
         String param = ParamBuilder.build(type, labels, dataSet,width,height);
         return ChartQuery.executeGet(param);
     }
+
+    /**
+     * Function Overloading for default values
+     * @param type String
+     * @param labels String[]
+     * @param dataSet Hashmap<>
+     * @return BufferedImage
+     * @throws Exception
+     */
     public static BufferedImage build(String type, String[] labels, HashMap<String, ?> dataSet) throws Exception {
         return build(type, labels, dataSet, 500, 300);
     }
+    /**
+     * Function Overloading for only two inputs.
+     * @param type String
+     * @param expense double
+     * @param income double
+     * @return BufferedImage
+     * @throws Exception
+     */
     public static BufferedImage build(String type, double expense, double income) throws Exception {
         String[] labels = new String[]{"Expense Amount","Income Amount"};
         HashMap<String, Serializable> dataset = new HashMap<>();
