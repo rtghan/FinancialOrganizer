@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class AddIncomeState {
     private String incomeSource = "";
     private double amount;
-    private Month month;
+    private Month month = LocalDateTime.now().getMonth();
     private boolean creationSuccess = false;
     public AddIncomeState(AddIncomeState copy) {
         incomeSource = copy.incomeSource;
