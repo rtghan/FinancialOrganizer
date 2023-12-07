@@ -40,7 +40,7 @@ class AddExpenseInteractorTest {
     @Test
     void successTest(){
         AddBudgetDataAccessInterface addBudDAO = memoryDAO;
-        AddBudgetOutputBoundary successPresenter = new AddBudgetOutputBoundary() {
+        AddBudgetOutputBoundary budPresenter = new AddBudgetOutputBoundary() {
             @Override
             public void prepareSuccessView(AddBudgetOutputData addBudgetOutputData) {
             }
@@ -50,7 +50,7 @@ class AddExpenseInteractorTest {
             }
         };
         AddBudgetInputData budInputData = new AddBudgetInputData(month, 123, 456);
-        AddBudgetInputBoundary budInteractor = new AddBudgetInteractor(addBudDAO, successPresenter);
+        AddBudgetInputBoundary budInteractor = new AddBudgetInteractor(addBudDAO, budPresenter);
         budInteractor.execute(budInputData);
         AddExpenseInputData expInputData = new AddExpenseInputData("KFC", "food", amount, month);
         AddExpenseInteractor expInteractor = new AddExpenseInteractor(presenter, addExpDAO);
