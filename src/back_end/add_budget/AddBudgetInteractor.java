@@ -17,13 +17,13 @@ public class AddBudgetInteractor implements AddBudgetInputBoundary{
 
         // create and save the budget using the DAO
         Budget newBudget = new Budget(
-                inputData.getSavingAmt(), inputData.getInvestmentAmt(), inputData.getSpendingAmt(), creationMonth
+                inputData.getSavingAmt(), inputData.getSpendingAmt(), creationMonth
         );
         addDAO.save(creationMonth, newBudget);
 
         // prepare the output data
         AddBudgetOutputData outputData = new AddBudgetOutputData(
-                creationMonth, inputData.getSavingAmt(), inputData.getInvestmentAmt(), inputData.getSpendingAmt()
+                creationMonth, inputData.getSavingAmt(), inputData.getSpendingAmt()
         );
 
         // tell the presenter to show that a new budget has been made, and we can go to the management screen now
