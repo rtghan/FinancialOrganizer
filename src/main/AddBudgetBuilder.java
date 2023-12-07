@@ -8,7 +8,7 @@ import interface_adapter.add_budget.*;
 import back_end.add_budget.AddBudgetDataAccessInterface;
 import interface_adapter.home_screen.HomeScreenViewModel;
 import view.AddBudgetView;
-public class AddBudgetFactory {
+public class AddBudgetBuilder {
     public static AddBudgetView create(AddBudgetViewModel addBudVM, ViewManagerModel viewManagerModel,
                                        AddBudgetDataAccessInterface addBudDAO, HomeScreenViewModel homeScreenVM) {
 
