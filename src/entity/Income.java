@@ -41,7 +41,7 @@ public class Income {
      * gets the date
      * @return date
      */
-    public Month getMonthmonth() {
+    public Month getMonth() {
         return month;
     }
 }

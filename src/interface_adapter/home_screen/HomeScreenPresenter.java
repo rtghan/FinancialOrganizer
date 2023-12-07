@@ -7,16 +7,29 @@ import back_end.home_screen.HomeScreenOutputData;
 import interface_adapter.ViewManagerModel;
 import back_end.chart_visualisation.helpers.ChartBuilder;
 
+/**
+ * presenter for home screen - outputs data and prepares view for home screen
+ */
 public class HomeScreenPresenter implements HomeScreenOutputBoundary {
 
     private final HomeScreenViewModel homeVM;
     private final ViewManagerModel viewManagerModel;
 
+    /**
+     * constructor for home screen presenter with specified view model + view manager model
+     * @param viewModel         home screen view model
+     * @param viewManagerModel  view manager model
+     */
     public HomeScreenPresenter(HomeScreenViewModel viewModel, ViewManagerModel viewManagerModel) {
         this.homeVM = viewModel;
         this.viewManagerModel = viewManagerModel;
     }
 
+    /**
+     * prepares success view with specified output data
+     * @param outputData  output data
+     * @throws Exception
+     */
     @Override
     public void prepareSuccessView(HomeScreenOutputData outputData) throws Exception {
         HomeScreenState state = homeVM.getState();
@@ -39,6 +52,10 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
         this.viewManagerModel.setActiveView(homeVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
+
+    /**
+     * prepares the failed view version
+     */
     @Override
     public void prepareFailView() {
         HomeScreenState state = homeVM.getState();
@@ -57,6 +74,10 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
         this.viewManagerModel.firePropertyChanged();
     }
 
+    /**
+     * prepares the popup by the specified output data (stats)
+     * @param outputData
+     */
     @Override
     public void preparePopup(ChartOutputData outputData) {
         HomeScreenState state = homeVM.getState();
@@ -66,7 +87,6 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
 
         }
     }
-
 }
 
 

@@ -14,7 +14,7 @@ public class AddIncomeOutputData {
      * constructor for the class
      * @param incomeSource String
      * @param amount double
-     * @param date LocalDateTime
+     * @param month Month
      */
     public AddIncomeOutputData(String incomeSource, double amount, Month month) {
         this.incomeSource = incomeSource;

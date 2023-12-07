@@ -13,6 +13,7 @@ public class AddIncomeInputData {
      * constructs an instace of input data for income
      * @param incomeSource String
      * @param amount double
+      * @param month Month
      */
 
     public AddIncomeInputData(String incomeSource, double amount, Month month) {

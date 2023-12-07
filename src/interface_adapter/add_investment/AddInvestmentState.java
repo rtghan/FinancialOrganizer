@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class AddInvestmentState {
     private String stockName;
     private double qty;
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
     private String error = null;
 
     public String getStockName() {
