@@ -15,4 +15,8 @@ public class InvestmentValueOutputData {
     public Map<LocalDate, Double> getInvestmentValues() {
         return investmentValues;
     }
+
+    public String getError() {return this.error;}
+
+    public double getInitialValue() {return this.initialValue;}
 }
