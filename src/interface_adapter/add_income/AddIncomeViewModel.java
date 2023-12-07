@@ -5,6 +5,9 @@ import interface_adapter.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+/**
+ * class that extends view model to work for the add income usecase
+ */
 public class AddIncomeViewModel extends ViewModel {
     public static final String TITLE_LABEL = "Add Income View";
     public static final String INCOME_SOURCE_LABEL = "Source of Income: ";
@@ -17,9 +20,18 @@ public class AddIncomeViewModel extends ViewModel {
             "July", "August", "September", "October", "December"};
 
     private AddIncomeState state = new AddIncomeState();
+
+    /**
+     * constructor that calls the super class constructor
+     */
     public AddIncomeViewModel() {
         super("AddIncome");
     }
+
+    /**
+     * setter for the state
+     * @param state AddIncomeState
+     */
     public void setState(AddIncomeState state) {
         this.state = state;
     }
@@ -32,5 +44,10 @@ public class AddIncomeViewModel extends ViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
+
+    /**
+     * getter for the state of this view model
+     * @return the state
+     */
     public AddIncomeState getState() {return state;}
 }

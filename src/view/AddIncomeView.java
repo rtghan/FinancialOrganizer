@@ -25,6 +25,12 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
     private final JComboBox monthSel;
     private final LabelPanel monthBox;
 
+
+    /**
+     * constructor for the view
+     * @param addIncController AddIncomeController
+     * @param addIncViewModel AddIncomeViewModel
+     */
     public AddIncomeView(AddIncomeController addIncController, AddIncomeViewModel addIncViewModel) {
         this.addIncomeController = addIncController;
         this.addIncomeViewModel = addIncViewModel;

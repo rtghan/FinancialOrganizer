@@ -3,6 +3,9 @@ package interface_adapter.add_income;
 import java.time.Month;
 import java.time.LocalDateTime;
 
+/**
+ * represents the state for add income has getters and setters for all the instance attributes
+ */
 public class AddIncomeState {
     private String incomeSource = "";
     private double amount;

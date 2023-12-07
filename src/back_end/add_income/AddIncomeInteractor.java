@@ -5,14 +5,28 @@ import java.time.Month;
 import entity.Budget;
 import entity.Income;
 
+/**
+ * allows the front and back end interact by calling their methods
+ */
 public class AddIncomeInteractor implements AddIncomeInputBoundary{
     final private AddIncomeDataAccessInterface incomeDAO;
     final private AddIncomeOutputBoundary incomePresenter;
+
+    /**
+     * constructor for the class
+     * @param incomeDAO AddIncomeDataAccessInterface
+     * @param incomePresenter AddIncomeOutputBoundary
+     */
     public AddIncomeInteractor(AddIncomeDataAccessInterface incomeDAO, AddIncomeOutputBoundary incomePresenter){
         this.incomeDAO = incomeDAO;
         this.incomePresenter = incomePresenter;
     }
 
+    /**
+     * takes in an input data, and saves the income to the budget of the corresponding month and presents a success screen
+     * if it exists, if not it brings the user to a fail screen
+     * @param inputData AddIncomeInputData
+     */
     @Override
     public void execute(AddIncomeInputData inputData){
         // get the day this income was input
@@ -32,6 +46,10 @@ public class AddIncomeInteractor implements AddIncomeInputBoundary{
             incomePresenter.noBudget();
         }
     }
+
+    /**
+     * useful for when the cancel button is pressed
+     */
     @Override
     public void cancel() {incomePresenter.cancel();}
 }
