@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AddIncomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddIncomeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AddInvestmentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AddInvestmentView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CalendarOrganizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CalendarOrganizer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/HomeScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HomeScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LabelPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LabelPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,11 +45,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "InvestmentUseCase",
+    "git-widget-placeholder": "graphCenter",
     "jdk.selected.JAVA_MODULE": "17",
     "last_opened_file_path": "C:/Users/chane/Downloads/school files/uni/2023-2024/csc207/CalendarOrganizer/dependencies/jdatepicker-2.0.3.jar",
     "node.js.detected.package.eslint": "true",
@@ -80,6 +85,7 @@
       <workItem from="1701758815213" duration="11452000" />
       <workItem from="1701805600018" duration="11961000" />
       <workItem from="1701837855694" duration="45000" />
+      <workItem from="1701928126397" duration="1542000" />
     </task>
     <servers />
   </component>
