@@ -1,6 +1,6 @@
 package back_end.chart_visualisation.helpers;
 
-import back_end.chart_visualisation.api.ChartQuery;
+import data_access.api.ChartQuery;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;

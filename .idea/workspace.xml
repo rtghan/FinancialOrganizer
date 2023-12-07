@@ -6,18 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentDataAccessInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_investment/AddInvestmentOutputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/api/ChartQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/api/ChartQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/ChartBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/chart_visualisation/helpers/ChartBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_access/api/StockQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/api/StockQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Investment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Investment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Investments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Investments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_investment/AddInvestmentState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,12 +94,23 @@
       <workItem from="1701805600018" duration="11961000" />
       <workItem from="1701837855694" duration="45000" />
       <workItem from="1701928126397" duration="1542000" />
-      <workItem from="1701954414636" duration="2395000" />
+      <workItem from="1701954414636" duration="5743000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

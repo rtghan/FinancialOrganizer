@@ -8,12 +8,27 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * A class which allows you to retrieve stock prices given the name of the stock, and the purchase date of the stock.
+ * Must have an approparite API key.
+ */
 public class StockQuery implements InvestmentValueDataAccessInterface {
     private String key;
 
+    /**
+     * Creates a new instance of a StockQuery object, with the API key specified in the constructor
+     * @param key       A valid API key that allows the HTTP requests to go through
+     */
     public StockQuery(String key) {
         this.key = key;
     }
+
+    /**
+     * Returns the price of a stock (specified by its name) at a given point in time.
+     * @param stockName     The name of the stock whose value will be queried
+     * @param purchaseDate  The date of the stock whose value will be queried
+     * @return
+     */
     public Double getPrice(String stockName, LocalDate purchaseDate) {
         String query = stockName + "/" + purchaseDate.toString() + "?adjusted=true&apiKey=" + this.key;
         String urlBase = "https://api.polygon.io/v1/open-close/" + query;
@@ -31,7 +46,7 @@ public class StockQuery implements InvestmentValueDataAccessInterface {
 
         return price.doubleValue();
     }
-    public String getURLResponse(String requestURL) throws Exception{
+    private String getURLResponse(String requestURL) throws Exception {
         URL url = new URL(requestURL);
 
         // connect
