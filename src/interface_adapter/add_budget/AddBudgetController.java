@@ -9,8 +9,8 @@ public class AddBudgetController {
     public AddBudgetController(AddBudgetInputBoundary interactor) {
         this.addBudgetInteractor = interactor;
     }
-    public void execute(Month selectionMonth, double saveAmt, double invAmt, double spendAmt){
-        AddBudgetInputData inputData = new AddBudgetInputData(selectionMonth, saveAmt, invAmt, spendAmt);
+    public void execute(Month selectionMonth, double saveAmt, double spendAmt){
+        AddBudgetInputData inputData = new AddBudgetInputData(selectionMonth, saveAmt, spendAmt);
         addBudgetInteractor.execute(inputData);
     }
 

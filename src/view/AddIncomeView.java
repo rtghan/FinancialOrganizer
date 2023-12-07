@@ -124,7 +124,7 @@ public class AddIncomeView extends JPanel implements ActionListener, PropertyCha
 
         if (response.getClass() == AddIncomeState.class) {
             AddIncomeState state = (AddIncomeState) response;
-            String popup = "SSorry, no budget has been created for this month!\n Could not add income.";
+            String popup = "Sorry, no budget has been created for this month!\n Could not add income.";
             if (state.isCreationSuccess()) {
                 popup = "Successfully added an income of $" + state.getAmount() + " from " + state.getIncome_source();
             }

@@ -1,4 +1,5 @@
 package entity;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.time.Month;
 
@@ -7,22 +8,20 @@ import java.time.Month;
  */
 public class Budget {
     private double savingAmt;
-    private double investmentAmt;
     private double spendingAmt;
     private Month creationMonth;
     private final ArrayList<Expense> expensesList;
     private final ArrayList<Income> incomeList;
 
+
     /**
      * Construct budget entity with the specified:
      * @param savingAmt         saving amount
-     * @param investmentAmt     investment amount
      * @param spendingAmt       spending amount
      * @param creationMonth     month
      */
-    public Budget(double savingAmt, double investmentAmt, double spendingAmt, Month creationMonth) {
+    public Budget(double savingAmt, double spendingAmt, Month creationMonth) {
         this.savingAmt = savingAmt;
-        this.investmentAmt = investmentAmt;
         this.spendingAmt = spendingAmt;
         this.creationMonth = creationMonth;
 
@@ -88,6 +87,6 @@ public class Budget {
     public double disposableIncome() {
         double incomeTotal = totalIncome();
         double expensesTotal = totalExpenses();
-        return incomeTotal - expensesTotal - savingAmt - investmentAmt;
+        return incomeTotal - expensesTotal - savingAmt;
     }
 }
