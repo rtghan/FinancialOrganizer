@@ -79,7 +79,7 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
         cancel.addActionListener(
                 e -> {
                     System.out.println("AddExpense Cancel");
-                    AddExpenseState currState = addExpenseVM.getState();
+                    clear();
                     controller.cancel();
                 });
         nameField.addKeyListener(
@@ -159,7 +159,19 @@ public class AddExpenseView extends JPanel implements ActionListener, PropertyCh
                         + state.getAmt() + "!";
             }
             JOptionPane.showMessageDialog(this, popup);
+            clear();
         }
 
+    }
+    private void clear(){
+        this.nameField.setText("");
+        this.amtField.setText("");
+        this.categoryField.setText("");
+
+        AddExpenseState state = addExpenseVM.getState();
+        state.setAmt(0);
+        state.setName("");
+        state.setCategory("");
+        addExpenseVM.setState(state);
     }
 }

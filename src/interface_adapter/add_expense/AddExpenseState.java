@@ -8,7 +8,7 @@ public class AddExpenseState {
     private String category;
     private double amt;
     private boolean popup = false;
-    private Month month;
+    private Month month = LocalDateTime.now().getMonth();
 
     public void setMonth(String input){
         if(input == "Current Month"){

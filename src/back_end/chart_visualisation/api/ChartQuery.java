@@ -15,7 +15,7 @@ public class ChartQuery {
     HttpURLConnection connection = null;
     public static BufferedImage executeGet(String param) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
-        String test = "https://quickchart.io/chart" + param;
+        String test = "https://quickchart.io/chart?c=" + param;
         URL url = new URL("https://quickchart.io/chart");
         System.out.println(test);
         HttpRequest request = HttpRequest.newBuilder()

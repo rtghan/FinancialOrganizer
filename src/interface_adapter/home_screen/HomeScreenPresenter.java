@@ -1,9 +1,11 @@
 package interface_adapter.home_screen;
 
+import back_end.chart_visualisation.ChartOutputData;
+import back_end.chart_visualisation.helpers.DoughnutChart;
 import back_end.home_screen.HomeScreenOutputBoundary;
 import back_end.home_screen.HomeScreenOutputData;
 import interface_adapter.ViewManagerModel;
-import back_end.chart_visualisation.back_end.ChartBuilder;
+import back_end.chart_visualisation.helpers.ChartBuilder;
 
 public class HomeScreenPresenter implements HomeScreenOutputBoundary {
 
@@ -29,7 +31,7 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
         state.setTotalIncome(totalInc);
 
         //update state with image
-        state.setStatGraph(ChartBuilder.build(totalExp, totalInc, 0));
+        state.setStatGraph(ChartBuilder.build("bar", totalExp, totalInc));
 
         this.homeVM.setState(state);
         homeVM.firePropertyChanged();
@@ -43,7 +45,7 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
         state.setBudgetNull(false);
         //update state with image
         try{
-            state.setStatGraph(ChartBuilder.build(0, 0, 0));
+            state.setStatGraph(ChartBuilder.build("bar",0, 0));
         } catch (Exception e) {
 
         }
@@ -53,6 +55,16 @@ public class HomeScreenPresenter implements HomeScreenOutputBoundary {
 
         this.viewManagerModel.setActiveView(homeVM.getViewName());
         this.viewManagerModel.firePropertyChanged();
+    }
+
+    @Override
+    public void preparePopup(ChartOutputData outputData) {
+        HomeScreenState state = homeVM.getState();
+        try{
+            state.setExpenseGraph(DoughnutChart.build(outputData.getData()));
+        }catch (Exception e){
+
+        }
     }
 
 }

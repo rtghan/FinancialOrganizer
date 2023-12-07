@@ -89,4 +89,8 @@ public class Budget {
         double expensesTotal = totalExpenses();
         return incomeTotal - expensesTotal - savingAmt;
     }
+
+    public ArrayList<Expense> getExpensesList(){
+        return this.expensesList;
+    }
 }
