@@ -22,6 +22,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
     private final JButton addEditBudgetButton;
     private final JButton addIncomeButton;
     private final JButton addExpenseButton;
+    private final JButton addInvestmentButton;
     private final JComboBox monthSelectionList;
     private final LabelPanel monthSelectionInfo;
 
@@ -46,6 +47,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
 
         addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);
         addExpenseButton.addActionListener(this);
+
+        addInvestmentButton = new JButton(HomeScreenViewModel.ADD_INVESTMENT_LABEL);
+        addInvestmentButton.addActionListener(this);
 
         monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
         monthSelectionList.addActionListener(this);
@@ -74,6 +78,7 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         buttons.add(addEditBudgetButton);
         buttons.add(addIncomeButton);
         buttons.add(addExpenseButton);
+        buttons.add(addInvestmentButton);
 
         JPanel stats = new JPanel();
         stats.add(remainingBudgetButton);
@@ -105,6 +110,9 @@ public class HomeScreenView extends JPanel implements ActionListener, PropertyCh
         } else if (eventSource == addExpenseButton) {
             System.out.println("Add Expense button clicked");
             this.viewManagerModel.setActiveView("AddExpense");
+            this.viewManagerModel.firePropertyChanged();
+        } else if (eventSource == addInvestmentButton) {
+            this.viewManagerModel.setActiveView("AddInvestment");
             this.viewManagerModel.firePropertyChanged();
         } else if (eventSource == monthSelectionList){
             System.out.println("Month dropdown changed");
