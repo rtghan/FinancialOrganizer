@@ -1,0 +1,57 @@
+Index: src/view/HomeScreenView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\r\n\r\nimport back_end.home_screen.HomeScreenInputData;\r\nimport interface_adapter.home_screen.HomeScreenController;\r\nimport interface_adapter.home_screen.HomeScreenState;\r\nimport interface_adapter.home_screen.HomeScreenViewModel;\r\nimport interface_adapter.ViewManagerModel;\r\nimport javax.swing.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.beans.PropertyChangeEvent;\r\nimport java.beans.PropertyChangeListener;\r\n\r\npublic class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {\r\n\r\n    private final HomeScreenViewModel homeVM;\r\n    private final ViewManagerModel viewManagerModel;\r\n    private final HomeScreenController homeController;\r\n    private final JButton addEditBudgetButton;\r\n    private final JButton addIncomeButton;\r\n    private final JButton addExpenseButton;\r\n    private final JComboBox monthSelectionList;\r\n    private final JLabel selectedMonthLabel;\r\n\r\n    private final JLabel remainingBudgetLabel; // \"Remaining Budget: \"\r\n    private final JLabel totalIncomeLabel; // \"Total Income: \"\r\n    private final JLabel totalExpensesLabel; // \"Total Expenses: \"\r\n\r\n    public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel, HomeScreenController homeController) {\r\n        this.homeVM = homeVM;\r\n        this.viewManagerModel = viewManagerModel;\r\n        this.homeController = homeController;\r\n\r\n        addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);\r\n        addEditBudgetButton.addActionListener(this);\r\n\r\n        addIncomeButton = new JButton(HomeScreenViewModel.ADD_INCOME_LABEL);\r\n        addIncomeButton.addActionListener(this);\r\n\r\n        addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);\r\n        addExpenseButton.addActionListener(this);\r\n\r\n        monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);\r\n        monthSelectionList.addActionListener(\r\n                new ActionListener() {\r\n                    @Override\r\n                    public void actionPerformed(ActionEvent evt){\r\n                        if (evt.getSource().equals(monthSelectionList)){\r\n                            System.out.println(\"Month dropdown changed\");\r\n                            HomeScreenState currState = homeVM.getState();\r\n                            String selection = (String) monthSelectionList.getSelectedItem();\r\n                            currState.setMonthSelection(selection);\r\n                            homeVM.setState(currState);\r\n\r\n                            // call the controller to retrieve the new stats and display them\r\n                            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());\r\n                            homeController.execute(inputData);\r\n                        }\r\n                    }\r\n                }\r\n        );\r\n\r\n        JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);\r\n\r\n        // add month after selection\r\n        selectedMonthLabel = new JLabel(\"Selected Month: \");\r\n\r\n        // add value after month selection\r\n        remainingBudgetLabel = new JLabel(\"Remaining Budget: \");\r\n        totalIncomeLabel = new JLabel(\"Total Income: \");\r\n        totalExpensesLabel = new JLabel(\"Total Expenses: \");\r\n\r\n        JPanel buttons = new JPanel();\r\n        buttons.add(addEditBudgetButton);\r\n        buttons.add(addIncomeButton);\r\n        buttons.add(addExpenseButton);\r\n\r\n        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));\r\n\r\n        this.add(title);\r\n        this.add(monthSelectionList);\r\n        this.add(selectedMonthLabel);\r\n        this.add(remainingBudgetLabel);\r\n        this.add(totalIncomeLabel);\r\n        this.add(totalExpensesLabel);\r\n\r\n        this.add(buttons);\r\n\r\n        homeVM.addPropertyChangeListener(this);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void actionPerformed(ActionEvent e) {\r\n        Object eventSource = e.getSource();\r\n        if (eventSource == addEditBudgetButton) {\r\n            System.out.println(\"Add / Edit Budget Button clicked\");\r\n            this.viewManagerModel.setActiveView(\"AddBudget\");\r\n            this.viewManagerModel.firePropertyChanged();\r\n        } else if (eventSource == addIncomeButton) {\r\n            System.out.println(\"Add Income button clicked\");\r\n            this.viewManagerModel.setActiveView(\"AddIncome\");\r\n            this.viewManagerModel.firePropertyChanged();\r\n        } else if (eventSource == addExpenseButton) {\r\n            System.out.println(\"Add Expense button clicked\");\r\n            this.viewManagerModel.setActiveView(\"AddExpense\");\r\n            this.viewManagerModel.firePropertyChanged();\r\n        } else if (eventSource == monthSelectionList){\r\n            System.out.println(\"Month dropdown changed\");\r\n            String selectedMonthStr = (String) monthSelectionList.getSelectedItem();\r\n            homeVM.viewMonthSelection(selectedMonthStr);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void propertyChange(PropertyChangeEvent evt) {\r\n        Object response = evt.getNewValue();\r\n\r\n        // view changed to home view, update the stats using the controller\r\n        if (evt.getPropertyName().equals(\"viewUpdate\")) {\r\n            HomeScreenState currState = homeVM.getState();\r\n            String selection = (String) monthSelectionList.getSelectedItem();\r\n            currState.setMonthSelection(selection);\r\n            homeVM.setState(currState);\r\n\r\n            // call the controller to retrieve the new stats and display them\r\n            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());\r\n            homeController.execute(inputData);\r\n        }\r\n\r\n        // update if the property change was a homescreen state change\r\n        if (evt.getPropertyName().equals(\"state\")) {\r\n            System.out.println(\"Homescreen state change\");\r\n            HomeScreenState state = (HomeScreenState) response;\r\n            // update displayed month\r\n            String monthText = \"Selected Month: \";\r\n            String monthTextLabel = monthText + state.getMonth();\r\n            selectedMonthLabel.setText(monthTextLabel);\r\n\r\n            // by default, assume there no budget exists for that month\r\n            String budgetText = \"Remaining Budget: N/A\";\r\n            String incomeText = \"Total Income: N/A\";\r\n            String expensesText = \"Total Expenses: N/A\";\r\n\r\n            // if the budget is not null, update the relevant financial amounts\r\n            if (state.isBudgetNull()) {\r\n                // update relevant financial amounts\r\n                double budgetRemainingAmt = state.getRemainingBudget();\r\n                budgetText = \"Remaining Budget: \" + budgetRemainingAmt;\r\n\r\n\r\n                double totalIncomeAmt = state.getTotalIncome();\r\n                incomeText = \"Total Income: \" + totalIncomeAmt;\r\n\r\n\r\n                double totalExpensesAmt = state.getTotalExpenses();\r\n                expensesText = \"Total Expenses: \" + totalExpensesAmt;\r\n\r\n            }\r\n            // update the labels to reflect it\r\n            remainingBudgetLabel.setText(budgetText);\r\n            totalIncomeLabel.setText(incomeText);\r\n            totalExpensesLabel.setText(expensesText);\r\n\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/HomeScreenView.java b/src/view/HomeScreenView.java
+--- a/src/view/HomeScreenView.java	
++++ b/src/view/HomeScreenView.java	
+@@ -41,24 +41,7 @@
+         addExpenseButton.addActionListener(this);
+ 
+         monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);
+-        monthSelectionList.addActionListener(
+-                new ActionListener() {
+-                    @Override
+-                    public void actionPerformed(ActionEvent evt){
+-                        if (evt.getSource().equals(monthSelectionList)){
+-                            System.out.println("Month dropdown changed");
+-                            HomeScreenState currState = homeVM.getState();
+-                            String selection = (String) monthSelectionList.getSelectedItem();
+-                            currState.setMonthSelection(selection);
+-                            homeVM.setState(currState);
+-
+-                            // call the controller to retrieve the new stats and display them
+-                            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
+-                            homeController.execute(inputData);
+-                        }
+-                    }
+-                }
+-        );
++        monthSelectionList.addActionListener(this);
+ 
+         JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);
+ 
+@@ -106,9 +89,19 @@
+             this.viewManagerModel.setActiveView("AddExpense");
+             this.viewManagerModel.firePropertyChanged();
+         } else if (eventSource == monthSelectionList){
++            /*
+             System.out.println("Month dropdown changed");
+             String selectedMonthStr = (String) monthSelectionList.getSelectedItem();
+-            homeVM.viewMonthSelection(selectedMonthStr);
++            homeVM.viewMonthSelection(selectedMonthStr);*/
++            System.out.println("Month dropdown changed");
++            HomeScreenState currState = homeVM.getState();
++            String selection = (String) monthSelectionList.getSelectedItem();
++            currState.setMonthSelection(selection);
++            homeVM.setState(currState);
++
++            // call the controller to retrieve the new stats and display them
++            HomeScreenInputData inputData = new HomeScreenInputData(currState.getMonth());
++            homeController.execute(inputData);
+         }
+     }
+ 

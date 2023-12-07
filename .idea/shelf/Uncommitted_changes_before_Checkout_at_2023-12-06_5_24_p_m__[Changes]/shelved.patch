@@ -1,0 +1,96 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2c7ad9f4-3d22-4a16-a79f-cdd03a094daa\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YzsY4ENr4wOsPDriwps2wpef78\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"addBudgetCancel\",\r\n    \"last_opened_file_path\": \"C:/Users/veron/Desktop\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2c7ad9f4-3d22-4a16-a79f-cdd03a094daa\" name=\"Changes\" comment=\"\" />\r\n      <created>1701539787479</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1701539787479</updated>\r\n      <workItem from=\"1701539790792\" duration=\"494000\" />\r\n      <workItem from=\"1701758815213\" duration=\"11452000\" />\r\n      <workItem from=\"1701805600018\" duration=\"11961000\" />\r\n      <workItem from=\"1701837855694\" duration=\"45000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,10 +5,35 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInputBoundary.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetInteractor.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back_end/add_budget/AddBudgetOutputBoundary.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/add_budget/AddBudgetPresenter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/back_end/AddBudgetDataAccessInterface.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/back_end/AddBudgetInputBoundary.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/back_end/AddBudgetInputData.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/back_end/AddBudgetInteractor.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/back_end/AddBudgetOutputBoundary.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/back_end/AddBudgetOutputData.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_budget/data_access/MemoryDAO.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_expense/back_end/AddExpenseInputBoundary.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_expense/back_end/AddExpenseInputData.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_expense/back_end/AddExpenseInteractor.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_expense/back_end/AddExpenseOutputBoundry.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_expense/back_end/AddExpenseOutputData.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/back_end/AddIncomeDataAccessInterface.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/back_end/AddIncomeInputBoundary.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/back_end/AddIncomeInputData.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/back_end/AddIncomeInteractor.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/back_end/AddIncomeOutputBoundary.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/back_end/AddIncomeOutputData.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/add_income/data_access/AddIncomeDAO.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/data_access/BudgetDataAccessObject.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/interface_adapter/add_budget/AddBudgetController.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/interface_adapter/add_budget/AddBudgetPresenter.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/interface_adapter/add_income/AddIncomeController.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/interface_adapter/add_income/AddIncomePresenter.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/main/AddBudgetFactory.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/main/AddIncomeFactory.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/main/HomeScreenFactory.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/main/Main.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/view/HomeScreenView.class" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,7 +50,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main" />
++        <entry key="$PROJECT_DIR$" value="homescreen" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -41,22 +66,21 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "addBudgetCancel",
+-    "last_opened_file_path": "C:/Users/veron/Desktop",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/veron/Desktop&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">

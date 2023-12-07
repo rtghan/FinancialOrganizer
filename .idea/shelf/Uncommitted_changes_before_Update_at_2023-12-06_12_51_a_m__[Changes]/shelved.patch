@@ -1,0 +1,292 @@
+Index: src/data_access/BudgetDataAccessObject.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package data_access;\r\n\r\nimport entity.Budget;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\nimport java.time.Month;\r\n\r\npublic class BudgetDataAccessObject implements BudgetDataAccessInterface {\r\n\r\n    private final Map<Month, Budget> budgetMap;\r\n    public BudgetDataAccessObject() {\r\n        this.budgetMap = new HashMap<>();\r\n    }\r\n\r\n    @Override\r\n    public Budget getBudgetByMonth(Month month) {\r\n        //System.out.println(budgetMap.get(month));\r\n        return budgetMap.get(month);\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/data_access/BudgetDataAccessObject.java b/src/data_access/BudgetDataAccessObject.java
+--- a/src/data_access/BudgetDataAccessObject.java	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/src/data_access/BudgetDataAccessObject.java	(date 1701839848637)
+@@ -15,8 +15,11 @@
+ 
+     @Override
+     public Budget getBudgetByMonth(Month month) {
+-        //System.out.println(budgetMap.get(month));
+-        return budgetMap.get(month);
++        //System.out.println("budgetDAO.java: " + budgetMap.get(month));
++
++        // Return null if budget for the specified month is not found
++        return budgetMap.getOrDefault(month, null);
++        //return budgetMap.get(month);
+     }
+ 
+ }
+\ No newline at end of file
+Index: src/view/HomeScreenView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\r\n\r\nimport interface_adapter.home_screen.HomeScreenState;\r\nimport interface_adapter.home_screen.HomeScreenViewModel;\r\nimport interface_adapter.ViewManagerModel;\r\nimport javax.swing.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.beans.PropertyChangeEvent;\r\nimport java.beans.PropertyChangeListener;\r\nimport entity.Budget;\r\nimport data_access.BudgetDataAccessObject;\r\n\r\npublic class HomeScreenView extends JPanel implements ActionListener, PropertyChangeListener {\r\n\r\n    private final HomeScreenViewModel homeVM;\r\n    private final ViewManagerModel viewManagerModel;\r\n    private final JButton addEditBudgetButton;\r\n    private final JButton addIncomeButton;\r\n    private final JButton addExpenseButton;\r\n    private final JComboBox monthSelectionList;\r\n    private final JLabel selectedMonthLabel;\r\n\r\n    private final JLabel remainingBudgetLabel; // \"Remaining Budget: \"\r\n    private final JLabel totalIncomeLabel; // \"Total Income: \"\r\n    private final JLabel totalExpensesLabel; // \"Total Expenses: \"\r\n\r\n    public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel) {\r\n        this.homeVM = homeVM;\r\n        this.viewManagerModel = viewManagerModel;\r\n\r\n        addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);\r\n        addEditBudgetButton.addActionListener(this);\r\n\r\n        addIncomeButton = new JButton(HomeScreenViewModel.ADD_INCOME_LABEL);\r\n        addIncomeButton.addActionListener(this);\r\n\r\n        addExpenseButton = new JButton(HomeScreenViewModel.ADD_EXPENSE_LABEL);\r\n        addExpenseButton.addActionListener(this);\r\n\r\n        monthSelectionList = new JComboBox(HomeScreenViewModel.TIME_OPTIONS);\r\n        monthSelectionList.addActionListener(this);\r\n\r\n        JLabel title = new JLabel(HomeScreenViewModel.HOME_SCREEN_LABEL);\r\n\r\n        // add month after selection\r\n        selectedMonthLabel = new JLabel(\"Selected Month: \");\r\n\r\n        // add value after month selection\r\n        remainingBudgetLabel = new JLabel(\"Remaining Budget: \");\r\n        totalIncomeLabel = new JLabel(\"Total Income: \");\r\n        totalExpensesLabel = new JLabel(\"Total Expenses: \");\r\n\r\n        JPanel buttons = new JPanel();\r\n        buttons.add(addEditBudgetButton);\r\n        buttons.add(addIncomeButton);\r\n        buttons.add(addExpenseButton);\r\n\r\n        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));\r\n\r\n        this.add(title);\r\n        this.add(monthSelectionList);\r\n        this.add(selectedMonthLabel);\r\n        this.add(remainingBudgetLabel);\r\n        this.add(totalIncomeLabel);\r\n        this.add(totalExpensesLabel);\r\n\r\n        this.add(buttons);\r\n\r\n        homeVM.addPropertyChangeListener(this);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void actionPerformed(ActionEvent e) {\r\n        Object eventSource = e.getSource();\r\n        if (eventSource == addEditBudgetButton) {\r\n            System.out.println(\"Add / Edit Budget Button clicked\");\r\n            this.viewManagerModel.setActiveView(\"AddBudget\");\r\n            this.viewManagerModel.firePropertyChanged();\r\n        } else if (eventSource == addIncomeButton) {\r\n            System.out.println(\"Add Income button clicked\");\r\n        } else if (eventSource == addExpenseButton) {\r\n            System.out.println(\"Add Expense button clicked\");\r\n        } else if (eventSource == monthSelectionList){\r\n            System.out.println(\"Month dropdown changed\");\r\n            String selectedMonthStr = (String) monthSelectionList.getSelectedItem();\r\n            homeVM.viewMonthSelection(selectedMonthStr);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void propertyChange(PropertyChangeEvent evt) {\r\n        if (\"state\".equals(evt.getPropertyName())) {\r\n\r\n            String monthText = \"Selected Month: \";\r\n\r\n            String monthTextLabel = monthText + homeVM.getState().getMonth();\r\n            selectedMonthLabel.setText(monthTextLabel);\r\n\r\n            BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();\r\n            // this creates a new Budget, I need to get one that was already created\r\n            Budget selectedMonthBudget =\r\n                    budgetDAO.getBudgetByMonth(homeVM.getState().getMonth());\r\n            //System.out.println(homeVM.getState().getMonth());\r\n\r\n            // TODO: selectedMonthBudget is always null\r\n            // TODO: after month selection, need to retrieve Budget that was created\r\n\r\n            if (selectedMonthBudget != null) {\r\n                double budgetRemainingAmt = selectedMonthBudget.getRemaining();\r\n                String budgetText = \"Remaining Budget: \" + budgetRemainingAmt;\r\n                remainingBudgetLabel.setText(budgetText);\r\n\r\n                double totalIncomeAmt = selectedMonthBudget.totalIncome();\r\n                String incomeText = \"Total Income: \" + totalIncomeAmt;\r\n                totalIncomeLabel.setText(\"Total Income: \" + incomeText);\r\n\r\n                double totalExpensesAmt = selectedMonthBudget.totalExpenses();\r\n                String expensesText = \"Total Expenses: \" + totalExpensesAmt;\r\n                totalExpensesLabel.setText(\"Total Expenses: \" + expensesText);\r\n\r\n\r\n            } else {\r\n                remainingBudgetLabel.setText(\"Remaining Budget: N/A\");\r\n                totalIncomeLabel.setText(\"Total Income: N/A\");\r\n                totalExpensesLabel.setText(\"Total Expenses: N/A\");\r\n            }\r\n\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/HomeScreenView.java b/src/view/HomeScreenView.java
+--- a/src/view/HomeScreenView.java	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/src/view/HomeScreenView.java	(date 1701839848637)
+@@ -1,5 +1,7 @@
+ package view;
+ 
++import data_access.BudgetDataAccessInterface;
++import data_access.IncomeDataAccessObject;
+ import interface_adapter.home_screen.HomeScreenState;
+ import interface_adapter.home_screen.HomeScreenViewModel;
+ import interface_adapter.ViewManagerModel;
+@@ -25,10 +27,20 @@
+     private final JLabel totalIncomeLabel; // "Total Income: "
+     private final JLabel totalExpensesLabel; // "Total Expenses: "
+ 
+-    public HomeScreenView(HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel) {
++    private final BudgetDataAccessInterface budgetDAO; //
++    private final IncomeDataAccessObject incomeDAO; //
++
++    public HomeScreenView(
++            HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel,
++            BudgetDataAccessInterface budgetDAO, IncomeDataAccessObject incomeDAO) {
+         this.homeVM = homeVM;
+         this.viewManagerModel = viewManagerModel;
+ 
++        this.budgetDAO = budgetDAO;
++        this.incomeDAO = incomeDAO;
++
++
++
+         addEditBudgetButton = new JButton(HomeScreenViewModel.ADD_EDIT_BUDGET_LABEL);
+         addEditBudgetButton.addActionListener(this);
+ 
+@@ -86,6 +98,18 @@
+             System.out.println("Month dropdown changed");
+             String selectedMonthStr = (String) monthSelectionList.getSelectedItem();
+             homeVM.viewMonthSelection(selectedMonthStr);
++
++            // Add the following lines to get and print the remaining budget
++            Budget selectedMonthBudget = budgetDAO.getBudgetByMonth(homeVM.getState().getMonth());
++
++            System.out.println("ln103: " + homeVM.getState().getMonth());
++
++            if (selectedMonthBudget != null) {
++                double budgetRemainingAmt = selectedMonthBudget.getRemaining();
++                System.out.println("Remaining Budget: " + budgetRemainingAmt);
++            } else {
++                System.out.println("Budget not found for the selected month");
++            }
+         }
+     }
+ 
+@@ -98,7 +122,8 @@
+             String monthTextLabel = monthText + homeVM.getState().getMonth();
+             selectedMonthLabel.setText(monthTextLabel);
+ 
+-            BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
++            // TODO: commented out
++            // BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
+             // this creates a new Budget, I need to get one that was already created
+             Budget selectedMonthBudget =
+                     budgetDAO.getBudgetByMonth(homeVM.getState().getMonth());
+Index: src/add_budget/back_end/AddBudgetInteractor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package add_budget.back_end;\r\nimport entity.Budget;\r\nimport java.time.LocalDateTime;\r\nimport java.time.format.TextStyle;\r\nimport java.util.Locale;\r\nimport java.time.Month;\r\n\r\npublic class AddBudgetInteractor implements AddBudgetInputBoundary{\r\n    final private AddBudgetDataAccessInterface addDAO;\r\n    final private AddBudgetOutputBoundary addPresenter;\r\n    public AddBudgetInteractor(AddBudgetDataAccessInterface addDAO, AddBudgetOutputBoundary addPresenter) {\r\n        this.addDAO = addDAO;\r\n        this.addPresenter = addPresenter;\r\n    }\r\n    @Override\r\n    public void execute(AddBudgetInputData inputData) {\r\n        // get the month this budget was created for\r\n        Month creationMonth = inputData.getSelectedMonth();\r\n\r\n        // create and save the budget using the DAO\r\n        Budget newBudget = new Budget(\r\n                inputData.getSavingAmt(), inputData.getInvestmentAmt(), inputData.getSpendingAmt(), creationMonth\r\n        );\r\n        addDAO.save(creationMonth, newBudget);\r\n\r\n        // prepare the output data\r\n        AddBudgetOutputData outputData = new AddBudgetOutputData(\r\n                creationMonth, inputData.getSavingAmt(), inputData.getInvestmentAmt(), inputData.getSpendingAmt()\r\n        );\r\n\r\n        // tell the presenter to show that a new budget has been made, and we can go to the management screen now\r\n        addPresenter.prepareSuccessView(outputData);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/add_budget/back_end/AddBudgetInteractor.java b/src/add_budget/back_end/AddBudgetInteractor.java
+--- a/src/add_budget/back_end/AddBudgetInteractor.java	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/src/add_budget/back_end/AddBudgetInteractor.java	(date 1701841672344)
+@@ -1,4 +1,5 @@
+ package add_budget.back_end;
++import data_access.BudgetDataAccessObject;
+ import entity.Budget;
+ import java.time.LocalDateTime;
+ import java.time.format.TextStyle;
+@@ -6,9 +7,10 @@
+ import java.time.Month;
+ 
+ public class AddBudgetInteractor implements AddBudgetInputBoundary{
+-    final private AddBudgetDataAccessInterface addDAO;
++    //final private AddBudgetDataAccessInterface addDAO;
++    final private BudgetDataAccessObject addDAO;
+     final private AddBudgetOutputBoundary addPresenter;
+-    public AddBudgetInteractor(AddBudgetDataAccessInterface addDAO, AddBudgetOutputBoundary addPresenter) {
++    public AddBudgetInteractor(BudgetDataAccessObject addDAO, AddBudgetOutputBoundary addPresenter) {
+         this.addDAO = addDAO;
+         this.addPresenter = addPresenter;
+     }
+Index: src/main/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main;\r\n\r\nimport interface_adapter.ViewManagerModel;\r\nimport interface_adapter.add_budget.*;\r\nimport interface_adapter.home_screen.*;\r\nimport add_budget.back_end.*;\r\n// TODO: change this for the property data access object\r\nimport add_budget.data_access.MemoryDAO;\r\nimport data_access.*;\r\nimport view.*;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\n\r\npublic class Main {\r\n    public static void main(String args[]) {\r\n        JFrame app = new JFrame(\"Financial Organizer\");\r\n        app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);\r\n\r\n        CardLayout cardLayout = new CardLayout();\r\n\r\n        JPanel views = new JPanel(cardLayout);\r\n        app.add(views);\r\n\r\n        ViewManagerModel viewManagerModel = new ViewManagerModel();\r\n\r\n        /*\r\n         * don't need to save this into an object because it whenever ViewManagerModel does something, it will\r\n         * automatically activate propertyChanged and change the view\r\n         */\r\n        new ViewManager(views, cardLayout, viewManagerModel);\r\n\r\n        // initialize viewmodels\r\n        AddBudgetViewModel addBudVM = new AddBudgetViewModel();\r\n        HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm\r\n\r\n        // intialize data access objects required for each of the views\r\n        MemoryDAO addBudDAO = new MemoryDAO();\r\n\r\n        // create the views\r\n        AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);\r\n        HomeScreenView homeScreenView = new HomeScreenView(homeScreenVM, viewManagerModel);\r\n\r\n        // add them to the card layout so that we can switch between them, and label each one by the name given by its viewModel\r\n        views.add(addBudgetView, addBudVM.getViewName());\r\n        views.add(homeScreenView, homeScreenVM.getViewName());\r\n\r\n        app.pack();\r\n        app.setVisible(true);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/Main.java b/src/main/Main.java
+--- a/src/main/Main.java	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/src/main/Main.java	(date 1701841882442)
+@@ -35,11 +35,22 @@
+         HomeScreenViewModel homeScreenVM = new HomeScreenViewModel(); //removed parameter in hs vm
+ 
+         // intialize data access objects required for each of the views
+-        MemoryDAO addBudDAO = new MemoryDAO();
+-
++        // TODO: changed to BudgetDAO
++        //MemoryDAO addBudDAO = new MemoryDAO();
++        BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
+         // create the views
+-        AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
+-        HomeScreenView homeScreenView = new HomeScreenView(homeScreenVM, viewManagerModel);
++
++        //AddBudgetView addBudgetView = AddBudgetFactory.create(addBudVM, viewManagerModel, addBudDAO, homeScreenVM);
++        AddBudgetView addBudgetView = AddBudgetFactory.create(
++                addBudVM, viewManagerModel, budgetDAO, homeScreenVM);
++
++
++
++        // TODO: dao
++        //BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
++        IncomeDataAccessObject incomeDAO = new IncomeDataAccessObject();
++        HomeScreenView homeScreenView = new HomeScreenView(
++                homeScreenVM, viewManagerModel, budgetDAO, incomeDAO);
+ 
+         // add them to the card layout so that we can switch between them, and label each one by the name given by its viewModel
+         views.add(addBudgetView, addBudVM.getViewName());
+Index: src/main/HomeScreenFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main;\r\n\r\nimport home_screen.HomeScreenDataAccessInterface;\r\nimport interface_adapter.ViewManagerModel;\r\nimport interface_adapter.home_screen.HomeScreenViewModel;\r\nimport view.HomeScreenView;\r\n\r\npublic class HomeScreenFactory {\r\n\r\n    public static HomeScreenView create(\r\n            HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel){\r\n        return new HomeScreenView(homeVM, viewManagerModel);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/HomeScreenFactory.java b/src/main/HomeScreenFactory.java
+--- a/src/main/HomeScreenFactory.java	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/src/main/HomeScreenFactory.java	(date 1701839118605)
+@@ -1,5 +1,7 @@
+ package main;
+ 
++import data_access.BudgetDataAccessObject;
++import data_access.IncomeDataAccessObject;
+ import home_screen.HomeScreenDataAccessInterface;
+ import interface_adapter.ViewManagerModel;
+ import interface_adapter.home_screen.HomeScreenViewModel;
+@@ -9,7 +11,11 @@
+ 
+     public static HomeScreenView create(
+             HomeScreenViewModel homeVM, ViewManagerModel viewManagerModel){
+-        return new HomeScreenView(homeVM, viewManagerModel);
++
++        // TODO:
++        BudgetDataAccessObject budgetDAO = new BudgetDataAccessObject();
++        IncomeDataAccessObject incomeDAO = new IncomeDataAccessObject();
++        return new HomeScreenView(homeVM, viewManagerModel, budgetDAO, incomeDAO);
+     }
+ 
+ }
+Index: src/main/AddBudgetFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main;\r\n\r\nimport interface_adapter.ViewManagerModel;\r\nimport interface_adapter.add_budget.*;\r\nimport add_budget.back_end.*;\r\n// TODO: replace homescreen with stats screen\r\nimport interface_adapter.home_screen.HomeScreenViewModel;\r\nimport view.AddBudgetView;\r\npublic class AddBudgetFactory {\r\n    public static AddBudgetView create(AddBudgetViewModel addBudVM, ViewManagerModel viewManagerModel,\r\n                                       AddBudgetDataAccessInterface addBudDAO, HomeScreenViewModel homeScreenVM) {\r\n\r\n        AddBudgetController addBudgetController = createAddBudUseCase(viewManagerModel, addBudDAO, addBudVM, homeScreenVM);\r\n        return new AddBudgetView(addBudgetController, addBudVM);\r\n    }\r\n\r\n    private static AddBudgetController createAddBudUseCase(\r\n            ViewManagerModel viewManagerModel, AddBudgetDataAccessInterface addBudDAO,\r\n            AddBudgetViewModel addBudVM, HomeScreenViewModel homeScreenVM) {\r\n\r\n        AddBudgetOutputBoundary addBudOutputBoundary = new AddBudgetPresenter(addBudVM, viewManagerModel, homeScreenVM);\r\n        AddBudgetInputBoundary addBudInteractor = new AddBudgetInteractor(addBudDAO, addBudOutputBoundary);\r\n\r\n        return new AddBudgetController(addBudInteractor);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/AddBudgetFactory.java b/src/main/AddBudgetFactory.java
+--- a/src/main/AddBudgetFactory.java	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/src/main/AddBudgetFactory.java	(date 1701841672344)
+@@ -1,5 +1,6 @@
+ package main;
+ 
++import data_access.BudgetDataAccessObject;
+ import interface_adapter.ViewManagerModel;
+ import interface_adapter.add_budget.*;
+ import add_budget.back_end.*;
+@@ -15,7 +16,7 @@
+     }
+ 
+     private static AddBudgetController createAddBudUseCase(
+-            ViewManagerModel viewManagerModel, AddBudgetDataAccessInterface addBudDAO,
++            ViewManagerModel viewManagerModel, BudgetDataAccessObject addBudDAO,
+             AddBudgetViewModel addBudVM, HomeScreenViewModel homeScreenVM) {
+ 
+         AddBudgetOutputBoundary addBudOutputBoundary = new AddBudgetPresenter(addBudVM, viewManagerModel, homeScreenVM);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2c7ad9f4-3d22-4a16-a79f-cdd03a094daa\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"homescreen\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YzsY4ENr4wOsPDriwps2wpef78\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"C:/Users/veron/Desktop\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"CalendarOrganizer\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"CalendarOrganizer\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2c7ad9f4-3d22-4a16-a79f-cdd03a094daa\" name=\"Changes\" comment=\"\" />\r\n      <created>1701539787479</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1701539787479</updated>\r\n      <workItem from=\"1701539790792\" duration=\"494000\" />\r\n      <workItem from=\"1701758815213\" duration=\"11452000\" />\r\n      <workItem from=\"1701805600018\" duration=\"11961000\" />\r\n      <workItem from=\"1701837855694\" duration=\"45000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b574820def2415396df839385a9f3f352825ad4d)
++++ b/.idea/workspace.xml	(date 1701841672764)
+@@ -4,7 +4,19 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="" />
++    <list default="true" id="2c7ad9f4-3d22-4a16-a79f-cdd03a094daa" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/data_access/BudgetDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarOrganizer/data_access/BudgetDataAccessObject.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/interface_adapter/add_income/AddIncomeState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarOrganizer/interface_adapter/add_income/AddIncomeState.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarOrganizer/main/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CalendarOrganizer/view/HomeScreenView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarOrganizer/view/HomeScreenView.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/add_budget/back_end/AddBudgetInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/add_budget/back_end/AddBudgetInteractor.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/data_access/BudgetDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/BudgetDataAccessObject.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/AddBudgetFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AddBudgetFactory.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/HomeScreenFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/HomeScreenFactory.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/view/HomeScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HomeScreenView.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -36,21 +48,21 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "main",
+-    "last_opened_file_path": "C:/Users/veron/Desktop",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/veron/Desktop&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration default="true" type="JetRunConfigurationType">
+       <module name="CalendarOrganizer" />
+@@ -78,6 +90,7 @@
+       <workItem from="1701758815213" duration="11452000" />
+       <workItem from="1701805600018" duration="11961000" />
+       <workItem from="1701837855694" duration="45000" />
++      <workItem from="1701838252235" duration="3387000" />
+     </task>
+     <servers />
+   </component>

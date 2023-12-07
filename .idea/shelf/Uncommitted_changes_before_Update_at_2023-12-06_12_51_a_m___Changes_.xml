@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_2023-12-06_12_51_a_m__[Changes]" date="1701841885293" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-06_12_51_a_m__[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2023-12-06 12:51 a.m. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/CalendarOrganizer/interface_adapter/add_income/AddIncomeState.class" />
+    <option name="AFTER_PATH" value="out/production/CalendarOrganizer/interface_adapter/add_income/AddIncomeState.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-06_12_51_a_m__[Changes]/AddIncomeState.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/CalendarOrganizer/main/Main.class" />
+    <option name="AFTER_PATH" value="out/production/CalendarOrganizer/main/Main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-06_12_51_a_m__[Changes]/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/CalendarOrganizer/data_access/BudgetDataAccessObject.class" />
+    <option name="AFTER_PATH" value="out/production/CalendarOrganizer/data_access/BudgetDataAccessObject.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-06_12_51_a_m__[Changes]/BudgetDataAccessObject.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/CalendarOrganizer/view/HomeScreenView.class" />
+    <option name="AFTER_PATH" value="out/production/CalendarOrganizer/view/HomeScreenView.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-06_12_51_a_m__[Changes]/HomeScreenView.class" />
+  </binary>
+</changelist>
