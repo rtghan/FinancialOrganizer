@@ -16,3 +16,4 @@ app/src/main/java/main/App.java
 app/build.gradle.kts
 .idea/
 test.png
+.idea/workspace.xml

@@ -1,5 +1,7 @@
 package main;
 
+import back_end.chart_visualisation.ChartInputBoundary;
+import back_end.chart_visualisation.ChartInteractor;
 import back_end.home_screen.*;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.home_screen.HomeScreenController;
@@ -19,8 +21,9 @@ public class HomeScreenFactory {
                                                                 HomeScreenDataAccessInterface homeDAO) {
         HomeScreenOutputBoundary homeScreenOutputBoundary = new HomeScreenPresenter(homeVM, viewManagerModel);
         HomeScreenInputBoundary homeScreenInputBoundary = new HomeScreenInteractor(homeScreenOutputBoundary, homeDAO);
+        ChartInputBoundary inputBoundary = new ChartInteractor(homeDAO, homeScreenOutputBoundary);
 
-        return new HomeScreenController(homeScreenInputBoundary);
+        return new HomeScreenController(homeScreenInputBoundary, inputBoundary);
     }
 
 }
